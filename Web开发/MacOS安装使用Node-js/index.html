@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Node.js">
+
+
+    <meta name="description" content="\1. 到官网https://nodejs.org/zh-cn/download/下载，选择Macintosh Installer, 如下：
+\2. 按预设的下一步，Node.js版本为v6.1...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>MacOS安装使用Node.js | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Doe">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/"><i class="fa "></i>分类</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/tags/"><i class="fa "></i>标签</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/about/"><i class="fa "></i>关于</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="MacOS安装使用Node.js">
+            
+	            MacOS安装使用Node.js
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Web开发/">Web开发</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Node-js/">Node.js</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/02</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>\1. 到官网<a href="https://nodejs.org/zh-cn/download/下载，选择Macintosh" target="_blank" rel="noopener">https://nodejs.org/zh-cn/download/下载，选择Macintosh</a> Installer, 如下：</p>
+<p>\2. 按预设的下一步，Node.js版本为v6.10.0, NPM版本为v3.10.10</p>
+<p>\3. 过程可能要输入用户密码</p>
+<p>\4. 安装成功如下：</p>
+<p>\5. 用终端验证是否成功安装, 输入 node -v</p>
+<p>\6. console.log(1+2), 得到结果3</p>
+<p>\7. 我Mac的Eclipse不支援EcmaScript 6, 例如 let 等ES6的关键子在Eclipse都验证不过去。</p>
+<p>大概Google下了，找到一个JavaScript支援很不错的IDE，网址如下：</p>
+<p><a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="noopener">https://www.jetbrains.com/webstorm/</a></p>
+<p>下载完，create一个工程，然后新增一个JavaScript文件：</p>
+<p>\8. 将hello_weekend配置为Node.js来debug</p>
+<p>\9. Node interpreter设置为Node.js的安装路径</p>
+<p>\10.  Script如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by prolink on 17/3/19.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">var http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">var server =  http.createServer(function (req, res) &#123;</span><br><span class="line">    res.writeHead(200);</span><br><span class="line">    res.end(&apos;Hello World&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+<p>\11. 这个http返回Hello World，并在该行鼠标左键点击设置断点</p>
+<p>\12. debug该文件</p>
+<p>\13. 成功启动之后看到Console有相关的资讯</p>
+<p>\14. Chrome浏览器输入 <a href="http://localhost:8088/，" target="_blank" rel="noopener">http://localhost:8088/，</a> 可以看到已经命中断点 ，在Console中可以改变变量的值，例如在这里不返回Hello World了，改成返回Hello Weekend，如下图，输入完之后按回车，可以看到true </p>
+<p>\15. 看看浏览器得到的就是刚才debug时候重设的值  </p>
+<p>\16. 如果仅仅做到这步，WebStorm还不支援ECMAScript 6，打开 Preferences -&gt; Languages &amp; Franeworks -&gt; JavaScript, 如下图将预设的ECMAScript 5.1改为ECMAScript 6</p>
+<p> \17. ES6毕竟是2015年才发布的，形容性并不好，为了让您编写的ES6的程式码可以有更好的相容性，可以用Babel file watcher来监视并自动转码ES5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prolinkdeMacBook-Pro:milo_demo prolink$ sudo npm install -g babel-cli</span><br><span class="line">prolinkdeMacBook-Pro:milo_demo prolink$ cd /Users/prolink/WebstormProjects/milo_demo</span><br></pre></td></tr></table></figure>
+<p>按上一步进入工程目录之后，安装babel-preset-env, 参考 <a href="https://babeljs.io/docs/plugins/preset-env/" target="_blank" rel="noopener">https://babeljs.io/docs/plugins/preset-env/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install babel-preset-env --save-dev</span><br></pre></td></tr></table></figure>
+<p>\18. 打开 Preferences -&gt; Tools -&gt; File Watchers, 添加Bable, 如下： </p>
+<p>如果安装一切顺利，当您编辑JS文件时候，会自动在工程目录中同步编译到dist目录中。</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/uncategorized/HEXO主题配置/" class="pre-post btn btn-default" title="HEXO主题配置">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">HEXO主题配置</span>
+        </a>
+    
+    
+        <a href="/求学/澳洲高考制度简介-HSC-VCE-ATAR-UAC-VTAC/" class="next-post btn btn-default" title="澳洲高考制度简介(HSC/VCE/ATAR/UAC/VTAC)">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">澳洲高考制度简介(HSC/VCE/ATAR/UAC/VTAC)</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
