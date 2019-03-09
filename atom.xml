@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-09T02:52:39.708Z</updated>
+  <updated>2019-03-09T02:54:50.223Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://blog.ozairs.com/uncategorized/add-video-test/"/>
     <id>http://blog.ozairs.com/uncategorized/add-video-test/</id>
     <published>2019-03-09T02:51:59.000Z</published>
-    <updated>2019-03-09T02:52:39.708Z</updated>
+    <updated>2019-03-09T02:54:50.223Z</updated>
     
-    <content type="html"><![CDATA[<p>这是一篇测试博客。</p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="430" height="86" src="https://youtu.be/JEhpsOWeLrg"></iframe>]]></content>
+    <content type="html"><![CDATA[<p>这是一篇测试博客。</p><iframe height="498" width="510" src="http://player.youku.com/embed/XNDA4MDI0MDMwMA==" frameborder="0" 'allowfullscreen'=""></iframe>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;这是一篇测试博客。&lt;/p&gt;
-&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;430&quot; height=&quot;86&quot; src=&quot;https://youtu.be/JEhpsOWe
+&lt;iframe height=&quot;498&quot; width=&quot;510&quot; src=&quot;http://player.youku.com/embed/XNDA4MDI0MDMwMA==&quot; frameborder=&quot;0&quot; &#39;allowfullscreen&#39;=&quot;&quot;
       
     
     </summary>
