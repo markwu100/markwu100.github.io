@@ -31,7 +31,7 @@
     <!--Title-->
 
 
-<title>Tag: AWS | 带你走进美丽的墨尔本</title>
+<title>Tag: Docker | 带你走进美丽的墨尔本</title>
 
 
     <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
@@ -135,7 +135,7 @@
                 <main class="col-md-8 main-content ">
                     <h3>
     
-        AWS
+        Docker
     
     
 </h3>
@@ -145,17 +145,21 @@
         <div class="post-content">
             <div class="post-head home-post-head">
                 <h1 class="post-title">
-                    <a href="/求职/AWS面试经验分享/">AWS面试经验分享</a>
+                    <a href="/DevOps/停止、删除所有的docker容器和镜像/">停止、删除所有的docker容器和镜像</a>
                 </h1>
                 <div class="post-meta">  &bull;
                     <time class="post-date" datetime="" title="">
-                        2019年02月12日
+                        2019年03月10日
                     </time>
                 </div>
             </div>
             <p class="brief">
                 
-                    AWS的全名是Amazon Web Services，也就是亚马逊旗下的子公司，专门做云计算，业务遍及全球近200个国家，也是云计算行业的领头羊（有兴趣可以看看这个链接）。依照AWS Senior VP Andy Jassy的话来讲是...
+                    这些命令总是记不住，或者说不用心去记，所以记录在本文中，以便将来查询。
+
+列出所有的容器 ID1docker ps -aq
+停止所有的容器1docker stop $(docker ps -aq)
+删除所有的容器1docker rm ...
                 
             </p>
         </div>
