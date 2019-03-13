@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-13T03:51:22.988Z</updated>
+  <updated>2019-03-13T03:53:37.553Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Azure上的Terraform文档</title>
-    <link href="http://blog.ozairs.com/DevOps/Terraform/Azure%E4%B8%8A%E7%9A%84Terraform%E6%96%87%E6%A1%A3/"/>
-    <id>http://blog.ozairs.com/DevOps/Terraform/Azure上的Terraform文档/</id>
+    <link href="http://blog.ozairs.com/DevOps/Azure%E4%B8%8A%E7%9A%84Terraform%E6%96%87%E6%A1%A3/"/>
+    <id>http://blog.ozairs.com/DevOps/Azure上的Terraform文档/</id>
     <published>2019-03-13T03:48:43.000Z</published>
-    <updated>2019-03-13T03:51:22.988Z</updated>
+    <updated>2019-03-13T03:53:37.553Z</updated>
     
     <content type="html"><![CDATA[<p>使用 Terraform 在 Azure 上可靠地版本化和创建基础结构。 使用我们的快速入门和教程了解如何创建资源、使用 Azure Terraform 模块和维护包含代码的基础结构。</p><h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2><p>配置 Terraform 并使用它在 Azure 中创建 Linux VM。</p><p><a href="https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure" target="_blank" rel="noopener"><img src="https://docs.microsoft.com/azure/media/index/azure_dev-9.svg" alt="img">安装和配置 Terraform</a></p><p><a href="https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm" target="_blank" rel="noopener"><img src="https://docs.microsoft.com/azure/media/index/VirtualMachine.svg" alt="img">创建 Linux VM</a></p><h2 id="分步教程"><a href="#分步教程" class="headerlink" title="分步教程"></a>分步教程</h2><p>了解如何通过 Terraform 从代码创建 Azure 计算和网络基础结构。</p><ul><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks" target="_blank" rel="noopener">使用 AKS 创建 Kubernetes 群集</a>。</li><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress" target="_blank" rel="noopener">将 AKS 与作为入口控制器的应用程序网关配合使用来创建 Kubernetes 群集</a>。</li><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-vm-msi" target="_blank" rel="noopener">使用 Azure 市场映像创建启用了 MSI 身份验证的 Terraform VM</a>。</li><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-create-vm-cluster-module" target="_blank" rel="noopener">使用 Azure Terraform 模块创建负载均衡的 VM 群集</a>。</li><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-create-vm-cluster-with-infrastructure" target="_blank" rel="noopener">在 Azure Cloud Shell 中创建负载均衡的 VM 群集</a>。</li><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl" target="_blank" rel="noopener">为 VM 规模集配置网络和存储</a></li><li><a href="https://docs.microsoft.com/zh-cn/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl" target="_blank" rel="noopener">从 Packer 自定义映像预配 VM 规模集</a></li></ul><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>常见部署任务的示例配置模板。</p><ul><li><a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples" target="_blank" rel="noopener">GitHub</a></li></ul><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul><li><h3 id="Azure-Terraform-模块"><a href="#Azure-Terraform-模块" class="headerlink" title="Azure Terraform 模块"></a>Azure Terraform 模块</h3><p><a href="https://registry.terraform.io/modules/Azure/database/azurerm" target="_blank" rel="noopener">用于数据库的 Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer" target="_blank" rel="noopener">用于负载均衡器的 Azure RM</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup" target="_blank" rel="noopener">Azure RM 计算组</a></p><p><a href="https://registry.terraform.io/modules/Azure/network" target="_blank" rel="noopener">Azure RM 网络</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute" target="_blank" rel="noopener">Azure RM 计算</a></p></li></ul>]]></content>
     
@@ -36,8 +36,6 @@
     </summary>
     
       <category term="DevOps" scheme="http://blog.ozairs.com/categories/DevOps/"/>
-    
-      <category term="Terraform" scheme="http://blog.ozairs.com/categories/DevOps/Terraform/"/>
     
     
       <category term="Terraform" scheme="http://blog.ozairs.com/tags/Terraform/"/>
