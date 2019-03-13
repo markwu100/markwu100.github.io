@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/DevOps/Git-%E5%92%8C-GitHub-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-03-13T10:45:34.772Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/DevOps/Azure%E4%B8%8A%E7%9A%84Terraform%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2019-03-13T03:53:37.553Z</lastmod>
