@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Ansible/%E4%BD%BF%E7%94%A8Ansible%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%9A%E6%9E%84%E5%BB%BAVPC/</loc>
+    
+    <lastmod>2019-03-14T11:22:51.323Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Ansible/Ansible%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2019-03-14T10:11:52.039Z</lastmod>
@@ -16,16 +23,16 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/AWS/AWS%E4%BA%91%E4%B8%8A%E7%9A%84Puppet-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83%E9%83%A8%E7%BD%B2/</loc>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-03-14T05:43:21.823Z</lastmod>
+    <lastmod>2019-03-14T10:05:58.777Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://blog.ozairs.com/AWS/AWS%E4%BA%91%E4%B8%8A%E7%9A%84Puppet-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83%E9%83%A8%E7%BD%B2/</loc>
     
-    <lastmod>2019-03-14T05:39:32.416Z</lastmod>
+    <lastmod>2019-03-14T05:43:21.823Z</lastmod>
     
   </url>
   
