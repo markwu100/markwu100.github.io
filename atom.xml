@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-13T11:34:25.460Z</updated>
+  <updated>2019-03-14T00:45:35.381Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Puppt命令实用指南</title>
+    <link href="http://blog.ozairs.com/DevOps/Puppet/Puppet_command/"/>
+    <id>http://blog.ozairs.com/DevOps/Puppet/Puppet_command/</id>
+    <published>2019-03-14T00:45:41.000Z</published>
+    <updated>2019-03-14T00:45:35.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、下载安装r10k Module<br>puppet module install puppet/r10k –modulepath=/etc/puppetlabs/code/modules</p><p>2、puppet code与github repo同步<br>r10k deploy environment -p</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、下载安装r10k Module&lt;br&gt;puppet module install puppet/r10k –modulepath=/etc/puppetlabs/code/modules&lt;/p&gt;
+&lt;p&gt;2、puppet code与github repo同步&lt;br&gt;r10
+      
+    
+    </summary>
+    
+      <category term="DevOps" scheme="http://blog.ozairs.com/categories/DevOps/"/>
+    
+      <category term="Puppet" scheme="http://blog.ozairs.com/categories/DevOps/Puppet/"/>
+    
+    
+      <category term="Puppet" scheme="http://blog.ozairs.com/tags/Puppet/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -299,34 +327,6 @@
     
     
       <category term="澳洲" scheme="http://blog.ozairs.com/tags/%E6%BE%B3%E6%B4%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Puppt命令使用指南</title>
-    <link href="http://blog.ozairs.com/DevOps/Puppet/Puppet_command/"/>
-    <id>http://blog.ozairs.com/DevOps/Puppet/Puppet_command/</id>
-    <published>2019-03-08T04:01:41.000Z</published>
-    <updated>2019-03-14T00:42:59.370Z</updated>
-    
-    <content type="html"><![CDATA[<p>1、下载安装r10k Module<br>puppet module install puppet/r10k –modulepath=/etc/puppetlabs/code/modules</p><p>2、puppet code与github repo同步<br>r10k deploy environment -p</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;1、下载安装r10k Module&lt;br&gt;puppet module install puppet/r10k –modulepath=/etc/puppetlabs/code/modules&lt;/p&gt;
-&lt;p&gt;2、puppet code与github repo同步&lt;br&gt;r10
-      
-    
-    </summary>
-    
-      <category term="DevOps" scheme="http://blog.ozairs.com/categories/DevOps/"/>
-    
-      <category term="Puppet" scheme="http://blog.ozairs.com/categories/DevOps/Puppet/"/>
-    
-    
-      <category term="Puppet" scheme="http://blog.ozairs.com/tags/Puppet/"/>
     
   </entry>
   
