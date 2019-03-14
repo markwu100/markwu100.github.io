@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-13T11:22:52.156Z</updated>
+  <updated>2019-03-13T11:34:25.460Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <id>http://blog.ozairs.com/uncategorized/Git实用教程/</id>
     <published>2019-03-13T11:16:43.451Z</published>
-    <updated>2019-03-13T11:22:52.156Z</updated>
+    <updated>2019-03-13T11:34:25.460Z</updated>
     
     <content type="html"><![CDATA[<p>&lt;Git实用教程&gt;</p><p>1、Git创建和切换Branch</p><p>git brach example</p><p>git checkout ‘example’</p><p>2、查看Branch，Branch改名和删除Branch</p><p>git branch</p><p>git branch -m originname newname</p><p>git branch -D branchname</p><p>3、提交代码到Staging Enviroment</p><p>git add example （git add . ）</p><p>4、提交代码到正式环境</p><p>git commit -m “comment”</p><p>5、合并不同 branch的代码</p><p>git merge branchname</p><p>6、查看代码日志</p><p>git log</p>]]></content>
     
@@ -303,6 +303,34 @@
   </entry>
   
   <entry>
+    <title>Puppt命令使用指南</title>
+    <link href="http://blog.ozairs.com/DevOps/Puppet/Puppet_command/"/>
+    <id>http://blog.ozairs.com/DevOps/Puppet/Puppet_command/</id>
+    <published>2019-03-08T04:01:41.000Z</published>
+    <updated>2019-03-14T00:42:59.370Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、下载安装r10k Module<br>puppet module install puppet/r10k –modulepath=/etc/puppetlabs/code/modules</p><p>2、puppet code与github repo同步<br>r10k deploy environment -p</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、下载安装r10k Module&lt;br&gt;puppet module install puppet/r10k –modulepath=/etc/puppetlabs/code/modules&lt;/p&gt;
+&lt;p&gt;2、puppet code与github repo同步&lt;br&gt;r10
+      
+    
+    </summary>
+    
+      <category term="DevOps" scheme="http://blog.ozairs.com/categories/DevOps/"/>
+    
+      <category term="Puppet" scheme="http://blog.ozairs.com/categories/DevOps/Puppet/"/>
+    
+    
+      <category term="Puppet" scheme="http://blog.ozairs.com/tags/Puppet/"/>
+    
+  </entry>
+  
+  <entry>
     <title>墨尔本斯巴达挑战赛侧记</title>
     <link href="http://blog.ozairs.com/uncategorized/%E5%A2%A8%E5%B0%94%E6%9C%AC%E6%96%AF%E5%B7%B4%E8%BE%BE%E6%8C%91%E6%88%98%E8%B5%9B%E4%BE%A7%E8%AE%B0/"/>
     <id>http://blog.ozairs.com/uncategorized/墨尔本斯巴达挑战赛侧记/</id>
@@ -495,31 +523,6 @@
     
     
       <category term="Raid Storage" scheme="http://blog.ozairs.com/tags/Raid-Storage/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>An In-Depth Guide to the Differences Between SAN and NAS</title>
-    <link href="http://blog.ozairs.com/Jobs/An-In-Depth-Guide-to-the-Differences-Between-SAN-and-NAS/"/>
-    <id>http://blog.ozairs.com/Jobs/An-In-Depth-Guide-to-the-Differences-Between-SAN-and-NAS/</id>
-    <published>2019-02-13T11:29:13.000Z</published>
-    <updated>2019-02-13T11:53:19.228Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.lifewire.com/definition-of-san-818007" target="_blank" rel="noopener">Storage area networks (SANs)</a> and <a href="https://www.lifewire.com/best-nas-network-attached-storage-4140167" target="_blank" rel="noopener">network attached storage (NAS)</a> both provide networked storage solutions. A NAS is a single storage device that operates on data files, while a SAN is a local network of multiple devices.</p><p><img src="/Jobs/An-In-Depth-Guide-to-the-Differences-Between-SAN-and-NAS/san-vs-nas.png" alt=""></p><p>A NAS unit includes a dedicated hardware device that connects to a <a href="https://www.lifewire.com/local-area-network-816382" target="_blank" rel="noopener">local area network</a>, usually through an <a href="https://www.lifewire.com/what-is-ethernet-3426740" target="_blank" rel="noopener">Ethernet</a> connection. This NAS server authenticates clients and manages file operations in much the same manner as traditional file servers, through well-established network protocols.</p><p>To reduce the costs that occur with traditional file servers, NAS devices generally run an embedded <a href="https://www.lifewire.com/operating-systems-2625912" target="_blank" rel="noopener">operating system</a> on simplified hardware and lack <a href="https://www.lifewire.com/peripheral-device-2625951" target="_blank" rel="noopener">peripherals</a> like a <a href="https://www.lifewire.com/what-is-a-monitor-2618155" target="_blank" rel="noopener">monitor</a>or <a href="https://www.lifewire.com/what-is-a-keyboard-2618153" target="_blank" rel="noopener">keyboard</a> and are instead managed through a browser tool.</p><p>A SAN commonly utilizes <a href="https://www.lifewire.com/definition-of-fibre-channel-816326" target="_blank" rel="noopener">Fibre Channel</a> interconnects and connects a set of storage devices that are able to share data with one another.</p><h3 id="Important-NAS-and-SAN-Benefits"><a href="#Important-NAS-and-SAN-Benefits" class="headerlink" title="Important NAS and SAN Benefits"></a>Important NAS and SAN Benefits</h3><p>The administrator of a <a href="https://www.lifewire.com/soho-routers-and-networks-explained-3971344" target="_blank" rel="noopener">home or small business network</a> can connect one NAS device to a local area network. The device itself is a <a href="https://www.lifewire.com/what-is-a-node-4155598" target="_blank" rel="noopener">network node</a>, much like computers and other <a href="https://www.lifewire.com/transmission-control-protocol-and-internet-protocol-816255" target="_blank" rel="noopener">TCP/IP</a> devices, all of which maintain their own <a href="https://www.lifewire.com/what-is-an-ip-address-2625920" target="_blank" rel="noopener">IP address</a> and can effectively communicate with other networked devices.</p><p>Given that the network attached storage device is attached <em>to the network</em>, all the other devices on that same network have easy access to it (given that proper permissions are set up). Because of their centralized nature, NAS devices offer an easy way for multiple users to access the same data, which is important in situations where users are collaborating on projects or utilizing the same company standards.</p><p>Using a software program provided with the NAS hardware, a network administrator can set up automatic or manual backups and file copies between the NAS and all the other connected devices. Therefore, a NAS device is also useful for the opposite reason: to offload local data to the network storage device’s much larger storage container.</p><p>This is useful not only to ensure that users do not lose data, since the NAS can be backed up on a regular schedule regardless of the end-user’s ability to back up, but also to give other network devices a place to keep large files, especially large files that are often shared among other network users.</p><p>Without a NAS, users have to find another (often slower) means to send data to other devices on the network, like over email or physically with <a href="https://www.lifewire.com/what-is-a-flash-drive-2625794" target="_blank" rel="noopener">flash drives</a>. The NAS holds many gigabytes or <a href="https://www.lifewire.com/terabytes-gigabytes-amp-petabytes-how-big-are-they-4125169" target="_blank" rel="noopener">terabytes</a> of data, and administrators can add additional storage capacity to their network by installing additional NAS devices, although each NAS operates independently. </p><p>Administrators of large enterprise networks may require many terabytes of centralized file storage or extremely high-speed file transfer operations. While installing an army of many NAS devices is not a practical option, administrators can instead install a SAN containing a high-performance disk array to provide the needed scalability and performance.</p><p>However, SANs are not always physical. You can also create virtual SANs (VSANs) that are defined by a software program. Virtual SANs are easier to manage and offer better scalability since they’re hardware independent and controlled entirely by easy-to-change software.</p><h3 id="SAN-NAS-Convergence"><a href="#SAN-NAS-Convergence" class="headerlink" title="SAN/NAS Convergence"></a>SAN/NAS Convergence</h3><p>As internet technologies like TCP/IP and Ethernet proliferate worldwide, some SAN products are making the transition from Fibre Channel to the same IP-based approach NAS uses. Also, with the rapid improvements in disk storage technology, today’s NAS devices now offer capacities and performance that once were only possible with SAN.</p><p>These two industry factors have led to a partial convergence of NAS and SAN approaches to network storage, effectively creating high-speed, high-capacity, centrally located network devices. </p><p>When SAN and NAS are joined together into one device in this way, it’s sometimes referred to as “unified SAN,” and it’s often the case that the device is a NAS device that simply utilizes the same technology behind SAN.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;https://www.lifewire.com/definition-of-san-818007&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Storage area networks (SANs)&lt;/a&gt; and &lt;a href=&quot;
-      
-    
-    </summary>
-    
-      <category term="Jobs" scheme="http://blog.ozairs.com/categories/Jobs/"/>
-    
-    
-      <category term="Storage" scheme="http://blog.ozairs.com/tags/Storage/"/>
     
   </entry>
   
