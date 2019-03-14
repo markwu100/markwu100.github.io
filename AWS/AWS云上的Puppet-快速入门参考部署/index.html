@@ -136,6 +136,10 @@
                             </li>
                         
                             <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
                                 <a href="https://learn.hashicorp.com/terraform/getting-started/install"><i class="fa "></i>Terraform</a>
                             </li>
                         
@@ -169,7 +173,7 @@
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/DevOps/">DevOps</a>
+            <a class="category-link" href="/categories/AWS/">AWS</a>
         </span>
     
 
@@ -215,19 +219,19 @@
 </li>
 <li><p>使用导航栏中的区域选择器选择要在 AWS 上将 Puppet 部署到的 AWS 区域。</p>
 <p>Amazon EC2 位置由<em>区域</em> 和<em>可用区</em> 构成。区域分散存在，位于独立的地理区域。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/1.png" alt="">          </p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/1.png" alt="">          </p>
 <p><strong>图 2：选择 AWS 区域</strong></p>
 <p>提示</p>
 <p>考虑选择最接近数据中心或企业网络的区域，以减少运行于 AWS 的系统与企业网络上的系统和用户之间的网络延迟。</p>
 </li>
 <li><p>在首选区域中创建一个<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html" target="_blank" rel="noopener">密钥对</a>。为此，在 Amazon EC2 控制台的导航窗格中，依次选择 <strong>Key Pairs (密钥对)</strong>、<strong>Create Key Pair (创建密钥对)</strong>，键入名称，然后选择 <strong>Create (创建)</strong>。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/2.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/2.png" alt=""></p>
 <p><strong>图 3：创建密钥对</strong></p>
 <p>Amazon EC2 使用公有密钥密码术来加密和解密登录信息。要登录实例，必须创建密钥对。对于 Windows 实例，我们使用密钥对通过 Amazon EC2 控制台获取管理员密码，然后使用远程桌面协议 (RDP) 登录，如 <em>Amazon Elastic Compute Cloud 用户指南</em> 中的<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair" target="_blank" rel="noopener">分步说明</a>所述。在 Linux 上，我们使用密钥对来对 SSH 登录进行身份验证。</p>
 </li>
 <li><p>如有必要，可针对 <strong>t2.medium</strong> 实例类型<a href="https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase%26;limitType=service-code-" target="_blank" rel="noopener">请求提高服务限制</a>。为此，在 AWS Support Center 中，选择 <strong>Create Case</strong>，<strong>Service Limit Increase</strong>，<strong>EC2 instances</strong>，然后填写限制提高表中的字段。此实例类型的当前默认限制为 20 个实例。</p>
 <p>如果您已有使用此实例类型的现有部署，并且可能会超过此参考部署的默认限制，则可能需要请求提高限制。新服务限制可能需要几天才能生效。有关更多信息，请参阅 AWS 文档中的 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html" target="_blank" rel="noopener">Amazon EC2 服务限制</a>。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/3.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/3.png" alt=""></p>
 <p><strong>图 4：请求提高服务限制</strong></p>
 </li>
 </ol>
@@ -351,7 +355,7 @@
 <h1 id="步驟-3-配置-Puppet-代理"><a href="#步驟-3-配置-Puppet-代理" class="headerlink" title="步驟 3.配置 Puppet 代理"></a>步驟 3.配置 Puppet 代理</h1><p>您可以按照本部分中的说明进行操作，来测试 AWS 上的 Puppet 设置。我们将查看 Puppet 代理的模块清单，应用配置并验证是否已成功应用配置。</p>
 <h2 id="审查模块和清单"><a href="#审查模块和清单" class="headerlink" title="审查模块和清单"></a>审查模块和清单</h2><p>可通过多种方法将配置应用于代理节点（请参阅 <a href="https://puppet.com/docs" target="_blank" rel="noopener">Puppet 文档</a>）。此快速入门对每个 Linux 和 Windows 节点使用模块，并在引导启动阶段将这些模块从 Amazon S3 下载到主节点。</p>
 <p>Puppet 程序称作<em>清单</em>，它们是使用 Puppet 代码开发的。（有关 Puppet 语言的信息，请参阅 <a href="https://puppet.com/docs/puppet/5.5/lang_summary.html" target="_blank" rel="noopener">Puppet 文档</a>。） 主清单的名称为 <strong>site.pp</strong>，并且位于清单文件夹中的主节点上。图 5 显示此快速入门中的主节点所使用的 site.pp 清单。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/4.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/4.png" alt=""></p>
 <p><strong>图 5：主清单</strong></p>
 <p>此清单包含三个节点声明：</p>
 <ul>
@@ -361,7 +365,7 @@
 </ul>
 <p>接下来，我们来看看 <code>lampserver</code> 和 <code>iisserver</code> 类以了解其功能。</p>
 <p>在名为 <code>lampserver</code> 的模块中定义 <code>lampserver</code> 类。模块的清单文件名为 <strong>init.pp</strong>，并且位于主节点上的 <strong>/etc/puppet/modules/lampserver/manifests</strong> 中。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/5.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/5.png" alt=""></p>
 <p><strong>图 6：lampserver 类</strong></p>
 <p>请注意以下与图 6 中显示的 <code>lampserver</code> 代码有关的内容：</p>
 <ul>
@@ -375,7 +379,7 @@
 <li><strong>第 29 行</strong> – <code>file</code> 资源确保在默认 <strong>apache</strong> 根目录中创建名为 <strong>info.php</strong> 的新文件。这需要安装 Apache 2。PHP 代码将添加到文件内容中，以便在用户通过 Web 浏览器访问网站时提供有关 Web 服务器的信息性页面。</li>
 </ul>
 <p>在名为 <code>iisserver</code> 的模块中定义 <code>iisserver</code> 类。模块的清单文件名为 <strong>init.pp</strong>，并且位于主节点上的 <strong>/etc/puppet/modules/iisserver/manifests</strong> 中。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/6.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/6.png" alt=""></p>
 <p><strong>图 7：iisserver 类</strong></p>
 <p>请注意以下与图 7 中显示的 <code>iisserver</code> 代码有关的内容：</p>
 <ul>
@@ -387,30 +391,30 @@
 <p>除了创建您自己的模块之外，您还可以直接使用清单，或者利用 Puppet Forge 中预先存在的模块。有关编写模块和清单的详细信息，请参阅 Puppet 网站上的<a href="https://docs.puppet.com/puppet/4.3/modules_fundamentals.html" target="_blank" rel="noopener">模块基础知识</a>和<a href="https://puppet.com/support-services/training" target="_blank" rel="noopener">培训课程</a>。</p>
 <h2 id="连接到-Puppet-代理"><a href="#连接到-Puppet-代理" class="headerlink" title="连接到 Puppet 代理"></a>连接到 Puppet 代理</h2><p>现在，您已了解示例模块的用途，已准备好远程连接到您的代理。</p>
 <h3 id="Linux-代理"><a href="#Linux-代理" class="headerlink" title="Linux 代理"></a>Linux 代理</h3><p>您将需要使用 SSH 从 VPC 外部连接到您的 Linux 代理。在 Amazon EC2 控制台中，选择标记有 <strong>LinuxAgent</strong> 的 EC2 实例，如图 8 所示。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/7.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/7.png" alt=""></p>
 <p><strong>图 8：选择 LinuxAgent 实例</strong></p>
 <p>在公有 DNS 名称中检索 <strong>LinuxAgent</strong>，按照<em>适用于 Linux 实例的 Amazon EC2 用户指南</em>中的<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html#ec2-connect-to-instance-linux" target="_blank" rel="noopener">说明</a>操作，以将 SSH 客户端连接到实例。您将需要可用的密钥对才能建立远程 SSH 连接。</p>
 <h3 id="Windows-代理"><a href="#Windows-代理" class="headerlink" title="Windows 代理"></a>Windows 代理</h3><p>您可以使用 RDP 通过 Internet 连接到 Windows 代理。在 Amazon EC2 控制台中，选择标记有 <strong>WindowsAgent</strong>的 EC2 实例，如图 9 所示。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/8.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/8.png" alt=""></p>
 <p><strong>图 9：选择 WindowsAgent 实例</strong></p>
 <p>在公有 DNS 名称中检索 <strong>WindowsAgent</strong>，按照<em>适用于 Microsoft Windows 实例的 Amazon EC2 用户指南</em>中的<a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html" target="_blank" rel="noopener">说明</a>操作，以建立连接。您将需要可用的密钥对才能解密 Windows 管理员密码并建立远程连接。</p>
 <h2 id="应用配置"><a href="#应用配置" class="headerlink" title="应用配置"></a>应用配置</h2><p>在此部分中，您将应用节点配置并验证一切是否已配置成功。</p>
 <h3 id="Linux-代理-1"><a href="#Linux-代理-1" class="headerlink" title="Linux 代理"></a>Linux 代理</h3><p>在通过 SSH 连接到 Linux 代理后，请运行以下命令以应用 <code>lampserver</code> 模块中的配置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo puppet agent --test</span><br></pre></td></tr></table></figure>
 <p>您应看到与图 10 中的内容类似的输出，这指示已成功应用配置。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/9.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/9.png" alt=""></p>
 <p><strong>图 10：Linux Puppet 代理输出</strong></p>
 <p>接下来，打开 Web 浏览器并导航到 info.php 页面。您将需要使用 <strong>LinuxAgent</strong> EC2 实例的公有 DNS 名称 — 例如，http://&lt;<em>public DNS name</em>&gt;/info.php。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/10.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/10.png" alt=""></p>
 <p><strong>图 11：测试 Apache Web 服务器</strong></p>
 <p>您应看到与图 11 中所示内容类似的 PHP 版本页面。这表示您已将配置成功应用于您的 Linux 代理。</p>
 <h3 id="Windows-代理-1"><a href="#Windows-代理-1" class="headerlink" title="Windows 代理"></a>Windows 代理</h3><p>在通过 RDP 连接到您的 Windows 代理后，在“Start”屏幕上查找 <strong>Start Command Prompt with Puppet</strong> 快捷方式。打开快捷方式的上下文 (右键单击) 菜单，然后选择 <strong>Run as administrator</strong>。运行以下命令以应用 <code>iisserver</code> 模块中的配置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puppet_interactive.bat</span><br></pre></td></tr></table></figure>
 <p>您应看到与图 12 中的内容类似的输出，这指示已成功应用配置。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/12.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/12.png" alt=""></p>
 <p><strong>图 12：Windows Puppet 代理输出</strong></p>
 <p>最后，打开 Web 浏览器并导航到 info.aspx 页面。您将需要使用 <strong>WindowsAgent</strong> EC2 实例的公有 DNS 名称 — 例如，http://&lt;<em>public DNS name</em>&gt;/info.aspx。</p>
-<p><img src="/DevOps/AWS云上的Puppet-快速入门参考部署/13.png" alt=""></p>
+<p><img src="/AWS/AWS云上的Puppet-快速入门参考部署/13.png" alt=""></p>
 <p><strong>图 13：测试 IIS Web 服务器</strong></p>
 <p>您应看到与图 13 中所示内容类似的 IIS 版本页面。这表示您已将配置成功应用于您的 Windows 代理。</p>
 
