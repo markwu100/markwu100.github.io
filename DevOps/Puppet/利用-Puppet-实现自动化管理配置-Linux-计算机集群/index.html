@@ -251,6 +251,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`root@puppetAgent:/opt/puppetlabs/bin# ./puppet agent --test``2016-05-21 15:39:39.817370 WARN  puppetlabs.facter - locale environment variables were bad; ``                                ``continuing with LANG=C LC_ALL=C``Info: Using configured environment &apos;production&apos;``Info: Retrieving pluginfacts``Info: Retrieving plugin``Info: Caching catalog for puppetagent``Info: Applying configuration version &apos;1463816381&apos;``Notice: /Stage[main]/Main/Node[puppetagent]/File[test.sh]/ensure: ``                                ``defined content as &apos;&#123;md5&#125;2ce060ad2ddab2fe416ca8fb6f8da32a&apos;``Notice: /Stage[main]/Main/Node[puppetagent]/Exec[execute ]/returns: executed successfully``Notice: Applied catalog in 0.05 seconds``root@puppetAgent:/opt/puppetlabs/bin# cat /etc/helloworld.log ``helloworld`</span><br></pre></td></tr></table></figure>
 <p>我们可以看到，helloworld.log 文件被正确的创建，说明脚本文件被正确地执行。</p>
 <h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><p>Puppet 是基于 Ruby 的开源系统配置和管理工具，它提供的独特的系统配置语言极大程度地简化了系统管理员管理和配置系统的过程。本文首先介绍了 Puppet 的系统架构和工作流程，并且介绍了 Puppet 独特的系统配置语言，之后我们简单介绍了安装和配置 Puppet 的具体步骤。最后，本文以两个实例介绍了如何在 Puppet 中为节点编写配置文件，来达到创建文件和执行命令的效果。希望本文能对系统管理员，Puppet 初学者有所帮助。</p>
+<p>其他：</p>
+<p>问题1: Exiting; no certificate found and waitforcert is disabled </p>
+<p>解决方案： <a href="https://fvtool.wordpress.com/2013/04/15/exiting-no-certificate-found-and-waitforcert-is-disabled-installing-puppet/" target="_blank" rel="noopener">https://fvtool.wordpress.com/2013/04/15/exiting-no-certificate-found-and-waitforcert-is-disabled-installing-puppet/</a></p>
 
     </div>
     
@@ -283,6 +286,11 @@
 </article>
 
 <div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/DevOps/2019年DevOps必备面试问题/" class="pre-post btn btn-default" title="2019年DevOps必备面试问题">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">2019年DevOps必备面试问题</span>
+        </a>
     
     
         <a href="/DevOps/Puppet/Puppet_command/" class="next-post btn btn-default" title="Puppt命令实用指南">
