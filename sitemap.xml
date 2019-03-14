@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.ozairs.com/DevOps/Ansible%E8%BF%9B%E9%98%B6%E6%89%8B%E5%86%8C/</loc>
+    <loc>http://blog.ozairs.com/DevOps/Ansible/Ansible%E8%BF%9B%E9%98%B6%E6%89%8B%E5%86%8C/</loc>
     
-    <lastmod>2019-03-14T10:05:58.773Z</lastmod>
+    <lastmod>2019-03-14T10:08:38.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/DevOps/Ansible/Ansible%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-14T10:08:22.410Z</lastmod>
     
   </url>
   
@@ -61,13 +68,6 @@
     <loc>http://blog.ozairs.com/DevOps/Azure%E4%B8%8A%E7%9A%84Terraform%E6%96%87%E6%A1%A3/</loc>
     
     <lastmod>2019-03-13T03:53:37.553Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/DevOps/Ansible%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-12T10:53:35.723Z</lastmod>
     
   </url>
   
