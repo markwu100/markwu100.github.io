@@ -221,18 +221,10 @@ VPC和子网：创建VP...">
 <p>请注意，本文不是为了解释这些AWS资源如何工作，甚至是如何配置它们，而是具体说明如何使用Ansible <em>自动化</em>它们的配置。让我们开始吧！</p>
 <hr>
 <h3 id="VPC和子网"><a href="#VPC和子网" class="headerlink" title="VPC和子网"></a>VPC和子网</h3><h4 id="配置主机和组变量"><a href="#配置主机和组变量" class="headerlink" title="配置主机和组变量"></a>配置主机和组变量</h4><p>我们将首先为我们的VPC定义一个Ansible主机。该主机将充当“逻辑主机”（因为它不是我们可以连接以运行命令的实际主机），它将代表所有VPC配置。因此，在我们的清单中，我们定义一个<code>vpc</code>具有单个<code>vpc.ansibled</code>（名称只是名称，没有特殊）主机的组，然后将该<code>vpc</code>组放入一个名为的高级“项目”组中<code>project.ansibled</code>。</p>
-<iframe width="700" height="250" data-src="/media/da4a6c321b85732ed65dbfc8820a0822?postId=c252944d3d2e" data-media-id="da4a6c321b85732ed65dbfc8820a0822" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/da4a6c321b85732ed65dbfc8820a0822?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 197px;"></iframe>
-
 <p>现在让我们定义配置VPC和子网时需要的变量。在全球范围内，<code>group_vars/all.yml</code>我们只想定义默认情况下我们不想尝试与主机建立SSH连接，只需在本地运行Ansible任务（几乎所有的自动化都是AWS云和无服务器）：</p>
-<iframe width="700" height="250" data-src="/media/719a623b46cb58f26c2b9a91d30a4e4e?postId=c252944d3d2e" data-media-id="719a623b46cb58f26c2b9a91d30a4e4e" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/719a623b46cb58f26c2b9a91d30a4e4e?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 175px;"></iframe>
-
 <p>我们的通用“所有”组的一般全局变量</p>
 <p>我们的<code>project.ansibled</code>团队将进行一些繁重的工作并提供高级定义，例如VPC名称和我们的AWS凭证。我们将在此组中放置所有主机，以便在Ansible执行时可以使用此配置。所以在<code>group_vars/project.ansibled.yml</code>：</p>
-<iframe width="700" height="250" data-src="/media/65f26f5b57c177ce40ff532474dcaa10?postId=c252944d3d2e" data-media-id="65f26f5b57c177ce40ff532474dcaa10" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/65f26f5b57c177ce40ff532474dcaa10?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 592.984px;"></iframe>
-
 <p>接下来，我们定义VPC本身的一些细节：VPC的IP地址块，安全组和子网配置。这些我们将定义为主机的主机变量<code>vpc.ansibled</code>，因为我们希望它们特定于此主机，而其他主机（当我们绕过它们时）将不需要自己引用这些定义。</p>
-<iframe width="700" height="250" data-src="/media/b769d2c708656a6665a38a3b9f7ed960?postId=c252944d3d2e" data-media-id="b769d2c708656a6665a38a3b9f7ed960" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/b769d2c708656a6665a38a3b9f7ed960?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 1143px;"></iframe>
-
 <p>我们的“vpc.ansibled”逻辑主机的特定配置</p>
 <h4 id="使用Ansible-Vault保护敏感信息"><a href="#使用Ansible-Vault保护敏感信息" class="headerlink" title="使用Ansible Vault保护敏感信息"></a>使用Ansible Vault保护敏感信息</h4><p>您可能想知道为什么存储我们的IAM凭证的vars <code>aws_access_key</code>和<code>aws_secret_key</code>vars看起来像那样。鉴于我们要将自动化提交到存储库，我们需要确保此敏感信息不会以纯文本形式显示 - 输入<a href="http://docs.ansible.com/ansible/2.4/vault.html" target="_blank" rel="noopener">Ansible Vault</a>，<a href="http://docs.ansible.com/ansible/2.4/vault.html" target="_blank" rel="noopener">Ansible的</a>一项功能，允许我们加密文件和字符串，使它们成为可能安全的版本控制。</p>
 <p>要生成我们可以在运行时解密的这些加密字符串，首先我们将加密密码写入（git-ignored，或者最好不在repo目录中）文件：</p>
@@ -250,8 +242,6 @@ VPC和子网：创建VP...">
 <li>创建VPC安全组</li>
 <li>为VPC创建Route53专用区域</li>
 </ul>
-<iframe width="700" height="250" data-src="/media/8e79cdd941fdf1a63de93610d33ccae7?postId=c252944d3d2e" data-media-id="8e79cdd941fdf1a63de93610d33ccae7" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/8e79cdd941fdf1a63de93610d33ccae7?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 1297px;"></iframe>
-
 <p>有了我们的主要VPC组件，我们现在可以为我们的VPC配置路由和网关：</p>
 <ul>
 <li>创建互联网网关</li>
@@ -259,18 +249,11 @@ VPC和子网：创建VP...">
 <li>为私有子网创建路由表</li>
 <li>为公共子网创建路由表</li>
 </ul>
-<iframe width="700" height="250" data-src="/media/01016dc96bfbf7c0dfe755688f95c925?postId=c252944d3d2e" data-media-id="01016dc96bfbf7c0dfe755688f95c925" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/01016dc96bfbf7c0dfe755688f95c925?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 1407px;"></iframe>
-
 <h4 id="剧本"><a href="#剧本" class="headerlink" title="剧本"></a>剧本</h4><p>现在我们已经编写了一些构建我们的VPC的任务，我们只需要将它与一个剧本联系在一起。我们只是针对该<code>vpc</code>组，使用我们的AWS凭证详细信息填充我们的环境，并使用该<code>include_tasks</code>指令来提取我们的VPC任务。简单！</p>
-<iframe width="700" height="250" data-src="/media/55a76aec56027b61b4cedb530e45b03f?postId=c252944d3d2e" data-media-id="55a76aec56027b61b4cedb530e45b03f" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/55a76aec56027b61b4cedb530e45b03f?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 351px;"></iframe>
-
 <h4 id="直截了当地了解事实"><a href="#直截了当地了解事实" class="headerlink" title="直截了当地了解事实"></a>直截了当地了解事实</h4><p>最后一个难题是为我们自动化的其他部分提供一种简单的方法来访问和利用我们刚刚提出的VPC基础设施的细节。例如，我们会希望能够容易地通过我们赋予他们的人类可读的名字（查找我们的VPC子网的ID <code>private-a</code>，<code>public-b</code>等等），就像我们建立我们的路由表上面的什么时候。因此，我们在以下位置创建“事实”任务列表<code>tasks/vpc/facts.yml</code>：</p>
-<iframe width="700" height="250" data-src="/media/2e9d8c75cff530d8258e076c1da6c9ed?postId=c252944d3d2e" data-media-id="2e9d8c75cff530d8258e076c1da6c9ed" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/2e9d8c75cff530d8258e076c1da6c9ed?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 1297px;"></iframe>
-
 <p>我们的VPC的这个“事实”任务列表现在可以包含在其他手册中以窥视AWS并发现有关我们VPC的一些重要信息！</p>
-<iframe width="700" height="250" data-src="/media/01a871b75f629083f8d8659c2e129f0c?postId=c252944d3d2e" data-media-id="01a871b75f629083f8d8659c2e129f0c" data-thumbnail="https://i.embed.ly/1/image?url=https%3A%2F%2Favatars1.githubusercontent.com%2Fu%2F9854225%3Fs%3D400%26v%3D4&amp;key=a19fcc184b9711e1b4764040d3dc5c07" class="progressiveMedia-iframe js-progressiveMedia-iframe" allowfullscreen frameborder="0" src="https://medium.com/media/01a871b75f629083f8d8659c2e129f0c?postId=c252944d3d2e" style="display: block; position: absolute; margin: auto; max-width: 100%; box-sizing: border-box; transform: translateZ(0px); top: 0px; left: 0px; width: 700px; height: 262.984px;"></iframe>
-
-<h4 id="而且……行动！"><a href="#而且……行动！" class="headerlink" title="而且……行动！"></a>而且……行动！</h4><p>现在要自动构建我们的VPC，只需执行Ansible：</p>
+<p>而且……行动！</p>
+<p>现在要自动构建我们的VPC，只需执行Ansible：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">＃提示用户输入Vault密码</span><br><span class="line">ansible-playbook -i ansibled.inventory vpc.yml --ask-vault-pass</span><br><span class="line">＃从文件</span><br><span class="line">ansible-playbook -i ansibled.inventory vpc.yml中读取Vault密码--vault-password-file ansibled.vault</span><br></pre></td></tr></table></figure>
 <p>最后，在运行时拿一杯咖啡:)快乐的自动化！</p>
 <hr>
@@ -283,6 +266,7 @@ VPC和子网：创建VP...">
 <li><a href="https://medium.com/@tomwwright/automating-with-ansible-aurora-clusters-7272364777dd" target="_blank" rel="noopener">Ansible自动化：Aurora RDS集群</a></li>
 <li><a href="https://medium.com/@tomwwright/automation-with-ansible-logentries-53cf595c2002" target="_blank" rel="noopener">Ansible自动化：Logentries</a></li>
 </ul>
+<p>【原文链接】：<a href="https://medium.com/@tomwwright/automating-with-ansible-building-a-vpc-c252944d3d2e" target="_blank" rel="noopener">https://medium.com/@tomwwright/automating-with-ansible-building-a-vpc-c252944d3d2e</a></p>
 
     </div>
     
@@ -362,7 +346,7 @@ VPC和子网：创建VP...">
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#VPC和子网"><span class="toc-text">VPC和子网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置主机和组变量"><span class="toc-text">配置主机和组变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Ansible-Vault保护敏感信息"><span class="toc-text">使用Ansible Vault保护敏感信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任务"><span class="toc-text">任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#剧本"><span class="toc-text">剧本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#直截了当地了解事实"><span class="toc-text">直截了当地了解事实</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#而且……行动！"><span class="toc-text">而且……行动！</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#VPC和子网"><span class="toc-text">VPC和子网</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置主机和组变量"><span class="toc-text">配置主机和组变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Ansible-Vault保护敏感信息"><span class="toc-text">使用Ansible Vault保护敏感信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#任务"><span class="toc-text">任务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#剧本"><span class="toc-text">剧本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#直截了当地了解事实"><span class="toc-text">直截了当地了解事实</span></a></li></ol></li></ol>
         
     </div>
 </aside>
