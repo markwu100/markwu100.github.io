@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/DevOps/ssh-key-git%E5%A4%9A%E8%B4%A6%E6%88%B7%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2019-03-15T06:04:50.336Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Ansible/%E4%BD%BF%E7%94%A8Ansible%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%9A%E6%9E%84%E5%BB%BAVPC/</loc>
     
     <lastmod>2019-03-14T11:27:47.200Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-14T11:23:03.830Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://blog.ozairs.com/Ansible/Ansible%E8%BF%9B%E9%98%B6%E6%89%8B%E5%86%8C/</loc>
     
     <lastmod>2019-03-14T10:11:37.245Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-14T10:05:58.777Z</lastmod>
     
   </url>
   
