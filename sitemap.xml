@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/AWS/CloudFormation-CLI/</loc>
+    
+    <lastmod>2019-03-16T11:49:30.809Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/CloudFormation-CLI%E5%91%BD%E4%BB%A4/</loc>
+    
+    <lastmod>2019-03-16T11:48:33.120Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Ansible/Ansible%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/</loc>
     
-    <lastmod>2019-03-16T11:26:04.957Z</lastmod>
+    <lastmod>2019-03-16T11:26:18.285Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-16T11:26:18.281Z</lastmod>
     
   </url>
   
@@ -12,13 +33,6 @@
     <loc>http://blog.ozairs.com/Docker/%E4%B8%89%E4%B8%AA%E6%8A%80%E5%B7%A7%E5%B0%86Docker%E9%95%9C%E5%83%8F%E4%BD%93%E7%A7%AF%E5%8E%8B%E7%BC%A990/</loc>
     
     <lastmod>2019-03-16T05:52:11.404Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-16T05:45:43.698Z</lastmod>
     
   </url>
   
