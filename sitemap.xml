@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/DevOps/Docker%E4%B8%89%E5%89%91%E5%AE%A2%E4%B9%8BDocker-Swarm/</loc>
+    
+    <lastmod>2019-03-16T04:06:52.062Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/DevOps/Docker/Docker-Swarm%E5%85%A5%E9%97%A8%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%B0%B1%E5%A4%9F%E4%BA%86/</loc>
+    
+    <lastmod>2019-03-16T04:02:57.996Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/DevOps/Docker-Compose%E5%85%A5%E9%97%A8/</loc>
     
-    <lastmod>2019-03-16T03:38:07.804Z</lastmod>
+    <lastmod>2019-03-16T03:38:45.652Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-16T03:38:45.648Z</lastmod>
     
   </url>
   
@@ -12,13 +33,6 @@
     <loc>http://blog.ozairs.com/AWS/%E5%9C%A8Amazon-ECS%E4%B8%8A%E9%83%A8%E7%BD%B2Docker%E5%AE%B9%E5%99%A8/</loc>
     
     <lastmod>2019-03-16T02:53:00.117Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-16T02:24:41.073Z</lastmod>
     
   </url>
   
