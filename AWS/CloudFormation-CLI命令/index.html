@@ -16,10 +16,10 @@
     <link rel="dns-prefetch" href="http://blog.ozairs.com">
     <!--SEO-->
 
-    <meta name="keywords" content="null">
+    <meta name="keywords" content="CloudFormation">
 
 
-    <meta name="description" content="null">
+    <meta name="description" content="Creating a StackYou must provide the stack name, the location of a valid template, and any input ...">
 
 
 
@@ -181,7 +181,7 @@
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            
+            <a class="category-link" href="/categories/AWS/">AWS</a>
         </span>
     
 
@@ -189,6 +189,8 @@
         <span class="fa-wrap">
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/CloudFormation/">CloudFormation</a>
                 
             </span>
         </span>
@@ -208,7 +210,20 @@
     </div>
     
     <div class="post-body post-content">
-        
+        <h2 id="Creating-a-Stack"><a href="#Creating-a-Stack" class="headerlink" title="Creating a Stack"></a>Creating a Stack</h2><p>You must provide the stack name, the location of a valid template, and any input parameters. If you specify a local template file, AWS CloudFormation uploads it to an Amazon S3 bucket in your AWS account.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation create-stack --stack-name myteststack --template-body file:///home/testuser/mytemplate.json --parameters ParameterKey=Parm1,ParameterValue=test1 ParameterKey=Parm2,ParameterValue=test2</span><br></pre></td></tr></table></figure>
+<h2 id="Listing-Your-Stacks"><a href="#Listing-Your-Stacks" class="headerlink" title="Listing Your Stacks"></a>Listing Your Stacks</h2><p>Note The aws cloudformation list-stacks command returns information on deleted stacks for 90 days after they have been deleted.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE</span><br></pre></td></tr></table></figure>
+<h2 id="Describing-Your-Stacks"><a href="#Describing-Your-Stacks" class="headerlink" title="Describing Your Stacks"></a>Describing Your Stacks</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation describe-stacks --stack-name myteststack</span><br></pre></td></tr></table></figure>
+<p>By default, aws cloudformation describe-stacks returns parameter values. To prevent sensitive parameter values such as passwords from being returned, include a NoEcho property set to TRUE in your AWS CloudFormation template.</p>
+<h2 id="Viewing-Stack-Event-History"><a href="#Viewing-Stack-Event-History" class="headerlink" title="Viewing Stack Event History"></a>Viewing Stack Event History</h2><p>You can track the status of the resources AWS CloudFormation is creating and deleting with the aws cloudformation describe-stack-events command. The amount of time to create or delete a stack depends on the complexity of your stack.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation describe-stack-events --stack-name myteststack</span><br></pre></td></tr></table></figure>
+<h2 id="Listing-Stack-Resources"><a href="#Listing-Stack-Resources" class="headerlink" title="Listing Stack Resources"></a>Listing Stack Resources</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation list-stack-resources --stack-name myteststack</span><br></pre></td></tr></table></figure>
+<h2 id="Retrieving-a-Template"><a href="#Retrieving-a-Template" class="headerlink" title="Retrieving a Template"></a>Retrieving a Template</h2><p>AWS CloudFormation stores the template you use to create your stack as part of the stack.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation get-template --stack-name myteststack</span><br></pre></td></tr></table></figure>
+<h2 id="Validating-a-Template"><a href="#Validating-a-Template" class="headerlink" title="Validating a Template"></a>Validating a Template</h2><p>You can validate templates locally by using the –template-body parameter, or remotely with the –template-url parameter.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation validate-template --template-url https://s3.amazonaws.com/cloudformation-templates-us-east-1/S3_Bucket.template</span><br><span class="line">$ aws cloudformation validate-template --template-body file:///home/local/test/sampletemplate.json</span><br></pre></td></tr></table></figure>
+<h2 id="Deleting-a-Stack"><a href="#Deleting-a-Stack" class="headerlink" title="Deleting a Stack"></a>Deleting a Stack</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws cloudformation delete-stack --stack-name myteststack</span><br></pre></td></tr></table></figure>
     </div>
     
         <div class="reward" ontouchstart="">
@@ -242,9 +257,9 @@
 <div class="article-nav prev-next-wrap clearfix">
     
     
-        <a href="/AWS/CloudFormation-CLI/" class="next-post btn btn-default" title="CloudFormation CLI">
+        <a href="/Ansible/Ansible常用模块/" class="next-post btn btn-default" title="Ansible常用模块">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">CloudFormation CLI</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Ansible常用模块</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -287,7 +302,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Creating-a-Stack"><span class="toc-text">Creating a Stack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Listing-Your-Stacks"><span class="toc-text">Listing Your Stacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Describing-Your-Stacks"><span class="toc-text">Describing Your Stacks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Viewing-Stack-Event-History"><span class="toc-text">Viewing Stack Event History</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Listing-Stack-Resources"><span class="toc-text">Listing Stack Resources</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrieving-a-Template"><span class="toc-text">Retrieving a Template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Validating-a-Template"><span class="toc-text">Validating a Template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deleting-a-Stack"><span class="toc-text">Deleting a Stack</span></a></li></ol>
         
     </div>
 </aside>
