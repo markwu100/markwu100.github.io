@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/DevOps/Jenkins%E4%B8%8EDocker%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96CI-CD%E5%AE%9E%E6%88%98/</loc>
+    
+    <lastmod>2019-03-17T03:02:10.745Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/DevOps/%E6%8A%8A%E4%B8%80%E4%B8%AANode-js-web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%BB%99Docker%E5%8C%96/</loc>
+    
+    <lastmod>2019-03-17T02:27:00.275Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/AWS/CloudFormation-CLI%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2019-03-16T11:52:06.439Z</lastmod>
@@ -9,16 +23,16 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/Ansible/Ansible%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/</loc>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-03-16T11:26:18.285Z</lastmod>
+    <lastmod>2019-03-16T11:49:47.469Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://blog.ozairs.com/Ansible/Ansible%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97/</loc>
     
-    <lastmod>2019-03-16T11:26:18.281Z</lastmod>
+    <lastmod>2019-03-16T11:26:18.285Z</lastmod>
     
   </url>
   
