@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Kubernetes/Kubernetes%E4%B9%8Bkubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    
+    <lastmod>2019-03-17T05:27:25.027Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Kubernetes/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E6%8A%9B%E5%BC%83ECS%E8%80%8C%E9%80%89%E6%8B%A9%E4%BA%86Kubernetes/</loc>
     
-    <lastmod>2019-03-17T05:19:38.823Z</lastmod>
+    <lastmod>2019-03-17T05:20:40.489Z</lastmod>
     
   </url>
   
@@ -173,13 +180,6 @@
     <loc>http://blog.ozairs.com/DevOps/%E8%B7%A8%E5%B9%B3%E5%8F%B0%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7Terraform%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2019-03-11T09:07:31.479Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/DevOps/Kubernetes%E4%B9%8Bkubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    
-    <lastmod>2019-03-10T06:07:37.242Z</lastmod>
     
   </url>
   
