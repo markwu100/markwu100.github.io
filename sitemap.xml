@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Ansible/ansible-playbook%E4%B9%8Broles%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2019-03-17T10:20:02.537Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/Ansible/Ansible%E5%AE%9E%E6%88%98%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2019-03-17T10:07:18.017Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-17T05:37:38.585Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Kubernetes/Kubernetes%E4%B9%8Bkubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     
     <lastmod>2019-03-17T05:27:25.027Z</lastmod>
@@ -12,13 +33,6 @@
     <loc>http://blog.ozairs.com/Kubernetes/%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E6%8A%9B%E5%BC%83ECS%E8%80%8C%E9%80%89%E6%8B%A9%E4%BA%86Kubernetes/</loc>
     
     <lastmod>2019-03-17T05:20:40.489Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-17T05:20:40.486Z</lastmod>
     
   </url>
   
