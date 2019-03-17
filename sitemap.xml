@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.ozairs.com/Ansible/ansible-playbook%E4%B9%8Broles%E5%AE%9E%E7%8E%B0/</loc>
+    <loc>http://blog.ozairs.com/Ansible/%E4%BB%8EDocker%E5%88%B0Jenkins%E5%86%8D%E5%88%B0Ansible%E7%9A%84%E9%83%A8%E7%BD%B2%E7%BB%8F%E9%AA%8C/</loc>
     
-    <lastmod>2019-03-17T10:20:02.537Z</lastmod>
+    <lastmod>2019-03-17T10:54:30.949Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.ozairs.com/Ansible/Ansible%E5%AE%9E%E6%88%98%E6%B1%87%E6%80%BB/</loc>
     
-    <lastmod>2019-03-17T10:07:18.017Z</lastmod>
+    <lastmod>2019-03-17T10:43:27.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/Ansible/ansible-playbook%E4%B9%8Broles%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2019-03-17T10:26:15.653Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-03-17T05:37:38.585Z</lastmod>
+    <lastmod>2019-03-17T10:24:42.764Z</lastmod>
     
   </url>
   
