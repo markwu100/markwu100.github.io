@@ -491,7 +491,7 @@
     <link href="http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <id>http://blog.ozairs.com/uncategorized/Git实用教程/</id>
     <published>2019-03-13T11:16:43.451Z</published>
-    <updated>2019-03-17T03:02:41.590Z</updated>
+    <updated>2019-03-17T05:20:40.486Z</updated>
     
     <content type="html"><![CDATA[<p>&lt;Git实用教程&gt;</p><p>1、Git创建和切换Branch</p><p>git brach example</p><p>git checkout ‘example’</p><p>2、查看Branch，Branch改名和删除Branch</p><p>git branch</p><p>git branch -m originname newname</p><p>git branch -D branchname</p><p>3、提交代码到Staging Enviroment</p><p>git add example （git add . ）</p><p>4、提交代码到正式环境</p><p>git commit -m “comment”</p><p>5、合并不同 branch的代码</p><p>git merge branchname</p><p>6、查看代码日志</p><p>git log</p>]]></content>
     
