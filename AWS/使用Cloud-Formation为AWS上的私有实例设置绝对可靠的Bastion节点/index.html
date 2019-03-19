@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="CloudFormation">
+
+
+    <meta name="description" content="
+在AWS上设置基础架构时，您需要为管理目的提供SSH / RDP访问私有实例的方法。实现此目的的一种简单方法是在实例的安全组的入站规则中简单地允许端口22上的SSH流量，然后通过弹性IP和In...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>使用Cloud Formation为AWS上的私有实例设置绝对可靠的Bastion节点 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/旅行"><i class="fa "></i>旅行</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://learn.hashicorp.com/terraform/getting-started/install"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/评论"><i class="fa "></i>评论</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="使用Cloud Formation为AWS上的私有实例设置绝对可靠的Bastion节点">
+            
+	            使用Cloud Formation为AWS上的私有实例设置绝对可靠的Bastion节点
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/AWS/">AWS</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/CloudFormation/">CloudFormation</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/19</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img src="/AWS/使用Cloud-Formation为AWS上的私有实例设置绝对可靠的Bastion节点/1.jpeg" alt=""></p>
+<p>在AWS上设置基础架构时，您需要为管理目的提供SSH / RDP访问私有实例的方法。实现此目的的一种简单方法是在实例的安全组的入站规则中简单地允许端口22上的SSH流量，然后通过弹性IP和Internet网关将实例暴露给公共Internet。然而，由于攻击者可能很容易访问您的安全密钥对，并且如果这样的密钥对也可用于其他私有实例，则这会变得有缺陷，那么此类攻击者可以完全访问和控制您的基础结构。</p>
+<p>为了避免这种情况，公司现在使用遍布所有可用区域（AZ）的堡垒实例，其中已经设置了基础架构。Bastion节点是一个专门的实例，故意暴露在互联网上，其设计和配置仅限于遭受攻击的唯一原因。看到堡垒节点暴露在非军事区（DMZ）的公共互联网中，面临潜在攻击的大量风险，因此有必要确保堡垒节点完全万无一失。本文提供了如何设置可靠的堡垒节点的实用见解。使用CloudFormation是因为它通过简单地调整云形成模板中的一些参数，简化了为每个AZ设置堡垒实例的整个瓶颈。</p>
+<p><strong>先修知识：</strong></p>
+<ol>
+<li>基本了解以下Amazon Web服务/概念：EC2，VPC，子网，NAT，安全组和访问控制列表（ACL）</li>
+<li>对云形成的基本认识。</li>
+</ol>
+<p>我们将在10.6.0.0/16 VPC中考虑在10.6.0.0/24子网上具有私有实例的假设网络。此外，我们的堡垒实例应存在于10.5.0.0/24子网中的10.5.0.0/16 VPC中，如下图所示：</p>
+<p><img src="/AWS/使用Cloud-Formation为AWS上的私有实例设置绝对可靠的Bastion节点/2.png" alt="img"></p>
+<p>从上图可以看出，NAT网关也已添加到架构中。这为我们的私有实例提供了额外的安全层，只要他们需要访问公共互联网进行软件更新。NAT网关允许来自私有实例的所有出站流量，但阻止从Internet到私有实例的所有始发流量。使用NAT网关，因为我们只想允许来自堡垒节点的SSH流量并阻止来自互联网的所有其他流量。出于简化/清晰的目的，有意地从上面的图中省略了每个实例的安全组信息，但是应该在云形成模板中进行研究。该图还包含10.6.0的访问控制列表（ACL）信息。<a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html" target="_blank" rel="noopener">有状态的</a>。我们将在以下部分中探索Bastion节点，私有实例和NAT网关的配置细节：</p>
+<p><strong>堡垒节点</strong></p>
+<p>它存在于自己的VPC中，该VPC暴露于Internet网关并使用VPC对等连接与VPC2（我们的私有实例的VPC）进行通信。互联网网关已与VPC相关联，并且已将弹性IP（EIP）分配给堡垒节点以允许来自互联网的流量。</p>
+<p>路由表清楚地表明，除了10.5.0.0/16和10.6.0.0/16网络之外，所有来自堡垒节点的出站流量都应通过互联网网关转发。发往10.6.0.0/16的流量应使用VPC对等连接作为网关，这样，SSH流量就可以到达我们的私有实例。</p>
+<p>对于安全组，我们只允许来自/到公共互联网的所有SSH流量并阻止所有其他流量。以下是使用云形成实现这一目标的方法：</p>
+<p><strong>私有集群中的实例</strong></p>
+<p>我们决定将我们的假设私有集群放在10.6.0.0/24子网上。路由表描述了发往10.5.0.0/16网络的所有流量都应使用对等连接作为网关。特定于Internet的出站流量使用NAT实例作为网关。</p>
+<p>对于安全组，我们仅允许来自10.5.0.0/24子网的SSH流量和来自Internet上的Internet（0.0.0.0/0）的HTTP / HTTPS流量，并拒绝所有其他协议。</p>
+<p>要添加额外的安全层，我们使用ACL，仅允许SSH，HTTP和HTTPS流量，如上图所示，同时显示入口和出口。由于NAT网关请求此端口以便与私有实例通信，因此端口1024-65535已保持打开以进行<a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html#VPC_ACLs_Ephemeral_Ports" target="_blank" rel="noopener">短暂</a>连接。下面使用此云形成模板显示：</p>
+<p><strong>NAT网关</strong></p>
+<p>NAT网关也已放置在自己的10.6.1.0/24子网中。路由表描述了互联网的所有出站流量应使用Internet网关正确分段网络，因为NAT不需要访问对等连接。</p>
+<p>NAT网关的安全组仅允许来自Internet的HTTP和HTTPs流量。以下是云形成如何实现：</p>
+<p>现在我们有了堡垒架构的完整设置。还剩下最后一件事就是<a href="https://brainsik.net/2011/ssh-agent-forwarding/" target="_blank" rel="noopener">SSH Agent Forwarding</a></p>
+<p><strong>SSH代理转发</strong></p>
+<p>为什么需要这个？我们可以简单地进入堡垒，然后跳转到我们的任何私有实例中。为什么这是真的，这是一个巨大的安全风险。有权访问堡垒主机的任何人都可以访问其他所有用户的私钥，并可以模拟该用户。因此，凭证不应存储在堡垒主机上，而应通过<em>SSH代理</em>转发从本地计算机转发到堡垒<em>。</em></p>
+<p><code>-A</code>使用SSH命令添加一段时间应该将您的本地凭据转发到下一台机器上，但是，我们将通过<strong>〜/ .ssh / config</strong>文件进行此配置以简化我们的生活并避免尝试在每次ssh尝试时转发代理。</p>
+<p>将以下行添加到ssh配置文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host bastion</span><br><span class="line">  HostName       [Bastion Public Ip address]</span><br><span class="line">  User           ec2-user #For example</span><br><span class="line">  IdentityFile   [Path to Identity file]</span><br><span class="line">  ForwardAgent    Yes</span><br></pre></td></tr></table></figure>
+<p><strong>注意：</strong>如果该文件不存在，您可以直接触摸该文件<code>touch ~/.ssh/config</code></p>
+<p>现在，我们可以简单地说<code>ssh bastion</code>，我们可以进入我们的堡垒实例，我们可以从中跳转到所有其他实例。</p>
+<p>为了进一步简化，我们可以将以下行添加到文件<code>~/.bashrc</code>或<code>~/.zshrc</code>文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function ssh-instance（）&#123; </span><br><span class="line">  BASTION_USER =＃你的堡垒用户名</span><br><span class="line">  BASTION_IP =＃你的堡垒IP </span><br><span class="line">  SSH_OPTIONS =“ProxyCommand ssh -q -A -W％h：％p $ BASTION_USER @ $ BASTION_IP” </span><br><span class="line">  ssh $ 1 @ $ 2 -o $ SSH_OPTIONS </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存文件，通过它来源<code>source ~/.bashrc</code>，现在你可以简单地说<code>ssh-instance ec2-user [my instance ip]</code>，瞧，你直接进入你的私人实例，而不必首先通过堡垒。</p>
+<p><strong>其他提示</strong></p>
+<p>建议对堡垒节点和私有实例使用不同的ssh密钥，并经常轮换这些密钥以减少攻击者获取访问权限的可能性。</p>
+<p>此外，专用的SysAdmin或DevOps工程师还可以在每个堡垒节点中设置用户组，并创建分配给具有各种管理权限的这些不同用户组的用户。应将每个用户的公共ssh密钥复制到<code>~/.ssh/authorized_keys</code>文件中。</p>
+<p><strong>结论</strong></p>
+<p>本文探讨了如何在AWS上为我们的私有实例设置一个万无一失的堡垒节点，而不会在需要系统/软件更新时损害这些实例的Internet可访问性。</p>
+<p>本文的云形成模板可以在这里找到：<a href="https://github.com/nwochaadim/BastionNode-with-CloudFormation" target="_blank" rel="noopener">https</a>：<a href="https://github.com/nwochaadim/BastionNode-with-CloudFormation" target="_blank" rel="noopener">//github.com/nwochaadim/BastionNode-with-CloudFormation</a></p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/Jenkins/玩转Jenkins-Pipeline/" class="next-post btn btn-default" title="玩转Jenkins Pipeline">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">玩转Jenkins Pipeline</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
