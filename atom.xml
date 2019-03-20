@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-20T21:19:08.355Z</updated>
+  <updated>2019-03-20T22:59:35.087Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Kubernetes实战应用</title>
+    <link href="http://blog.ozairs.com/Kubernetes/Kubernetes%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/"/>
+    <id>http://blog.ozairs.com/Kubernetes/Kubernetes实战应用/</id>
+    <published>2019-03-20T22:35:07.000Z</published>
+    <updated>2019-03-20T22:59:35.087Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="一、平台构建"><a href="#一、平台构建" class="headerlink" title="一、平台构建"></a>一、平台构建</h3><p>1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh</p><p><a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md" target="_blank" rel="noopener">https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;一、平台构建&quot;&gt;&lt;a href=&quot;#一、平台构建&quot; class=&quot;headerlink&quot; title=&quot;一、平台构建&quot;&gt;&lt;/a&gt;一、平台构建&lt;/h3&gt;&lt;p&gt;1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Serv
+      
+    
+    </summary>
+    
+      <category term="Kubernetes" scheme="http://blog.ozairs.com/categories/Kubernetes/"/>
+    
+    
+      <category term="Istio" scheme="http://blog.ozairs.com/tags/Istio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Istio - Kubernetes和云原生系统的服务网格</title>
     <link href="http://blog.ozairs.com/Kubernetes/Istio-Kubernetes%E5%92%8C%E4%BA%91%E5%8E%9F%E7%94%9F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC/"/>
     <id>http://blog.ozairs.com/Kubernetes/Istio-Kubernetes和云原生系统的服务网格/</id>
     <published>2019-03-20T21:17:38.000Z</published>
-    <updated>2019-03-20T21:19:08.355Z</updated>
+    <updated>2019-03-20T21:19:23.004Z</updated>
     
     <content type="html"><![CDATA[<p>微服务，尤其是基于云原生的基于容器的微服务，彻底改变了应用程序的构建和部署方式。这种转变受到基于容器的微服务提供的许多积极因素的驱动（例如速度，可移植性……）。但是，传统的监控工具并不适用于这些新系统。服务网格概念（特别是服务网格的Isto实现）带来了重新获得系统可见性，改进授权和安全性，管理路由，收集指标等的能力。点击上面的视频观看剧集并获取所有详细信息。</p><iframe width="987" height="555" src="https://www.youtube.com/embed/rL_p8KIUgwE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p><strong>编辑成绩单</strong><br><em>对于那些喜欢阅读的人，我们已经通过我们的编辑运行成绩单，以获得更顺畅的阅读体验。</em></p><p>如果您在过去几年中一直在微服务领域工作，那么服务网格的概念对您来说可能并不陌生。对于我们其他人来说，它有点诞生于微服务空间带来的一些需求，特别是对可见性，流量路由，身份验证，安全性和指标收集的一些需求。问题源于这样一个事实，即在云空间内，特别是微服务空间，当我们将服务转移到容器中时，这是一种非常常见的模型，我们失去了一些我们能够用来获得经典可见性的仪器单片应用。</p><p>例如，在单一应用程序中，应用程序内的内部服务将通过内部消息传递进行通信，并且这些消息通信范例通常通过应用程序本身内的交互来管理。您基本上可以监视在不同资源之间传递的消息的内存空间。当我们突然去微服务时，不再容易完成。当我们去容器时，我们突然失去了将一些额外服务添加到我们的基础虚拟机中以收集该信息的能力。</p><p>嗯，这就是服务网格概念发挥作用的地方。让我们在所有微服务之间放置一些东西，然后捕获它们之间的所有流量。这会产生一些问题。特别是在分布式系统中，我突然想知道如何管理实际监控和计量我的服务的所有那些交互式小组件。</p><p>随之而来的是Kubernetes，突然之间游戏发生了巨大的变化。并不是我们无法实现这些服务功能，而是现在我们可以直接在各个服务容器本身旁边注入该功能。这通过一种称为服务注入的技术或有效地将另一个容器添加到我们的环境中来完成 然后最重要的是，由于我们通常关注网络流量，我们再次谈到微服务是这种通信的主要模型，我们实际上可以开始在pod中绑定服务，我们实际上是重定向本地流量现在。</p><p>通过这样做，我们解决了微服务所带来的一些问题。特别是监视资源之间通信的能力。这是Google实际带入Istio领域的事情之一，能够有效地捕获这些数据，有效地扩展了容器引擎（cAdvisor引擎）的概念，用于人们在应用程序空间中使用的容器运行时。基本上，然后能够查看应用程序数据流，然后集中该度量数据并可能监视通信。</p><p>一旦我完成了这一切 - 一旦我在那个级别注入了自己 - 我正在看着来回流动的数据包我可以做一些非常有趣的事情。我可以添加身份验证，因此这是IBM为这一组合做出的贡献之一。在路由之上是能够对这些不同服务之间的连接进行排序。路由是我可以控制的另一件事; 任何帧被发送而不是只是说好我将永远转发到负载均衡器，它将分配给n个资源，负载均衡器成为我沟通的一部分。现在我可以确定我实际上要将这些帧发送到哪个目标非常强大。</p><p>由于我有这种控制水平，我甚至可以做一些有趣的事情，比如注入错误。因此，当我开始将我的应用程序分发给这些微服务时，如果出现问题，我很难弄清楚我的应用程序将如何表现。我如何在任何一个特定的微服务中实际强制失败，以检查我的应用程序在遇到这种故障时如何保持弹性？好吧，我现在可以开始注入它作为我的QA或开发过程的一部分，甚至包括生产级别的注入。我可以继续创建故障以确保我的系统继续正常运行，如果不是，我实际上可以提醒它。</p><p>所以这些是微服务网格的一些交互 - 服务网格 - 空间实际提供，而Istio通过可注入代理提供这一点。基本上，我将采用代理引擎，在这种情况下，Istio空间正在使用Envoy代理。Envoy最初由Lyft开发，现在是CNCF的一个开源项目。实际上，Isto也是CNCF的一部分，对于那些没有听说过的人来说，它是Cloud Native Computing Foundation，它是Linux Foundation空间中的一个子基础。</p><p>所以这个服务功能真的是Istio提供的。Istio提供此Envoy代理功能，可以在Kubernetes空间中注入每个容器，或者如果要使用非Kubernetes模型，则将其插入转发路径。使用像Docker这样的容器甚至是虚拟机; 您实际上可以将此代理添加为虚拟机中的进程，并通过该方式注入流量。所以我们可以使用微服务…我们也可以使用大型服务，单片服务，我们可以使用这个服务网格将它们连接在一起。</p><p>但是有了Istio，我们就会获得身份验证，所以因为所有流量都通过这些Envoy代理，我实际上可以验证和结束通信。我可以监控和计量流量，以了解延迟发生的情况; 看看我在路径基础上获得了什么样的吞吐量。我可以将它发送到中央跟踪服务开放跟踪，例如，Jaeger项目是在那里使用的相当常见的项目之一。我也可以像我说的那样开始研究路由。我可以重定向流量并在Kubernetes空间内，例如，我可以使用标签来实际定义我的端点在哪里以及应该在哪里提供服务。</p><p>这一切都非常强大，但现在我也有中央控制权。这是这个Istio带来的最后一件事 - 中央证书控制。这对TLS身份验证很重要。使用名为Mixer的工具收集中心指标，实际上将所有指标数据收集在一起，然后集中配置控制，这实际上是为什么Envoy被选为代理。因为使用Envoy，我现在有一个中央控制器，可以将配置分发到该网格内的所有分布式代理。Envoy以非常有效的方式实现这一点，因为它实际上不需要重新配置重启; 它可以进行热重新配置 - 一个非常强大的功能！</p><p>因此，服务网格是微服务空间的重要组成部分。它真正改变了微服务如何拼接在一起，如何对它们进行计量/监控，甚至通过从具有安全性的集中控制平面注入故障来改善这些服务的性能和弹性。所以在这一大捆绑中有很多东西，但那真的是Istio的能力。更一般地说，它是云本机引擎中更大的服务网格空间的一部分，它真正接管了当今应用程序的构建方式。</p>]]></content>
     
@@ -506,31 +531,6 @@
     </summary>
     
       <category term="Docker" scheme="http://blog.ozairs.com/categories/Docker/"/>
-    
-    
-      <category term="Docker" scheme="http://blog.ozairs.com/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在Amazon ECS上部署Docker容器</title>
-    <link href="http://blog.ozairs.com/AWS/%E5%9C%A8Amazon-ECS%E4%B8%8A%E9%83%A8%E7%BD%B2Docker%E5%AE%B9%E5%99%A8/"/>
-    <id>http://blog.ozairs.com/AWS/在Amazon-ECS上部署Docker容器/</id>
-    <published>2019-03-16T02:17:06.000Z</published>
-    <updated>2019-03-16T02:53:00.117Z</updated>
-    
-    <content type="html"><![CDATA[<p>Amazon Elastic Container Service (Amazon ECS) 是用于在可扩展群集上运行 Docker 应用程序的 Amazon Web Service。在本教程中，您将了解如何在负载均衡器后面的 Amazon ECS 集群上运行支持 Docker 的示例应用程序，对该示例应用程序进行测试，然后删除您的资源以免产生费用。</p><p>在本教程中完成的所有操作均符合<a href="https://aws.amazon.com/cn/free/" target="_blank" rel="noopener">免费套餐</a>条件。</p><h4 id="管理-AWS-资源"><a href="#管理-AWS-资源" class="headerlink" title="管理 AWS 资源"></a>管理 AWS 资源</h4><p>登录控制台</p><h2 id="步骤-1：设置-Amazon-ECS-的首次运行"><a href="#步骤-1：设置-Amazon-ECS-的首次运行" class="headerlink" title="步骤 1：设置 Amazon ECS 的首次运行"></a>步骤 1：设置 Amazon ECS 的首次运行</h2><p>Amazon ECS 首次运行向导将引导您创建集群并启动示例 Web 应用程序。在此步骤中，您将进入 Amazon ECS 控制台并启动该向导。</p><hr><p>a. <a href="https://console.aws.amazon.com/ecs/home#/firstRun" target="_blank" rel="noopener">单击此处以打开 Amazon ECS 控制台首次运行向导</a>。</p><hr><p>b. 使用 Amazon ECS，您可以选择使用 Amazon Elastic Container Registry (Amazon ECR) 创建映像存储库，并向其推送一个映像作为首次运行向导的一部分（参见右侧的屏幕截图）。该功能目前在部分区域可用。 </p><ul><li>如果没有 Amazon ECR 选项，请跳至步骤 2。</li><li>如果有 Amazon ECR 选项，则取消选中 <em>Deploy a sample application onto an Amazon ECS Cluster</em> 旁边的复选框，然后选择 <strong>Continue</strong>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/1.png" alt="deploy-docker-container-1"></p><h2 id="步骤-2：创建任务定义"><a href="#步骤-2：创建任务定义" class="headerlink" title="步骤 2：创建任务定义"></a>步骤 2：创建任务定义</h2><p><em>任务定义</em>类似于应用程序的蓝图。在此步骤中，您将指定一个任务定义，以便 Amazon ECS 分辨出将哪个 Docker 映像用于容器、该任务将使用多少个容器以及每个容器的资源分配情况。</p><hr><p>任务定义预加载了默认的配置值。</p><ul><li>查看默认值并选择 <strong>Next Step</strong>。</li></ul><p>如果您希望修改配置或想要了解更多内容，请参阅<a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html" target="_blank" rel="noopener">任务定义参数</a>。</p><p><img src="/AWS/在Amazon-ECS上部署Docker容器/2.png" alt="deploy-docker-container-2"></p><h2 id="步骤-3：配置服务"><a href="#步骤-3：配置服务" class="headerlink" title="步骤 3：配置服务"></a>步骤 3：配置服务</h2><p>您现已创建了任务定义，接下来是配置 Amazon ECS <em>服务</em>。服务可启动并维护集群中任务定义的副本。例如，通过将某个应用程序作为服务来运行，Amazon ECS 将自动恢复任何已停止的任务并维持您所指定的副本数。</p><hr><p>a. 配置服务选项：</p><ul><li><strong>Service Name</strong>：默认的 <em>sample-webapp</em> 是一款由 AWS 提供的基于 Web 的“Hello World”应用程序。这意味着它可无限期运行，因此，通过将其作为服务来运行，如果任务的运行状况不佳或意外终止，该应用程序将重新启动。</li><li><strong>Desired number of tasks</strong>：若不超出 <a href="https://aws.amazon.com/cn/free/" target="_blank" rel="noopener">AWS 免费套餐</a>的范围，请保留默认值 <em>1</em>。此操作将为您的任务创建一个副本。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/3.png" alt="deploy-docker-container-3"></p><hr><p>b. Elastic Load Balancing：您可以选择将负载均衡器与您的服务配合使用。Amazon ECS 可以创建 Elastic Load Balancing (ELB) 负载均衡器，以在启动任务的各个容器实例间分配流量。</p><ul><li><strong>Container name: host port</strong>：选择 <em>Simple-app:80</em>。</li><li>为示例应用程序设置 <em>ELB listener protocol、ELB listener port 和 ELB health check</em> 的默认值。有关负载均衡配置的更多信息，请参阅 <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html" target="_blank" rel="noopener">Service Load Balancing</a>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/4.png" alt="deploy-docker-container-3b"></p><hr><p>c. 将负载均衡器挂载到 Amazon ECS 服务之前，必须先创建服务要使用的 Identity and Access Management (IAM) 角色。此操作将允许 Amazon ECS 调用 Amazon EC2 和 Elastic Load Balancing API，以在负载均衡器中注册和取消注册实例。</p><ul><li>如果您还没有服务 IAM 角色，Amazon ECS 将创建一个名为 <em>ecsServiceRole</em> 的角色。</li><li>如果您有现有的 Amazon ECS 服务角色，请从下拉菜单中选择该角色。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/5.png" alt="deploy-docker-container-3c"></p><hr><p>d. 检查设置并选择 <strong>Next Step</strong>。</p><p><img src="/AWS/在Amazon-ECS上部署Docker容器/6.png" alt="deploy-docker-container-3d"></p><h2 id="步骤-4：配置集群"><a href="#步骤-4：配置集群" class="headerlink" title="步骤 4：配置集群"></a>步骤 4：配置集群</h2><p>在<em>集群</em>上运行 Amazon ECS 任务，该集群是运行 Amazon ECS 容器代理的容器实例集合。在此步骤中，您将配置集群、检查安全设置并设置 IAM 角色。</p><hr><p>a. 按照以下配置设置执行操作：</p><ul><li><strong>Cluster name</strong>：输入 <em>sample-cluster</em>。</li><li><strong>EC2 instance type</strong>：默认的 <em>t2.micro</em> 实例类型可确保您不超出免费套餐的范围。CPU 和内存资源越多的实例类型可以处理的任务就越多。有关不同实例类型的更多信息，请参阅 <a href="https://aws.amazon.com/cn/ec2/instance-types/" target="_blank" rel="noopener">Amazon EC2 实例类型</a>。</li><li><strong>Number of instances</strong>：保留默认值 <em>1</em> 以启动一个要放置任务的集群中启动的 Amazon EC2 实例。集群中的实例越多，可在其上放置的任务就越多。</li><li><strong>Key pair</strong>：稍后通过 SSH 连接到实例时需要密钥对。您可通过选择 <em>None – unable to SSH</em>、选择现有密钥对或在 Amazon EC2 控制台中创建一个密钥对以继续操作。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/7.png" alt="deploy-docker-container-5a"></p><hr><p>b.（可选）安全组：默认值 <em>(Anywhere)</em> 可允许从整个 Internet 进行访问。您还可以选择 CIDR 块以限制对实例的访问。</p><p><img src="/AWS/在Amazon-ECS上部署Docker容器/8.png" alt="deploy-docker-container-5b"></p><hr><p>c. 容器实例 IAM 角色：</p><ul><li>如果您没有 IAM 角色，Amazon ECS 向导将会为您创建一个。</li><li>如果您有现有的容器实例 IAM 角色，请从下拉菜单中选择该角色。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/10.png" alt="deploy-docker-container-5c"></p><hr><p>d. 选择 <strong>Review and Launch</strong>。</p><p><img src="/AWS/在Amazon-ECS上部署Docker容器/11.png" alt="deploy-docker-container-5d"></p><h2 id="步骤-5：启动和查看资源"><a href="#步骤-5：启动和查看资源" class="headerlink" title="步骤 5：启动和查看资源"></a>步骤 5：启动和查看资源</h2><p>在上述步骤中，您配置了任务定义（类似于应用程序蓝图）、Amazon ECS 服务（可启动并维护任务定义的副本）和集群（是运行容器代理的容器实例集合）。在此步骤中，您将检查、启动和查看您所创建的资源。</p><hr><p>a. 在启动之前，您有最后一次机会来检查任务定义、任务配置和集群配置。</p><ul><li>选择 <strong>Launch instance &amp; run service</strong>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/12.png" alt="deploy-docker-container-6"></p><hr><p>b. 您此时位于 <em>Launch Status</em> 页面上，该页面将显示启动状态并描述了过程的每一步。</p><ul><li>启动完成后，选择 <strong>View service</strong>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/13.png" alt="deploy-docker-container-7"></p><h2 id="步骤-6：打开示例应用程序"><a href="#步骤-6：打开示例应用程序" class="headerlink" title="步骤 6：打开示例应用程序"></a>步骤 6：打开示例应用程序</h2><p>在此步骤中，您可通过将您的浏览器指向负载均衡器 DNS 名称来验证示例应用程序是否已启动并处于运行状态。</p><hr><p>a. 在“sample-webapp”页面上，单击您的负载均衡器名称。</p><p><img src="/AWS/在Amazon-ECS上部署Docker容器/14.png" alt="deploy-docker-container-10"></p><hr><p>b. 现在将测试该示例应用程序：</p><ul><li>复制 ELB DNS 名称。</li><li>将其粘贴到新的浏览器窗口中。</li><li>按键盘上的 Enter 键以查看示例应用程序（在本示例中为静态网页）。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/15.png" alt="deploy-docker-container-12a"></p><h2 id="步骤-7：删除资源"><a href="#步骤-7：删除资源" class="headerlink" title="步骤 7：删除资源"></a>步骤 7：删除资源</h2><p>在本教程中，您启动了三种资源：一个 Amazon ECS 集群、一个 Amazon EC2 实例和一个负载均衡器。在此步骤中，您将清除所有资源以免产生不必要的费用。</p><hr><p>a. 重新导航至 Amazon ECS 控制台页面</p><ul><li>单击集群名称 (<strong>sample-cluster</strong>)。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/16.png" alt="deploy-docker-container-13"></p><hr><p>b. 选中 <em>sample-webapp</em> 旁边的复选框，然后单击 <strong>Update</strong>。</p><p><img src="/AWS/在Amazon-ECS上部署Docker容器/17.png" alt="deploy-docker-container-15"></p><hr><p>c. 为确保您不会意外删除带有活动任务的服务，您需要在 Amazon ECS 删除某个服务之前终止所有任务。 </p><ul><li>将任务数设置为 <em>0</em>，然后选择 <strong>Update Service</strong>。</li><li>更新服务之后，选择 <strong>Delete</strong>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/18.png" alt="deploy-docker-container-14"></p><hr><p>d. 删除通过集群启动的 Amazon EC2 实例：</p><ul><li><a href="https://console.aws.amazon.com/ec2/v2/home" target="_blank" rel="noopener">进入 Amazon EC2 控制台</a></li><li>在左侧窗格中，选择 <strong>Instances</strong>。</li><li>选中名为 <em>ECS Instance – EC2ContainerService-default</em> 的实例旁边的复选框。</li><li>依次选择 <strong>Actions &gt;</strong> <strong>Instance State</strong> &gt; <strong>Terminate</strong>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/19.png" alt="deploy-docker-container-17"></p><hr><p>e. 删除负载均衡器：</p><ul><li>在左侧窗格中，选择 <strong>Load Balancers</strong>。</li><li>选中您为服务创建的负载均衡器旁边的复选框（应以 <em>EC2Contai-EcsElast</em> 开头）。</li><li>右键单击并选择 <strong>Delete</strong>。</li></ul><p><img src="/AWS/在Amazon-ECS上部署Docker容器/20.png" alt="deploy-docker-container-19a"></p><h1 id="恭喜您！"><a href="#恭喜您！" class="headerlink" title="恭喜您！"></a>恭喜您！</h1><p>恭喜您！您已了解如何在 Amazon Elastic Container Service (Amazon ECS) 中配置、部署和删除支持 Docker 的应用程序。Amazon ECS 是一个可高度扩展的高性能容器管理服务，它支持 Docker 容器，并允许您在 Amazon EC2 实例的托管集群上轻松地运行应用程序。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Amazon Elastic Container Service (Amazon ECS) 是用于在可扩展群集上运行 Docker 应用程序的 Amazon Web Service。在本教程中，您将了解如何在负载均衡器后面的 Amazon ECS 集群上运行支持 Docke
-      
-    
-    </summary>
-    
-      <category term="AWS" scheme="http://blog.ozairs.com/categories/AWS/"/>
     
     
       <category term="Docker" scheme="http://blog.ozairs.com/tags/Docker/"/>
