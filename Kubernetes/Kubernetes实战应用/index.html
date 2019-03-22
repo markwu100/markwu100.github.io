@@ -221,7 +221,80 @@ https://github.com/rootsongj...">
     <div class="post-body post-content">
         <h3 id="一、平台构建"><a href="#一、平台构建" class="headerlink" title="一、平台构建"></a>一、平台构建</h3><p>1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh</p>
 <p><a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md" target="_blank" rel="noopener">https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md</a></p>
-
+<h3 id="二、集群部署命令"><a href="#二、集群部署命令" class="headerlink" title="二、集群部署命令"></a>二、集群部署命令</h3><ol>
+<li><p>运营应用：kubectl run helloworld –image=karthequian/helloworld –port=80</p>
+</li>
+<li><p>查看部署，资源，pods</p>
+<p>kubectl get deployments</p>
+<p>kubectl get rs</p>
+<p>kuebectl get pods</p>
+</li>
+<li><p>部署服务</p>
+<p>kubectl expose deployment helloworld –type=NodePort</p>
+</li>
+<li><p>通过文件方式部署服务和Deployment</p>
+<p>kubectl create -f deploy-all.yml</p>
+</li>
+<li><p>查看服务</p>
+<p>kubectl get services</p>
+</li>
+<li><p>扩展集群服务器</p>
+<p>kubectl scale –replicas=3 deploy/helloworld</p>
+</li>
+<li><p>启动应用</p>
+<p>minikube service helloworld</p>
+</li>
+<li><p>查看所有部署服务</p>
+<p>minikube get all</p>
+</li>
+<li><p>将部署服务导出到YAML文件</p>
+<p>kubectl get deploy/helloworld -o yaml</p>
+</li>
+<li><p>查看服务器集群状态： kubectl cluster-info</p>
+</li>
+<li><p>定位故障</p>
+<p>kubectl describe deploy/depolyname</p>
+<p>kubectl describe po/podname</p>
+<p>kubectl log podname</p>
+<p>登陆到服务节点：kubectl exec -it podname /bin/bash</p>
+<p>如果单节点存在多个Container，登陆到某个服务节点：<code>kubectl exec -it -c containername podname /bin/bash</code></p>
+<p>查看所有服务进程：<code>ps -ef</code></p>
+</li>
+</ol>
+<h3 id="三、图形化管理工具"><a href="#三、图形化管理工具" class="headerlink" title="三、图形化管理工具"></a>三、图形化管理工具</h3><ol>
+<li><p>查看minikube 插件</p>
+<p><code>minikube addons list</code></p>
+<p><code>minikube addon enable heapester</code></p>
+</li>
+</ol>
+<h3 id="四、如何配置数据"><a href="#四、如何配置数据" class="headerlink" title="四、如何配置数据"></a>四、如何配置数据</h3><ol>
+<li><p>To create a configmap for this literal type <code>kubectl create configmap logger --from-literal=log_level=debug</code></p>
+</li>
+<li><p>To see all your configmaps: <code>kubectl get configmaps</code></p>
+</li>
+<li><p>To read the value in the logger configmap: <code>kubectl get configmap/logger -o yaml</code></p>
+</li>
+<li><p>To edit the value, we can run <code>kubectl edit configmap/logger</code></p>
+</li>
+</ol>
+<p>`</p>
+<h3 id="五、如何配置应用密钥"><a href="#五、如何配置应用密钥" class="headerlink" title="五、如何配置应用密钥"></a>五、如何配置应用密钥</h3><ol>
+<li><p>To create a secret: <code>kubectl create secret generic apikey --from-literal=api_key=123456789</code></p>
+</li>
+<li><p>Notice that we can’t read the value of the secret directly:<br><code>kubectl get secret apikey -o yaml</code></p>
+</li>
+<li><p>Understand how to add a secret to a deployment</p>
+<p>​         Adding a secret to a deployment is similar to what we did for configmaps. You can add a secret to the env portion, and start up the deployment with:<br><code>kubectl create -f secretreader-deployment.yaml</code></p>
+</li>
+</ol>
+<h3 id="六、如何创建任务"><a href="#六、如何创建任务" class="headerlink" title="六、如何创建任务"></a>六、如何创建任务</h3><h3 id="How-to-run-jobs"><a href="#How-to-run-jobs" class="headerlink" title="How to run jobs"></a>How to run jobs</h3><p>Jobs are a construct that run a pod once, and then stop. However, unlike pods in deployments, the output of the job is kept around until you decide to remove it.</p>
+<p>Running a job is similar to running a deployment, and we can create this by <code>kubectl create -f simplejob.yaml</code></p>
+<p>To see the output of the job: <code>kubectl get jobs</code></p>
+<p>You can find the pod that ran by doing a <code>kubectl get pods --all-pods</code>, and then get the logs from it as well.</p>
+<h3 id="How-to-run-cron-jobs"><a href="#How-to-run-cron-jobs" class="headerlink" title="How to run cron jobs"></a>How to run cron jobs</h3><p>Cron jobs are like jobs, but they run periodically.</p>
+<p>Start your cron by running <code>kubectl create -f cronjob.yaml</code></p>
+<p>We can use the cronjob api to view your cronjobs: <code>kubectl get cronjobs</code>. It adds the last schedule date</p>
+<h3 id="七、如何创建DaemonSet"><a href="#七、如何创建DaemonSet" class="headerlink" title="七、如何创建DaemonSet"></a>七、如何创建DaemonSet</h3>
     </div>
     
         <div class="reward" ontouchstart="">
@@ -300,7 +373,7 @@ https://github.com/rootsongj...">
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、平台构建"><span class="toc-text">一、平台构建</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、平台构建"><span class="toc-text">一、平台构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、集群部署命令"><span class="toc-text">二、集群部署命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、图形化管理工具"><span class="toc-text">三、图形化管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、如何配置数据"><span class="toc-text">四、如何配置数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、如何配置应用密钥"><span class="toc-text">五、如何配置应用密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、如何创建任务"><span class="toc-text">六、如何创建任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-run-jobs"><span class="toc-text">How to run jobs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-run-cron-jobs"><span class="toc-text">How to run cron jobs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、如何创建DaemonSet"><span class="toc-text">七、如何创建DaemonSet</span></a></li></ol>
         
     </div>
 </aside>
