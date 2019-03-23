@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Docker/Docker-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2019-03-23T08:40:39.070Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/AWS/AWS-%E5%AE%9E%E6%88%98%E9%83%A8%E7%BD%B2/</loc>
     
-    <lastmod>2019-03-22T11:33:03.857Z</lastmod>
+    <lastmod>2019-03-22T11:33:28.244Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-22T11:33:28.241Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://blog.ozairs.com/Big-Data/Splunk%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C/</loc>
     
     <lastmod>2019-03-22T04:20:08.795Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-22T04:20:08.792Z</lastmod>
     
   </url>
   
@@ -296,14 +303,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/categories/index.html</loc>
+    <loc>http://blog.ozairs.com/tags/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/tags/index.html</loc>
+    <loc>http://blog.ozairs.com/categories/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
