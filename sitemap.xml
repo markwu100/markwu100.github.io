@@ -4,7 +4,14 @@
   <url>
     <loc>http://blog.ozairs.com/DevOps/Chef%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/</loc>
     
-    <lastmod>2019-03-24T07:10:16.816Z</lastmod>
+    <lastmod>2019-03-24T07:21:08.792Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-24T06:52:16.882Z</lastmod>
     
   </url>
   
@@ -12,13 +19,6 @@
     <loc>http://blog.ozairs.com/Docker/Docker-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2019-03-24T02:34:14.194Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-23T08:41:05.088Z</lastmod>
     
   </url>
   
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/categories/index.html</loc>
+    <loc>http://blog.ozairs.com/tags/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/tags/index.html</loc>
+    <loc>http://blog.ozairs.com/categories/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
