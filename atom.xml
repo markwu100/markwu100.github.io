@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-24T06:52:04.806Z</updated>
+  <updated>2019-03-24T06:52:16.880Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.ozairs.com/DevOps/Chef%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/"/>
     <id>http://blog.ozairs.com/DevOps/Chef入门与实战/</id>
     <published>2019-03-24T06:51:16.000Z</published>
-    <updated>2019-03-24T06:52:04.806Z</updated>
+    <updated>2019-03-24T06:52:16.880Z</updated>
     
     <content type="html"><![CDATA[<h3 id="一、Chef命令汇总"><a href="#一、Chef命令汇总" class="headerlink" title="一、Chef命令汇总"></a>一、Chef命令汇总</h3><ol><li>执行Recipe： chef-client –local-mode hello.rb</li></ol>]]></content>
     
