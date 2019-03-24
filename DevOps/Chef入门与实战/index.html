@@ -16,11 +16,13 @@
     <link rel="dns-prefetch" href="http://blog.ozairs.com">
     <!--SEO-->
 
-    <meta name="keywords" content="Docker">
+    <meta name="keywords" content="Chef">
 
 
-    <meta name="description" content="一、Docker平台部署Amazon ECS 的 Docker 基本知识
-https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
+    <meta name="description" content="一、Chef命令汇总
+执行Recipe： chef-client –local-mode hello.rb
+
+">
 
 
 
@@ -32,7 +34,7 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
     <!--Title-->
 
 
-<title>Docker 实战应用 | 带你走进美丽的墨尔本</title>
+<title>Chef入门与实战 | 带你走进美丽的墨尔本</title>
 
 
     <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
@@ -181,16 +183,16 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Docker 实战应用">
+        <h1 id="Chef入门与实战">
             
-	            Docker 实战应用
+	            Chef入门与实战
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/Docker/">Docker</a>
+            <a class="category-link" href="/categories/DevOps/">DevOps</a>
         </span>
     
 
@@ -199,7 +201,7 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Docker/">Docker</a>
+                    <a class="tag-link" href="/tags/Chef/">Chef</a>
                 
             </span>
         </span>
@@ -209,7 +211,7 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/03/23</span>
+            <span class="date-meta">2019/03/24</span>
         </span>
         
     
@@ -219,14 +221,9 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
     </div>
     
     <div class="post-body post-content">
-        <h3 id="一、Docker平台部署"><a href="#一、Docker平台部署" class="headerlink" title="一、Docker平台部署"></a>一、Docker平台部署</h3><p>Amazon ECS 的 Docker 基本知识</p>
-<p><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/docker-basics.html#install_docker" target="_blank" rel="noopener">https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/docker-basics.html#install_docker</a></p>
-<h3 id="二、ECS中Dokcer的配置"><a href="#二、ECS中Dokcer的配置" class="headerlink" title="二、ECS中Dokcer的配置"></a>二、ECS中Dokcer的配置</h3><ol>
-<li><p>Environment设置Entry Point</p>
-<p>sh, -c, while true; do echo $(date)&gt; /shared-data/index_html; sleep 5; done</p>
-</li>
+        <h3 id="一、Chef命令汇总"><a href="#一、Chef命令汇总" class="headerlink" title="一、Chef命令汇总"></a>一、Chef命令汇总</h3><ol>
+<li>执行Recipe： chef-client –local-mode hello.rb</li>
 </ol>
-<h3 id="三、使用Jenkins配合Github-hook持续集成"><a href="#三、使用Jenkins配合Github-hook持续集成" class="headerlink" title="三、使用Jenkins配合Github hook持续集成"></a>三、使用Jenkins配合Github hook持续集成</h3><p><a href="http://callmedadaxin.github.io/2018/07/20/jenkins-github-hook/" target="_blank" rel="noopener">http://callmedadaxin.github.io/2018/07/20/jenkins-github-hook/</a></p>
 
     </div>
     
@@ -260,15 +257,10 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/DevOps/Chef入门与实战/" class="pre-post btn btn-default" title="Chef入门与实战">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">Chef入门与实战</span>
-        </a>
     
-    
-        <a href="/AWS/AWS-实战部署/" class="next-post btn btn-default" title="AWS 实战部署">
+        <a href="/Docker/Docker-实战应用/" class="next-post btn btn-default" title="Docker 实战应用">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">AWS 实战部署</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">Docker 实战应用</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -311,7 +303,7 @@ https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developer...">
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Docker平台部署"><span class="toc-text">一、Docker平台部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、ECS中Dokcer的配置"><span class="toc-text">二、ECS中Dokcer的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、使用Jenkins配合Github-hook持续集成"><span class="toc-text">三、使用Jenkins配合Github hook持续集成</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Chef命令汇总"><span class="toc-text">一、Chef命令汇总</span></a></li></ol>
         
     </div>
 </aside>
