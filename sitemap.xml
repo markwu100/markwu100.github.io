@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Docker/Docker-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/</loc>
+    
+    <lastmod>2019-03-25T10:45:04.079Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Jenkins/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/</loc>
     
-    <lastmod>2019-03-25T10:15:17.628Z</lastmod>
+    <lastmod>2019-03-25T10:15:29.963Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://blog.ozairs.com/DevOps/Chef%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E6%88%98/</loc>
     
     <lastmod>2019-03-24T07:21:08.792Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/Docker/Docker-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/</loc>
-    
-    <lastmod>2019-03-24T02:34:14.194Z</lastmod>
     
   </url>
   
