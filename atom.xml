@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-03-25T11:42:35.316Z</updated>
+  <updated>2019-03-25T11:48:37.525Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.ozairs.com/Jenkins/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"/>
     <id>http://blog.ozairs.com/Jenkins/Jenkins自动化部署/</id>
     <published>2019-03-25T10:13:57.000Z</published>
-    <updated>2019-03-25T11:42:35.316Z</updated>
+    <updated>2019-03-25T11:48:37.525Z</updated>
     
     <content type="html"><![CDATA[<p>一、 Pipeline平台部署</p><ol><li><a href="https://www.cnblogs.com/shenh/p/8963688.html" target="_blank" rel="noopener">jenkins + pipeline构建自动化部署</a></li></ol><p><a href="https://www.cnblogs.com/shenh/p/8963688.html" target="_blank" rel="noopener">https://www.cnblogs.com/shenh/p/8963688.html</a></p><ol start="2"><li><p><a href="https://zhuanlan.zhihu.com/p/51533506" target="_blank" rel="noopener">Jenkins pipeline脚本编写实践分享（一）上篇</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/59160884" target="_blank" rel="noopener">Jenkins pipeline脚本编写实践分享（二）</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/41604558" target="_blank" rel="noopener">jenkins学习之pipeline</a></p></li><li><a href="https://www.xncoding.com/2017/03/22/fullstack/jenkins02.html" target="_blank" rel="noopener">Jenkins持续集成 - 管道详解</a></li></ol>]]></content>
     
