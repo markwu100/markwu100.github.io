@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Pipeline">
+
+
+    <meta name="description" content="本文与Github，Gitflow和Jenkins持续集成和交付的内容有关。但这次我将扩展与Jenkins持续集成的主题，并深入探讨Jenkins Pipelines的细节。在这里，您将找到有关...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>使用Jenkins Pipeline进行持续集成 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/旅行"><i class="fa "></i>旅行</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://learn.hashicorp.com/terraform/getting-started/install"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/评论"><i class="fa "></i>评论</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="使用Jenkins Pipeline进行持续集成">
+            
+	            使用Jenkins Pipeline进行持续集成
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Jenkins/">Jenkins</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Pipeline/">Pipeline</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/29</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>本文<a href="http://syndicode.co/2016/06/02/continuous-integration-and-delivery-with-github-gitflow-and-jenkins/" target="_blank" rel="noopener">与Github，Gitflow和Jenkins持续集成和交付</a>的内容有关。但这次我将扩展与Jenkins持续集成的主题，并深入探讨Jenkins Pipelines的细节。在这里，您将找到有关与Jenkins Pipeline持续集成的所有信息！</p>
+<p>好的，确定你知道这一切，但基本条款永远不会让情况更糟。我们将从他们开始。</p>
+<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><p><strong>Jenkins</strong>是一个开源的持续集成（CI）工具，可以通过自动化帮助协调开发过程（构建，测试和部署）。换句话说，Jenkins是帮助开发团队实现其流程工业化的领先工具之一。这是开发人员的队友，当您在特定分支（主控和开发）上推送代码时，您可以要求将代码投入生产（或升级）。</p>
+<p>正如您所知，<strong>CI（持续集成）</strong>是将所有开发人员工作副本每天多次合并到共享主线的做法。</p>
+<p>Jenkins很有用，因为它将自由式作业编排成CI管道。</p>
+<p><strong>Pipeline（Jenkins Pipeline）</strong>是一套插件，支持在Jenkins中实现和集成连续交付管道。持续交付管道是您将软件从版本控制直至用户和客户的过程的自动表达。</p>
+<p>Pipeline为Jenkins添加了一套功能强大的自动化工具。设置管道项目意味着编写一个脚本，该脚本将按顺序应用我们想要完成的流程的一些步骤。</p>
+<p><strong>Jenkinsfile</strong>是一个文本文件，包含Jenkins管道的定义，并被检入源代码管理。</p>
+<p><strong>构建作业</strong>是由Jenkins控制和监视的可运行任务。作业示例包括编译源代码，运行测试，配置测试环境，部署，归档，发布构建作业（如报告）以及执行任意脚本。</p>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><h4 id="Jenkins管道功能"><a href="#Jenkins管道功能" class="headerlink" title="Jenkins管道功能"></a>Jenkins管道功能</h4><ul>
+<li><strong>代码</strong>：管道在代码中实现，通常检查到源代码控制中，使团队能够编辑，审查和迭代其交付管道。</li>
+<li><strong>持久</strong>：管道可以在Jenkins主计划的计划内和计划外重启中存活。</li>
+<li><strong>Pausable</strong>：在继续管道运行之前，管道可以选择停止并等待人工输入或批准。</li>
+<li><strong>功能多样</strong>：管道支持复杂的实际连续交付要求，包括并行分叉/连接，循环和执行工作的能力。</li>
+<li><strong>可扩展</strong>：Pipeline插件支持其DSL（特定于域的语言）的自定义扩展以及与其他插件集成的多个选项。</li>
+</ul>
+<h4 id="Jenkins管道条款"><a href="#Jenkins管道条款" class="headerlink" title="Jenkins管道条款"></a>Jenkins管道条款</h4><p><strong>步骤</strong>  - 单个任务; 从根本上说步Jenkins<em>是什么</em>做的。</p>
+<p><strong>节点</strong>。Pipeline执行的大多数<em>工作</em>是在一个或多个声明的<strong>节点步骤</strong>的上下文中完成的。节点选择管道将在何处执行。限制节点步骤内的工作有两个作用：</p>
+<ol>
+<li>通过向Jenkins队列添加项来计划要运行的块中包含的步骤。只要执行程序在节点上空闲，步骤就会运行。</li>
+<li>创建工作空间（特定于该特定管道的目录），可以对从源控件检出的文件进行工作。</li>
+</ol>
+<p><strong>阶段</strong>是定义整个管道的概念上不同的子集的步骤，例如：“构建”，“测试”和“部署”，许多插件使用它来可视化或呈现Jenkins管道状态/进度。</p>
+<p><strong>声明性和脚本化管道</strong></p>
+<p>Jenkins Pipeline正在使用具有两种不同语法的域特定语言（DSL）：</p>
+<ul>
+<li>Declarative Pipeline<br>在Pipeline子系统之上提供了更简化和固定的语法。</li>
+<li>Scripted Pipeline<br>遵循使用Groovy构建的更强制的编程模型。</li>
+</ul>
+<h3 id="Jenkinsfile"><a href="#Jenkinsfile" class="headerlink" title="Jenkinsfile"></a>Jenkinsfile</h3><p>Jenkinsfile用于替换当前使用的三个Jenkins构建作业：</p>
+<ul>
+<li>主要集成分支的<strong>多</strong>分支：开发，发布，修补程序和主服务器。</li>
+<li><strong>合并</strong>自动测试GitLab合并请求的请求。</li>
+<li><strong>参数化为</strong>按需测试。</li>
+</ul>
+<p><strong>使用Jenkinsfile可以解决的问题</strong></p>
+<ul>
+<li>将CI / CD管道定义为代码，使其自我记录，可重现和版本化。</li>
+<li>对任何类型的构建作业都有单一的构建步骤定义，无论是多分支，合并请求还是参数化。</li>
+<li>远离构建步骤的手动配置。</li>
+<li>使管道易于扩展。例如，将新的静态分析工具报告添加到所有已配置的构建作业中应该不复杂。</li>
+</ul>
+<h3 id="将您的代码投入生产"><a href="#将您的代码投入生产" class="headerlink" title="将您的代码投入生产"></a>将您的代码投入生产</h3><h4 id="定义管道"><a href="#定义管道" class="headerlink" title="定义管道"></a>定义管道</h4><ol>
+<li>设置/配置构建环境。</li>
+<li>看看你的代码。</li>
+<li>构建代码。确保您不使用任何特定于环境的构建过程设置可以独立于环境。</li>
+<li>执行质量控制。此步骤包含两个主要任务：运行测试和执行代码质量检查。</li>
+<li>在Continuous Integration环境中部署代码。</li>
+<li>运行功能测试。</li>
+<li>在测试环境中部署代码。</li>
+<li>在用户接受环境中部署代码。</li>
+<li>在生产环境中部署代码。</li>
+</ol>
+<p>触发作业的一种常见方法是将更改提交到存储库。这意味着当开发人员完成开发任务并将其更改推送到项目的存储库时（例如，如果您使用Git，则执行Git push命令），该作业将自动触发。一个简单的方法是通过<a href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin" target="_blank" rel="noopener">GitHub Jenkins插件</a>。</p>
+<h4 id="Jenkins部署的最佳实践"><a href="#Jenkins部署的最佳实践" class="headerlink" title="Jenkins部署的最佳实践"></a>Jenkins部署的最佳实践</h4><ul>
+<li>Jenkins不会将默认配置作为其默认配置的一部分执行任何安全检查，因此请始终确保对Jenkins服务器上的用户进行身份验证并强制实施访问控制。<strong>保护您的Jenkins服务器</strong>。</li>
+<li>在包含多个配置作业的用户的大型复杂集成环境中，应确保它们不在主服务器上运行构建，并且可以无限制地访问JENKINS_HOME目录。<strong>小心的主机</strong>。</li>
+<li>为确保在需要时可以<strong>使用</strong>所有配置和活动日志，请<strong>使用备份配置</strong>。</li>
+<li>Jenkins需要磁盘空间来执行构建，存储数据日志和保存存档。要保持Jenkins的正常运行，请确保<strong>为Jenkins保留10％或更多的磁盘空间，</strong>以防止出现碎片。</li>
+<li>Jenkins 2.0版本提供了代码管道，新的安装体验和一些UI改进。用它。（您可以在文章末尾添加“管道作为代码”链接找到更多相关信息）。</li>
+</ul>
+<h4 id="Jenkins-Pipeline插件的最佳实践："><a href="#Jenkins-Pipeline插件的最佳实践：" class="headerlink" title="Jenkins Pipeline插件的最佳实践："></a>Jenkins Pipeline插件的最佳实践：</h4><ol>
+<li>不要使用像Build Pipeline插件或Buildflow插件这样的旧插件。相反，使用真正的Jenkins Pipeline插件套件。</li>
+<li>将您的管道开发为代码。使用该功能将Jenkins文件存储在SCM中然后版本中，并像测试其他软件一样进行测试。</li>
+<li>管道中的任何非设置工作都应在阶段块中进行。</li>
+<li>Pipeline提供了一种简单的语法，用于将管道分支为并行步骤。用它！</li>
+<li>Pipeline有一个简单的机制来超时管道的任何给定步骤。作为最佳实践，您应该始终计划输入周围的超时。</li>
+<li>使用env全局变量设置环境变量。</li>
+</ol>
+<h3 id="有用的资源"><a href="#有用的资源" class="headerlink" title="有用的资源"></a>有用的资源</h3><ul>
+<li><a href="https://jenkins.io/" target="_blank" rel="noopener">Jenkins官方网站</a></li>
+<li>包含片段，提示和技巧的<a href="https://github.com/jenkinsci/pipeline-examples" target="_blank" rel="noopener">存储库</a>以及Jenkins管道插件的脚本示例</li>
+<li>Jenkins Pipeline <a href="https://jenkins.io/doc/book/pipeline/getting-started/" target="_blank" rel="noopener">入门</a></li>
+<li>管道<a href="https://jenkins.io/doc/book/pipeline/syntax/" target="_blank" rel="noopener">语法</a></li>
+<li><a href="http://www.baeldung.com/jenkins-pipelines" target="_blank" rel="noopener">Jenkins简介2</a></li>
+<li><a href="https://jenkins.io/solutions/pipeline/" target="_blank" rel="noopener">管道作为代码</a></li>
+<li><a href="https://vetlugin.wordpress.com/2017/01/31/guide-jenkins-pipeline-merge-requests/" target="_blank" rel="noopener">处理Jenkins管道中的合并请求</a></li>
+<li><a href="https://dzone.com/refcardz/declarative-pipeline-with-jenkins" target="_blank" rel="noopener">Jenkins的声明性管道</a></li>
+<li><a href="https://www.atlassian.com/blog/continuous-delivery/practical-continuous-deployment" target="_blank" rel="noopener">实用的持续部署</a></li>
+</ul>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/AWS/使用凭据文件向AWS进行身份验证/" class="next-post btn btn-default" title="使用凭据文件向AWS进行身份验证">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">使用凭据文件向AWS进行身份验证</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#主要内容"><span class="toc-text">主要内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道"><span class="toc-text">管道</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Jenkins管道功能"><span class="toc-text">Jenkins管道功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Jenkins管道条款"><span class="toc-text">Jenkins管道条款</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkinsfile"><span class="toc-text">Jenkinsfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将您的代码投入生产"><span class="toc-text">将您的代码投入生产</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义管道"><span class="toc-text">定义管道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Jenkins部署的最佳实践"><span class="toc-text">Jenkins部署的最佳实践</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Jenkins-Pipeline插件的最佳实践："><span class="toc-text">Jenkins Pipeline插件的最佳实践：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有用的资源"><span class="toc-text">有用的资源</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Jenkins/%E4%BD%BF%E7%94%A8Jenkins-Pipeline%E8%BF%9B%E8%A1%8C%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</loc>
+    
+    <lastmod>2019-03-29T06:18:07.265Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/AWS/%E4%BD%BF%E7%94%A8%E5%87%AD%E6%8D%AE%E6%96%87%E4%BB%B6%E5%90%91AWS%E8%BF%9B%E8%A1%8C%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81/</loc>
     
-    <lastmod>2019-03-29T03:45:18.586Z</lastmod>
+    <lastmod>2019-03-29T03:45:28.772Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-03-29T03:45:28.768Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://blog.ozairs.com/Jenkins/%E7%B2%BE%E9%80%9AJenkins-Pipeline-PartI/</loc>
     
     <lastmod>2019-03-28T12:00:08.126Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-03-28T11:50:00.078Z</lastmod>
     
   </url>
   
@@ -338,14 +345,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/categories/index.html</loc>
+    <loc>http://blog.ozairs.com/tags/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/tags/index.html</loc>
+    <loc>http://blog.ozairs.com/categories/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
