@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Ansible/Ansible%E5%AE%9E%E6%88%98%E6%B1%87%E6%80%BB/</loc>
+    
+    <lastmod>2019-03-31T11:58:25.064Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Terraform/Terraform%E7%AE%80%E4%BB%8B/</loc>
     
-    <lastmod>2019-03-30T05:28:38.429Z</lastmod>
+    <lastmod>2019-03-30T06:36:19.919Z</lastmod>
     
   </url>
   
@@ -138,13 +145,6 @@
     <loc>http://blog.ozairs.com/Jenkins/%E4%BD%BF%E7%94%A8jenkins-ant-%E6%9E%84%E5%BB%BA%E9%9D%9Emaven%E9%A1%B9%E7%9B%AE/</loc>
     
     <lastmod>2019-03-18T05:14:51.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/Ansible/Ansible%E5%AE%9E%E6%88%98%E6%B1%87%E6%80%BB/</loc>
-    
-    <lastmod>2019-03-17T11:02:01.798Z</lastmod>
     
   </url>
   
