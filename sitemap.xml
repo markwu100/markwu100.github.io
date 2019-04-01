@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Jenkins/%E4%B8%BB%E6%B5%81CI-CD%E5%B7%A5%E5%85%B7%E6%AF%94%E8%BE%83%EF%BC%9AJenkins-vs-Bamboo-vsTeamcity/</loc>
+    
+    <lastmod>2019-04-01T02:32:33.417Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Ansible/Ansible%E5%AE%9E%E6%88%98%E6%B1%87%E6%80%BB/</loc>
     
     <lastmod>2019-03-31T12:05:28.334Z</lastmod>
@@ -16,16 +23,16 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/Docker/Docker-Swarm%E6%9E%B6%E6%9E%84%E3%80%81%E7%89%B9%E6%80%A7%E4%B8%8E%E5%9F%BA%E6%9C%AC%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-03-30T05:02:08.209Z</lastmod>
+    <lastmod>2019-03-30T05:28:51.352Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://blog.ozairs.com/Docker/Docker-Swarm%E6%9E%B6%E6%9E%84%E3%80%81%E7%89%B9%E6%80%A7%E4%B8%8E%E5%9F%BA%E6%9C%AC%E5%AE%9E%E8%B7%B5/</loc>
     
-    <lastmod>2019-03-30T05:02:08.205Z</lastmod>
+    <lastmod>2019-03-30T05:02:08.209Z</lastmod>
     
   </url>
   
