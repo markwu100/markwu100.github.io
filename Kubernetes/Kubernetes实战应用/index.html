@@ -222,17 +222,19 @@ https://github.com/rootsongj...">
         <h3 id="一、平台构建"><a href="#一、平台构建" class="headerlink" title="一、平台构建"></a>一、平台构建</h3><p>1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh</p>
 <p><a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md" target="_blank" rel="noopener">https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md</a></p>
 <h3 id="二、集群部署命令"><a href="#二、集群部署命令" class="headerlink" title="二、集群部署命令"></a>二、集群部署命令</h3><ol>
-<li><p>运营应用：kubectl run helloworld –image=karthequian/helloworld –port=80</p>
+<li><p>启动kubenetes</p>
+<p>minikube start</p>
+<p>运行应用：kubectl run helloworld –image=karthequian/helloworld –port=80</p>
 </li>
 <li><p>查看部署，资源，pods</p>
 <p>kubectl get deployments</p>
 <p>kubectl get rs</p>
 <p>kuebectl get pods</p>
 </li>
-<li><p>部署服务</p>
+<li><p>部署应用服务</p>
 <p>kubectl expose deployment helloworld –type=NodePort</p>
 </li>
-<li><p>通过文件方式部署服务和Deployment</p>
+<li><p>通过文件方式同时部署服务和Deployment</p>
 <p>kubectl create -f deploy-all.yml</p>
 </li>
 <li><p>查看服务</p>
@@ -242,7 +244,7 @@ https://github.com/rootsongj...">
 <p>kubectl scale –replicas=3 deploy/helloworld</p>
 </li>
 <li><p>启动应用</p>
-<p>minikube service helloworld</p>
+<p>minikube service helloworld （可以通过Web浏览器进行查看）</p>
 </li>
 <li><p>查看所有部署服务</p>
 <p>minikube get all</p>
