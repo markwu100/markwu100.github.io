@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/DevOps/Git-Workflow-%E5%B7%A5%E4%BD%9C%E6%8C%87%E5%8D%97/</loc>
+    
+    <lastmod>2019-04-06T10:03:14.017Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/uncategorized/%E6%8E%A5%E6%94%B6%E4%BA%86%E5%B7%A5%E4%BD%9COffer%E4%B9%8B%E5%90%8E%E5%8F%AF%E4%BB%A5%E6%8B%92%E7%BB%9D%E5%90%97%EF%BC%9F/</loc>
     
-    <lastmod>2019-04-05T23:31:54.419Z</lastmod>
+    <lastmod>2019-04-05T23:32:06.750Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/Jenkins/%E4%B8%BB%E6%B5%81CI-CD%E5%B7%A5%E5%85%B7%E6%AF%94%E8%BE%83%EF%BC%9AJenkins-vs-Bamboo-vsTeamcity/</loc>
+    
+    <lastmod>2019-04-05T23:32:06.749Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-04-05T23:32:06.743Z</lastmod>
     
   </url>
   
@@ -12,20 +33,6 @@
     <loc>http://blog.ozairs.com/Kubernetes/Kubernetes%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2019-04-01T11:24:23.034Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/Jenkins/%E4%B8%BB%E6%B5%81CI-CD%E5%B7%A5%E5%85%B7%E6%AF%94%E8%BE%83%EF%BC%9AJenkins-vs-Bamboo-vsTeamcity/</loc>
-    
-    <lastmod>2019-04-01T02:35:57.305Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-04-01T02:32:43.342Z</lastmod>
     
   </url>
   
