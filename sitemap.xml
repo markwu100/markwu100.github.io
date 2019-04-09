@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/uncategorized/Docker-ENTRYPOINT%E5%92%8CCMD%EF%BC%9ADockerfile%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
+    
+    <lastmod>2019-04-09T23:23:42.956Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-04-06T10:03:27.346Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/DevOps/Git-Workflow-%E5%B7%A5%E4%BD%9C%E6%8C%87%E5%8D%97/</loc>
     
     <lastmod>2019-04-06T10:03:27.342Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://blog.ozairs.com/Jenkins/%E4%B8%BB%E6%B5%81CI-CD%E5%B7%A5%E5%85%B7%E6%AF%94%E8%BE%83%EF%BC%9AJenkins-vs-Bamboo-vsTeamcity/</loc>
     
     <lastmod>2019-04-05T23:32:06.749Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-04-05T23:32:06.743Z</lastmod>
     
   </url>
   
