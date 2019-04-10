@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Kubernetes/Kops%EF%BC%9A%E6%9B%B4%E4%BE%BF%E6%8D%B7%E7%9A%84%E4%BD%BF%E7%94%A8Kubernetes/</loc>
+    
+    <lastmod>2019-04-10T00:11:11.198Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Docker/Docker-ENTRYPOINT%E5%92%8CCMD%EF%BC%9ADockerfile%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</loc>
     
     <lastmod>2019-04-09T23:25:26.016Z</lastmod>
@@ -11,7 +18,7 @@
   <url>
     <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-04-06T10:03:27.346Z</lastmod>
+    <lastmod>2019-04-09T23:23:54.669Z</lastmod>
     
   </url>
   
@@ -394,14 +401,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/categories/index.html</loc>
+    <loc>http://blog.ozairs.com/tags/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/tags/index.html</loc>
+    <loc>http://blog.ozairs.com/categories/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     

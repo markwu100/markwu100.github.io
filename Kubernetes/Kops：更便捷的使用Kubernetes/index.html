@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Kops">
+
+
+    <meta name="description" content="对于那些第一次接触Kubernetes（通常被称为k8s）并且想独自运行他们自己的第一个pods，services和deployments的人来说，通常存在很多的指南，例如可以使用Minikub...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Kops：更便捷的使用Kubernetes | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/旅行"><i class="fa "></i>旅行</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/评论"><i class="fa "></i>评论</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Kops：更便捷的使用Kubernetes">
+            
+	            Kops：更便捷的使用Kubernetes
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Kubernetes/">Kubernetes</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Kops/">Kops</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/10</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>对于那些第一次接触Kubernetes（通常被称为k8s）并且想独自运行他们自己的第一个pods，services和deployments的人来说，通常存在很多的指南，例如可以使用Minikube在他们自己的电脑上设置和安装k8s。这也被认为是初次接触Kubernetes时的一种比较好的方式，到最后，这些文章会介绍如何将他们的应用栈发布到生产环境中。通常运行在一个类似Google Cloud Platform（GCP）或者Amazon Web Services（AWS）的云环境中可能会更利于使用kops。</p>
+<h3 id="介绍一下Kops"><a href="#介绍一下Kops" class="headerlink" title="介绍一下Kops"></a>介绍一下Kops</h3><p>Kops</p>
+<p>被描述为“用最容易的方式启动和运行生产级别的k8s集群” ，正好与Kelsey Hightower的文章 “</p>
+<p>Kubernetes the Hard Way</p>
+<p>”相对。 相对而言，我建议如果你想更倾向于使用，或想更好地了解使用k8s的容器编排，那么就应该尝试一下该教程，并在设置过程中执行每一个步骤。</p>
+<p>虽然用户创建Kubernetes的高可用性集群的过程经常会被认为是“困难的方式”，但是kops可以将大部分流程自动化。它将执行至少8个任务，这其中包括在集群中创建子网和DHCP参数，自动分组你的主节点和工作节点，为这些节点读取配置文件信息， IAM定义和创建属于你的实例的EBS卷，进行网络设置安全组的配置。</p>
+<h3 id="安装Kops和创建一个集群"><a href="#安装Kops和创建一个集群" class="headerlink" title="安装Kops和创建一个集群"></a>安装Kops和创建一个集群</h3><p>使用本教程，首先需要在AWS上</p>
+<p>创建一个账户</p>
+<p>，然后安装</p>
+<p>AWS CLI</p>
+<p>。同样你也可以安装kops在你自己的机器上。针对MacOS的用户，可以使用Homebrew：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew update &amp;&amp; brew install kops</span><br></pre></td></tr></table></figure>
+<p>针对Linux用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/kubernetes/kops/releases/download/1.6.1/kops-linux-amd64</span><br><span class="line">$ chmod +x kops-linux-amd64</span><br><span class="line">$ mv kops-linux-amd64 /usr/local/bin/kops</span><br></pre></td></tr></table></figure>
+<p>现在，我们将基于AWS Route53 DNS服务使用k8s来创建一个子域名。我使用的子域名是 kubernetes.mydomain.com，并且创建了一个主机区域：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws route53 create-hosted-zone --name kubernetes.mydomain.com --caller-reference 1</span><br></pre></td></tr></table></figure>
+<p>这将返回关于主机区域的信息，包括域名服务器的DelegationSet.。我选择了.com作为顶级域名，并且输入我们的域名注册为NS记录。</p>
+<p>我们同样需要创建一个S3存储，使kops可以为我们的集群存储配置信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aws s3 mb s3://clusters.kubernetes.mydomain.com</span><br></pre></td></tr></table></figure>
+<p>现在，如果你只控制一个集群，我们应该在你的当前shell环境或者你的bash设置中声明一个变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ export KOPS_STATE_STORE=s3://clusters.kubernetes.mydomain.com</span><br></pre></td></tr></table></figure>
+<p>酷！我们已经准备好配置和运行集群：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kops create cluster --zones=us-west-2c us-west-2c.kubernetes.mydomain.com</span><br></pre></td></tr></table></figure>
+<p>你也可以指定特殊的参数例如使用–network-cidr来设置子网参数，或者使用—vpc参数来设置你的AWS VPC。</p>
+<h3 id="使Kops开始工作"><a href="#使Kops开始工作" class="headerlink" title="使Kops开始工作"></a>使Kops开始工作</h3><p>当一切都可以脚本化和自动化操作时，可以在不需要任何输入的情况下让Kops去执行这些任务。然而，如果你想去尝试自己做一些配置，通过”kops edit cluster $CLUSTER_NAME”命令，将会在你的电脑上打开Vim编辑器，允许你去编辑那些用于创建集群的.yml配置文件。同上，使用命令”kops edit ig –name=$CLUSTER_NAME”将会设置节点的分组，或者使用”using kops edit ig –name=$CLUSTER_NAME $ZONE”命令来设置主节点的分组。</p>
+<p>你将会为现在的结果而感到高兴，因为现在不会使创建基础设施的费用超过你的预期，输入命令”kops update cluster”，并且使用参数–yes将会执行任务并且创建已经配置好的集群。再花费些时间将你的DNS记录指向其他的DNS服务器后，Route53将会响应请求的结果。当输入命令”kubectl get pods”后，可以看到你的k8s集群基础设施已经运行起来。当你看到没有找到任何资源时，你可以准备开始去创建deployments/replica sets。</p>
+<p>任何人如果第一次去尝试在GCP或者AWS创建k8s集群时，可以去看看这个文章 “</p>
+<p>Kubernetes the Hard Way</p>
+<p>”，能够获得一些关于在云中创建k8s集群的准确方法。这将会使一个新手去学习k8s中基于DNS的服务依赖或者基于Etcd的K/V存储。到那时，小小的失望和一时兴起之后会产生更多的兴趣去理解k8s，你可能会发现去使用kops的话可以简化流程，并尝试使用pod，服务配置和其他应用程序问题，而不是操作问题。</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/Docker/Docker-ENTRYPOINT和CMD：Dockerfile最佳实践/" class="next-post btn btn-default" title="Docker ENTRYPOINT和CMD：Dockerfile最佳实践">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Docker ENTRYPOINT和CMD：Dockerfile最佳实践</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍一下Kops"><span class="toc-text">介绍一下Kops</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Kops和创建一个集群"><span class="toc-text">安装Kops和创建一个集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使Kops开始工作"><span class="toc-text">使Kops开始工作</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
