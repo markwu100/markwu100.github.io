@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E8%B0%88%E8%B0%88%E6%BE%B3%E6%B4%B2%E6%89%BE%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</loc>
+    
+    <lastmod>2019-04-14T11:25:45.650Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E6%B0%B8%E8%BF%9C%E8%AE%B0%E5%BE%97-Always-Remember/</loc>
     
-    <lastmod>2019-04-11T01:28:09.923Z</lastmod>
+    <lastmod>2019-04-11T01:28:42.151Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2019-04-11T01:28:42.147Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>http://blog.ozairs.com/Kubernetes/Helm%EF%BC%9A%E5%BC%BA%E5%A4%A7%E7%9A%84Kubernetes%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</loc>
     
     <lastmod>2019-04-10T00:41:07.428Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2019-04-10T00:41:07.423Z</lastmod>
     
   </url>
   

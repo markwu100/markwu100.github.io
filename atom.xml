@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-04-11T01:28:09.923Z</updated>
+  <updated>2019-04-14T11:25:45.650Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>谈谈澳洲找工作心得</title>
+    <link href="http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E8%B0%88%E8%B0%88%E6%BE%B3%E6%B4%B2%E6%89%BE%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/"/>
+    <id>http://blog.ozairs.com/评论/谈谈澳洲找工作心得/</id>
+    <published>2019-04-14T09:34:05.000Z</published>
+    <updated>2019-04-14T11:25:45.650Z</updated>
+    
+    <content type="html"><![CDATA[<p>2月初登陆澳洲，在经历了忙忙碌碌2个多月的学习、求职生涯后，终于在本周，我和一家Local Consultancy公司签订了正式合同。虽然在海外找工作的这段周期并不算太长，但是这其中也并非一番风顺，所以在即将开启一段新的职业生涯的时候，也想对过往的这段经历做个总结。 </p><p><strong>曾经有人说：“失败的原因只有一个，就是自己放弃了。</strong>可以说，过去的这2个多月，也是我从长登澳洲-初涉职场-尝试失败-重新开始-再次失败-重复失败-失败失败再失败-直至最终完成临门一脚的过程。这期间，我想主要可以分成三个阶段： 文化隔阂阶段，初涉职场阶段，和最终实现目标阶段。</p><h4 id="一、文化隔阂期"><a href="#一、文化隔阂期" class="headerlink" title="一、文化隔阂期"></a>一、文化隔阂期</h4><p>2月初刚登陆澳洲的时候，其实自己还是满怀了希望和憧憬的。为了准备这次的登陆，前前后后我已经花了几年的时间在磨练自己的英语技能上。同时，为了能够提升自己的职业技能，逐步完成职业转型，去年我已经陆续通过了AWS SAA和SAP考试，对于时下如火如荼的Cloud Service基本也算是“门内汉”了。</p><p>但是，单单凭借几张业内职业资格PASS，显然是不足以叩开澳洲的Job Market的大门的。在经历了短暂的登陆海外的蜜月期之后，很快我就体会到了衣食无着，海投了N多简历，但是收到的Feedback寥寥，甚至有些过了很长时间，还收到了用人公司的婉拒邮件。这段时间，可以说对我的自信心是一种不断的蚕食。原本以后已经对澳洲足够的了解，对于在澳洲求职找工作做了充分的准备，但是倒头来却发现，在自己的技能、背景和澳洲的Job Market之间存在着无形的屏障，而随着时间的推移，这层屏障似乎变得越来越厚。</p><p>这期间，在某个周五的下午，突然从新西兰的Christchurch传来了恐怖袭击的噩耗，一名“土澳”极右主义分子，手持Machine Gun闯入Christchurch的一所清真寺进行疯狂扫射，导致了50名无辜穆斯林死亡。这一突如其来的消息，再加上到澳洲这段时间来所遇到的种种，让我越来越觉得自己对于西方社会，对于西方文化的了解是多么的匮乏，美好的理想和残酷的现实之间的距离是多么的遥远。那段时间，火车站的警察人数明显增多了，学校里的印度人，伊斯兰人都会不时地讨论这次的恐怖袭击，似乎大家对于这次的事件都心有余悸。我甚至一度相信，伊斯兰的极端分子将会采取报复心动。而行动的最佳地点，莫过于墨尔本的地标性建筑：Flinder Railway Startion了。</p><h4 id="二、初涉职场期"><a href="#二、初涉职场期" class="headerlink" title="二、初涉职场期"></a>二、初涉职场期</h4><p>虽然文化，习惯，语言的落差让我一度觉得很难适应，但好在在这段时期，我参加了墨尔本当地的OQP课程。说起OQP课程，也是之前透过知乎，得到的一些过来的人的推荐。正如推荐的前辈所说，这门课程对于我们这些技术移民的专业人士来说，帮助是全方面的。她给予了我们一个很好的“Handle”，是我们这些刚刚涉足澳洲，但是并不了解澳洲的Work Practice 的专业人士，有了一个很好的缓冲期，透过缓冲期，我们可以逐渐养成一些新的习惯，这些习惯也在日后帮助我们在求职、应聘、面试的过程中，变得更加的从容和自信。就像在结业之际最后一堂课上，老师给我们总结的，OQP对于我最显著的帮助来自以下几个方面：</p><h5 id="1、关于简历"><a href="#1、关于简历" class="headerlink" title="1、关于简历"></a>1、关于简历</h5><p>这里要特别感谢我OQP的负责老师Rosie，你是我来澳洲遇到的第一位教师，也是我非常尊敬的一份师长。你为我定义了澳洲教师这一职业的标准和要求，让我感受到了澳洲教师的责任心和专业的素质。在课程当中，Rosie对于我的简历给予了多次的指导和修改，使我有了一份在澳洲的Job Market拿的出手的“<strong>产品卖点说明书</strong>”，也帮我逐步拓展了澳洲公司的渠道，为日后的面试打下了良好的基础。</p><h5 id="2、关于人脉"><a href="#2、关于人脉" class="headerlink" title="2、关于人脉"></a>2、关于人脉</h5><p>在参加OQP课程之前，我在澳洲仅有的人脉可能就是我之前的初中同学兼好友毛毛了。但是透过OQP课程，她在潜移默化中，也帮我逐步积累了澳洲本地的人脉，包括课堂中认识的来自五湖四海（主要还是“印度”和“伊朗”）的兄弟姐妹，Linkedin上相应的猎头、中介、公司HR。虽然，在一开始的时候某些猎头看上去并不起眼，公司也不是十分的出名，但是有些确实在我求职的过程当中起到了十分重要的催化剂的作用。得益于OQP课程中一位同学的推荐，我结识了某猎头A，他们作为中间人，把我推荐给了猎头B，之后我作为猎头B的Cousultant，参加了澳洲4大银行之一的某家Bank的多轮面试，并顺利拿到了自己的第一个Offer（虽然最终因为其他原因，我没能和这家公司签约）。但是可以说OQP还是为我提供了很好的人脉资源，是我有机会能在看似无从下手的澳洲职场之中，找到一丝缝隙，并逐步将他扩展成了突破口。</p><h5 id="3、关于求职面试"><a href="#3、关于求职面试" class="headerlink" title="3、关于求职面试"></a>3、关于求职面试</h5><p>OQP的课程中，还有2个非常经典的环节，模拟面试问题和Mock Interview。特别是Mock Interview，有三位“面试官”参加，并且全程进行录像，最真实的还原面试现场的情形，使我们这些英语还不过关，对于澳洲的面试方式不十分习惯的攻城狮们多了一份实战的经验，帮助我们了解自身面试过程中存在的问题和不足，极大地积累了自信心，可以说也为我日后通关最终签订合同那家Consultancy的三轮面试，打下了坚实的基础。</p><h4 id="三、屡败屡战，最终顺利拿到Offer时期"><a href="#三、屡败屡战，最终顺利拿到Offer时期" class="headerlink" title="三、屡败屡战，最终顺利拿到Offer时期"></a>三、屡败屡战，最终顺利拿到Offer时期</h4><p>屈指算来，在过去的这2个多月的时间里，包括电面，Face-to-face interview，累计我也参加大大小小将近20场面试。其中，除了后期的几家公司面试外，之前的绝大多数面试都以失败告终，失败的原因也各式各样，有的是Need more technical（虽然我至今搞不明白如何才算够Technical），有的是无法在电话里给出命令行公式，有的是因为没有在面试的时候， 在白板上画出系统架构图，还有许多根本无从知晓失败原因的。。。尽管如此，随着时间的推移，虽然失败的次数还在增加，但是失败的效果确实越来越好，我也能感觉到自己在面试中的表现再不断的提升。</p><p>终于又到了某个星期五下午，和最终签约公司约了三面，是Team Leader和技术负责人面试环节。这次的环节也是让我看到了国外面试的专业性的地方。面试的全过程，两位面试官都是按照实现准备好的问题进行提问，并且记录下我的回答要点。问题方向涵盖了专业知识、团队协作、问题解决、自我意识、沟通技能等多个维度，可以说通过这样全方位的评估，基本可以得出一个对于候选人比较客观的评价了。</p><p>幸运的是，虽然某些技术环节我还有欠缺，但是Team Lead对我的表现还是比较认可，觉得我是个很好的Team Player，所以我最终顺利地拿到了这家Offer。</p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>还记得刚来澳洲的时候，对于自己的职业生涯，一切都还是个未知数，甚至一度十分的虚无缥缈。但就是在这段不稳定的时期内，我还是尝试借助各种外力，试图能够在飘忽不定的汪洋大海中，找寻前行的方向。很幸运，自己能够坚持既定的策略和方向，最终得以跨越非连续性。</p><p>明天将是我入职的第一天，似乎一切都又回到了我初登澳洲的起点。把祝福送给自己，希望自己能做到知行合一，在新的征途上把前行的道路越走越宽，越走越远。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;2月初登陆澳洲，在经历了忙忙碌碌2个多月的学习、求职生涯后，终于在本周，我和一家Local Consultancy公司签订了正式合同。虽然在海外找工作的这段周期并不算太长，但是这其中也并非一番风顺，所以在即将开启一段新的职业生涯的时候，也想对过往的这段经历做个总结。 &lt;/p
+      
+    
+    </summary>
+    
+      <category term="评论" scheme="http://blog.ozairs.com/categories/%E8%AF%84%E8%AE%BA/"/>
+    
+    
+      <category term="Jobs" scheme="http://blog.ozairs.com/tags/Jobs/"/>
+    
+  </entry>
+  
+  <entry>
     <title>永远记得- Always Remember</title>
     <link href="http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E6%B0%B8%E8%BF%9C%E8%AE%B0%E5%BE%97-Always-Remember/"/>
     <id>http://blog.ozairs.com/评论/永远记得-Always-Remember/</id>
     <published>2019-04-11T01:25:11.000Z</published>
-    <updated>2019-04-11T01:28:09.923Z</updated>
+    <updated>2019-04-11T01:28:42.151Z</updated>
     
     <content type="html"><![CDATA[<ul><li>Published on March 30, 2019</li><li>Francisco D’Souza Influencer</li><li>Executive Vice Chairman at Cognizant</li></ul><p>这个星期天是我作为Cognizant首席执行官的最后一天。星期一，Brian Humphries将接替我领导Cognizant的增长和成功的下一章。我知道Cognizant面临最好的日子，我对未来充满乐观。当我们大胆前进时，我希望我们永远不会忘记过去的教训 - 毕竟，这些教训使我们成为今天的我们。所以，在我作为首席执行官发给你的最后一封电子邮件中，我想我会在过去的25年中分享一些经验教训。</p><p><strong>前线; 不是会议室</strong> - 我们从未制定战略，做出决策或采取行动离前线太远。在像我们这样的竞争市场中，战斗是在战斗中取得胜利并且接近行动。永远不要陷入在“象牙塔”或会议室做出决定的陷阱。现实更接近实际。</p><p><strong>我们团结一致**</strong> - 我们的团队运动在执行方面很重要。我们互相依赖，相互支持。当我们中的任何一个人跌倒时，我们其他人都会选择那个人。彼此做正确的事情总是我们如何保持强大，每天将我们的A-game带到现场。</p><p><strong>道德和善良比以往任何时候都更重要</strong> <strong>-</strong>世界变得越来越复杂，社会似乎比以往任何时候都更加分裂。面对这种复杂性，我们始终首先将决策建立在我们核心价值观所描述的道德指南针上。这样做可以让我们以统一的目的行事。对彼此的善意和对待我们的核心价值观比以往任何时候都更重要。</p><p><strong>挑选最好的人 -</strong>我从我的老朋友兼同事Raj Mehta那里学到了这一课。Raj是一位杰出的人才开发者。他的理念是，如果我们每个人都雇用比我们小的人，那么我们就会迅速变得无关紧要。但如果我们每个人都雇用比我们更大的人，那么没有任何障碍太大而无法克服。</p><p><strong>未来第一</strong> - 未来总是比我们预期的要快。我们通过比竞争对手更快地拥抱未来来驾驭每一波技术，规模和复杂性。永远不要害怕未来。它会在这里比我们想象的更快，我们可以塑造它比过去更好！</p><p>祝大家好运！在接下来的几个月里，我将与Brian合作以确保顺利过渡。而且我会在场边为队友Cognizant加油！我们建立了一个对世界很重要的强国。这是超越我们所有人的目标和使命。向前！</p><p>【原文】</p><p>This Sunday is my last day as the CEO of Cognizant. On Monday, Brian Humphries will take over from me to lead Cognizant’s next chapter of growth and success. I know that the best days for Cognizant lie ahead and I have great optimism for our future. As we march boldly forward, I hope that we never forget the lessons of the past – which, after all, made us who we are today. So, in my last email to you as CEO, I thought I’d share a few lessons from the last 25 years.</p><p><strong>Front lines; not conference rooms</strong> – We never developed strategy, made decisions or took action too far from the front lines. In competitive markets like ours, battles are fought and won close to the action. Never fall into the trap of making decisions in the “ivory tower” or conference room. Reality is much closer to the ground.</p><p><strong>United we stand strong</strong> – Ours is a team sport where execution matters. We rely on each other and stand by one another. When any one of us falls, the rest of us pick that person up. Doing the right thing by each other always is how we stay strong and bring our A-game to the field every day.</p><p><strong>Morals and kindness matter more than ever</strong> <strong>–</strong> The world is becoming more complicated and societies seem more divided than ever. In the face of this complexity, we have always based our decisions first and foremost on the moral compass described in our core values. Doing so allows us to act with unified purpose. Kindness to one another and living our core values matters more than ever.</p><p><strong>Pick the best people –</strong> I learned this lesson from my long-time friend and colleague Raj Mehta. Raj is an outstanding people developer. He lives the philosophy that if each of us hires people who are smaller than we are, then we rapidly become irrelevant. But if each of us hires people who are bigger than we are, then no obstacle is too large to overcome.</p><p><strong>Future first</strong> – The future always comes faster than we expect. We navigated each wave of technology, scale, and complexity by always embracing the future faster than the competition. Never fear the future. It will be here faster than we think, and we can shape it to be better than the past!</p><p>Good luck to all of you! Over the coming months, I’ll be working with Brian to ensure a smooth transition. And I’ll be cheering team Cognizant from the sidelines! We’ve built a powerhouse that matters to the world. That’s a purpose and mission that transcends all of us. Onward!</p>]]></content>
     
@@ -509,31 +534,6 @@
     
     
       <category term="Splunk" scheme="http://blog.ozairs.com/tags/Splunk/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes实战应用</title>
-    <link href="http://blog.ozairs.com/Kubernetes/Kubernetes%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/"/>
-    <id>http://blog.ozairs.com/Kubernetes/Kubernetes实战应用/</id>
-    <published>2019-03-20T22:35:07.000Z</published>
-    <updated>2019-04-01T11:24:23.034Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="一、平台构建"><a href="#一、平台构建" class="headerlink" title="一、平台构建"></a>一、平台构建</h3><p>1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh</p><p><a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md" target="_blank" rel="noopener">https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md</a></p><h3 id="二、集群部署命令"><a href="#二、集群部署命令" class="headerlink" title="二、集群部署命令"></a>二、集群部署命令</h3><ol><li><p>启动kubenetes</p><p>minikube start</p><p>运行应用：kubectl run helloworld –image=karthequian/helloworld –port=80</p></li><li><p>查看部署，资源，pods</p><p>kubectl get deployments</p><p>kubectl get rs</p><p>kuebectl get pods</p></li><li><p>部署应用服务</p><p>kubectl expose deployment helloworld –type=NodePort</p></li><li><p>通过文件方式同时部署服务和Deployment</p><p>kubectl create -f deploy-all.yml</p></li><li><p>查看服务</p><p>kubectl get services</p></li><li><p>扩展集群服务器</p><p>kubectl scale –replicas=3 deploy/helloworld</p></li><li><p>启动应用</p><p>minikube service helloworld （可以通过Web浏览器进行查看）</p></li><li><p>查看所有部署服务</p><p>minikube get all</p></li><li><p>将部署服务导出到YAML文件</p><p>kubectl get deploy/helloworld -o yaml</p></li><li><p>查看服务器集群状态： kubectl cluster-info</p></li><li><p>定位故障</p><p>kubectl describe deploy/depolyname</p><p>kubectl describe po/podname</p><p>kubectl log podname</p><p>登陆到服务节点：kubectl exec -it podname /bin/bash</p><p>如果单节点存在多个Container，登陆到某个服务节点：<code>kubectl exec -it -c containername podname /bin/bash</code></p><p>查看所有服务进程：<code>ps -ef</code></p></li></ol><h3 id="三、图形化管理工具"><a href="#三、图形化管理工具" class="headerlink" title="三、图形化管理工具"></a>三、图形化管理工具</h3><ol><li><p>查看minikube 插件</p><p><code>minikube addons list</code></p><p><code>minikube addon enable heapester</code></p></li></ol><h3 id="四、如何配置数据"><a href="#四、如何配置数据" class="headerlink" title="四、如何配置数据"></a>四、如何配置数据</h3><ol><li><p>To create a configmap for this literal type <code>kubectl create configmap logger --from-literal=log_level=debug</code></p></li><li><p>To see all your configmaps: <code>kubectl get configmaps</code></p></li><li><p>To read the value in the logger configmap: <code>kubectl get configmap/logger -o yaml</code></p></li><li><p>To edit the value, we can run <code>kubectl edit configmap/logger</code></p></li></ol><p>`</p><h3 id="五、如何配置应用密钥"><a href="#五、如何配置应用密钥" class="headerlink" title="五、如何配置应用密钥"></a>五、如何配置应用密钥</h3><ol><li><p>To create a secret: <code>kubectl create secret generic apikey --from-literal=api_key=123456789</code></p></li><li><p>Notice that we can’t read the value of the secret directly:<br><code>kubectl get secret apikey -o yaml</code></p></li><li><p>Understand how to add a secret to a deployment</p><p>​         Adding a secret to a deployment is similar to what we did for configmaps. You can add a secret to the env portion, and start up the deployment with:<br><code>kubectl create -f secretreader-deployment.yaml</code></p></li></ol><h3 id="六、如何创建任务"><a href="#六、如何创建任务" class="headerlink" title="六、如何创建任务"></a>六、如何创建任务</h3><h3 id="How-to-run-jobs"><a href="#How-to-run-jobs" class="headerlink" title="How to run jobs"></a>How to run jobs</h3><p>Jobs are a construct that run a pod once, and then stop. However, unlike pods in deployments, the output of the job is kept around until you decide to remove it.</p><p>Running a job is similar to running a deployment, and we can create this by <code>kubectl create -f simplejob.yaml</code></p><p>To see the output of the job: <code>kubectl get jobs</code></p><p>You can find the pod that ran by doing a <code>kubectl get pods --all-pods</code>, and then get the logs from it as well.</p><h3 id="How-to-run-cron-jobs"><a href="#How-to-run-cron-jobs" class="headerlink" title="How to run cron jobs"></a>How to run cron jobs</h3><p>Cron jobs are like jobs, but they run periodically.</p><p>Start your cron by running <code>kubectl create -f cronjob.yaml</code></p><p>We can use the cronjob api to view your cronjobs: <code>kubectl get cronjobs</code>. It adds the last schedule date</p><h3 id="七、如何创建DaemonSet"><a href="#七、如何创建DaemonSet" class="headerlink" title="七、如何创建DaemonSet"></a>七、如何创建DaemonSet</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;一、平台构建&quot;&gt;&lt;a href=&quot;#一、平台构建&quot; class=&quot;headerlink&quot; title=&quot;一、平台构建&quot;&gt;&lt;/a&gt;一、平台构建&lt;/h3&gt;&lt;p&gt;1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Serv
-      
-    
-    </summary>
-    
-      <category term="Kubernetes" scheme="http://blog.ozairs.com/categories/Kubernetes/"/>
-    
-    
-      <category term="Istio" scheme="http://blog.ozairs.com/tags/Istio/"/>
     
   </entry>
   
