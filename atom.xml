@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-04-14T11:50:08.778Z</updated>
+  <updated>2019-04-22T03:30:47.380Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://blog.ozairs.com/uncategorized/Azure%E5%85%A5%E9%97%A8/"/>
+    <id>http://blog.ozairs.com/uncategorized/Azure入门/</id>
+    <published>2019-04-22T03:28:48.343Z</published>
+    <updated>2019-04-22T03:30:47.380Z</updated>
+    
+    <content type="html"><![CDATA[<p>title: Azure入门<br>date: 2019-04-22 13:28:48<br>tags: Azure<br>categories: Cloud Service</p><p>Azure 有两种无服务器计算实现：</p><ul><li><strong>Azure Functions</strong>：可以执行几乎任何现代语言的代码</li><li>Azure 逻辑应用：在基于 Web 的设计器中设计，可执行由 Azure 服务触发的逻辑而无需编写代码。</li></ul><h2 id="Azure-Functions"><a href="#Azure-Functions" class="headerlink" title="Azure Functions"></a>Azure Functions</h2><p>若只关心运行服务的代码，而不关心基础平台或基础结构，Azure Functions 是理想选择。 需要执行工作以响应事件（通常通过 REST 请求、计时器或来自其他 Azure 服务的消息），并且该工作可在几秒钟或更短时间内快速完成时，通常会用到它们。</p><p>Azure Functions 会自动按需缩放，所以当需求变化时，它们是可靠的选择。 例如，你可能收到来自用于监控运输车队的 IoT 解决方案的消息。 可能会在工作时间内收到更多数据。</p><p>使用基于 VM 的方法将产生成本，即使 VM 处于空闲状态。 借助函数，Azure 会在触发代码时运行代码，并在函数完成时自动释放资源。 在此模型中，只需为函数运行时使用的 CPU 时间付费。</p><p>此外，Azure Functions 可以是无状态的（默认值），其行为就像每次响应事件时都要重新启动一样；也可以是有状态的（称为“Durable Functions”），其中通过函数传递上下文来跟踪之前的活动。</p><h2 id="Azure-逻辑应用"><a href="#Azure-逻辑应用" class="headerlink" title="Azure 逻辑应用"></a>Azure 逻辑应用</h2><p>Azure 逻辑应用类似于函数 - 两者都使你能够基于事件触发逻辑。 Functions 执行代码时，逻辑应用执行从预定义逻辑块构建的工作流。 具体而言，它们旨在将业务流程自动化。</p><p>可以在 Azure 门户或 Visual Studio 中使用可视化设计器创建逻辑应用工作流。 工作流将保留为具有已知工作流架构的 JSON 文件。</p><p>Azure 提供了 200 多个不同的连接器和处理块与不同服务交互 - 包括最受欢迎的企业应用。 如果未涵盖需要与之进行交互的服务，还可以构建自定义连接器和工作流步骤。 然后使用可视化设计器将连接器和块链接在一起，通过工作流传递数据进行自定义处理 - 通常不需要编写任何代码。</p><p>例如，假设 ZenDesk 收到一个票证。 你可以：</p><ol><li>使用认知服务检测消息的意图</li><li>在 Sharepoint 中创建一个项目来跟踪问题</li><li>如果客户不在数据库中，则将其添加到 Dynamics 365 CRM 系统</li><li>发送跟进电子邮件以确认他们的请求</li></ol><p>所有这些都可以在可视化设计器中进行设计，这让看到逻辑流变得非常容易，因而是业务分析师角色的理想选择。</p><h2 id="Azure-Functions与Azure逻辑应用"><a href="#Azure-Functions与Azure逻辑应用" class="headerlink" title="Azure Functions与Azure逻辑应用"></a>Azure Functions与Azure逻辑应用</h2><p>函数和逻辑应用都可以创建复杂的业务流程。 业务流程是函数或步骤的集合，将执行这些函数或步骤来完成复杂任务。 使用 Azure Functions，可以编写代码来完成每个步骤，使用逻辑应用，可以使用 GUI 来定义操作以及它们之间的关联方式。</p><p>在构建业务流程、从逻辑应用中调用函数以及从函数中调用逻辑应用时，可以混合使用各种服务。 下面是两者之间的一些常见差异。</p><table><thead><tr><th>-</th><th>Functions</th><th>逻辑应用</th></tr></thead><tbody><tr><td>状态</td><td>通常是无状态的，但 Durable Functions 会提供状态</td><td>有状态</td></tr><tr><td>开发</td><td>代码优先（命令性）</td><td>设计器优先（声明性）</td></tr><tr><td>连接</td><td>有关十多个内置的绑定类型，为自定义绑定编写代码</td><td>大型连接器集合、适用于 B2B 方案的 Enterprise Integration Pack、构建自定义连接器</td></tr><tr><td>操作</td><td>每个活动都是一个 Azure 函数；为活动函数编写代码</td><td>现成操作的大型集合</td></tr><tr><td>监视</td><td>Azure Application Insights</td><td>Azure 门户、Log Analytics</td></tr><tr><td>管理</td><td>REST API、Visual Studio</td><td>Azure 门户、REST API、PowerShell、Visual Studio</td></tr><tr><td>执行上下文</td><td>可以在本地或在云中运行</td><td>只能在云中运行。</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;title: Azure入门&lt;br&gt;date: 2019-04-22 13:28:48&lt;br&gt;tags: Azure&lt;br&gt;categories: Cloud Service&lt;/p&gt;
+&lt;p&gt;Azure 有两种无服务器计算实现：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Az
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>谈谈澳洲找工作心得</title>
@@ -505,35 +529,6 @@
     
     
       <category term="ECS" scheme="http://blog.ozairs.com/tags/ECS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Splunk入门手册</title>
-    <link href="http://blog.ozairs.com/Big-Data/Splunk%E5%85%A5%E9%97%A8%E6%89%8B%E5%86%8C/"/>
-    <id>http://blog.ozairs.com/Big-Data/Splunk入门手册/</id>
-    <published>2019-03-22T04:07:41.000Z</published>
-    <updated>2019-03-22T04:20:08.795Z</updated>
-    
-    <content type="html"><![CDATA[<p>一、关于搜索不同时间段的记录</p><p>*earliest=-24h@h latest=-12h@h</p><p>二、关于搜索不同目录的记录</p><p>*source=”/var/log/ansible.log” </p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一、关于搜索不同时间段的记录&lt;/p&gt;
-&lt;p&gt;*earliest=-24h@h latest=-12h@h&lt;/p&gt;
-&lt;p&gt;二、关于搜索不同目录的记录&lt;/p&gt;
-&lt;p&gt;*source=”/var/log/ansible.log” &lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="Big Data" scheme="http://blog.ozairs.com/categories/Big-Data/"/>
-    
-    
-      <category term="Splunk" scheme="http://blog.ozairs.com/tags/Splunk/"/>
     
   </entry>
   

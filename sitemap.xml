@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/uncategorized/Azure%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2019-04-22T03:30:47.380Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E8%B0%88%E8%B0%88%E6%BE%B3%E6%B4%B2%E6%89%BE%E5%B7%A5%E4%BD%9C%E5%BF%83%E5%BE%97/</loc>
     
     <lastmod>2019-04-14T11:50:08.778Z</lastmod>
@@ -9,16 +16,16 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E6%B0%B8%E8%BF%9C%E8%AE%B0%E5%BE%97-Always-Remember/</loc>
+    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
     
-    <lastmod>2019-04-11T01:28:42.151Z</lastmod>
+    <lastmod>2019-04-14T11:25:59.334Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/uncategorized/Git%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <loc>http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E6%B0%B8%E8%BF%9C%E8%AE%B0%E5%BE%97-Always-Remember/</loc>
     
-    <lastmod>2019-04-11T01:28:42.147Z</lastmod>
+    <lastmod>2019-04-11T01:28:42.151Z</lastmod>
     
   </url>
   
@@ -422,14 +429,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/categories/index.html</loc>
+    <loc>http://blog.ozairs.com/tags/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/tags/index.html</loc>
+    <loc>http://blog.ozairs.com/categories/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
