@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Azure/Azure%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2019-04-22T04:10:39.811Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.ozairs.com/Azure/Azure-Cosmos-DB%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2019-04-22T04:10:23.802Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/AWS/AWS%E4%BA%91%E4%B8%8A%E7%9A%84Puppet-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8%E5%8F%82%E8%80%83%E9%83%A8%E7%BD%B2/</loc>
     
     <lastmod>2019-04-22T03:33:52.467Z</lastmod>
