@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2019-04-22T10:11:10.479Z</updated>
+  <updated>2019-04-25T10:24:24.445Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gruntwork 2018年回顾</title>
+    <link href="http://blog.ozairs.com/%E8%A7%82%E7%82%B9/Gruntwork-2018%E5%B9%B4%E5%9B%9E%E9%A1%BE/"/>
+    <id>http://blog.ozairs.com/观点/Gruntwork-2018年回顾/</id>
+    <published>2019-04-25T10:19:35.000Z</published>
+    <updated>2019-04-25T10:24:24.445Z</updated>
+    
+    <content type="html"><![CDATA[<p>在Gruntwork，我们在冬季关闭了几个星期，让每个人都回家，与家人共度时光，庆祝节日，放松，并花些时间思考。我发现这是暂停和思考这一年的好时机。</p><p>很容易迷失在细节中，为眼前的失败而感到到沮丧，并沉迷于没有完成的事情，所以你经常忘记环顾四周，看看你到底有多远。今年，我们开始在Gruntwork开始写一篇年度评论博客文章作为一种停止方式的传统，花一些时间欣赏去年发生的一切，并开始考虑明年。</p><h4 id="该团队于2018年"><a href="#该团队于2018年" class="headerlink" title="该团队于2018年"></a>该团队于2018年</h4><p>我们从2018年开始只有3人; 我们今年结束了9名全职员工和3名员工。作为一家<a href="https://blog.gruntwork.io/how-we-built-a-distributed-self-funded-family-friendly-profitable-startup-93635feb5ace" target="_blank" rel="noopener">100％的自助公司</a>，这是一个非凡的增长率。此外，无论他们在世界的哪个地方，包括英国，德国，芬兰，尼日利亚和整个美国，我们都通过雇用我们能找到的最有才能的人来充分利用成为<a href="https://blog.gruntwork.io/how-we-built-a-distributed-self-funded-family-friendly-profitable-startup-93635feb5ace" target="_blank" rel="noopener">100％分布式公司</a>的优势（有关所有详细信息，请参阅我们的<a href="https://gruntwork.io/about/" target="_blank" rel="noopener">关于页面 </a>这就是现代公司的样子：</p><p><img src="/观点/Gruntwork-2018年回顾/1.png" alt="img"></p><p>能够每天与这样的团队一起工作，我感到非常荣幸和非常幸运。该团队拥有丰富的经验，从初创公司到各行各业的财富500强公司，包括医疗保健，旅游，电信，基础设施管理，社交网络，FinTech，EdTech，零售，游戏等等。最重要的是，他们是善良，诚实，有趣的人。</p><h4 id="公司成立于2018年"><a href="#公司成立于2018年" class="headerlink" title="公司成立于2018年"></a>公司成立于2018年</h4><p>我们在2018年达到了一个重要的里程碑：<a href="https://blog.gruntwork.io/how-we-got-to-1-million-in-annual-recurring-revenue-with-0-in-fundraising-340ed2b4e158" target="_blank" rel="noopener">年度经常性收入100万美元（全年</a>总收入约160万美元）。我们以筹集资金0美元和债务0美元来实现这一里程碑，我们实现了盈利，为每个人支付了不错的薪水和奖金，并且增长迅速。</p><p>今年我们的用户群增长了近4倍，我们有幸与世界上一些最大的品牌合作。我们已经完成了所有这一切，只有2人的销售团队，Josh和我，Josh加紧处理大部分销售工作。</p><p>我为我们的营销方式感到特别自豪，这几乎完全包括制作高质量的内容 - 特别是博客文章，演讲和开源代码 - 向全世界讲述DevOps。以下是一些亮点：</p><ul><li><a href="https://blog.gruntwork.io/5-lessons-learned-from-writing-over-300-000-lines-of-infrastructure-code-36ba7fadeac1" target="_blank" rel="noopener">编写超过300,000行基础设施代码的5个经验教训</a></li><li><a href="https://blog.gruntwork.io/a-comprehensive-guide-to-authenticating-to-aws-on-the-command-line-63656a686799" target="_blank" rel="noopener">在命令行上对AWS进行身份验证的综合指南</a></li><li><a href="https://blog.gruntwork.io/the-production-readiness-checklist-for-aws-c5a3b5a3a8e5" target="_blank" rel="noopener">AWS的生产准备清单</a></li><li>我们还在2018年发布了一些开源项目，我将在下一节中讨论。</li></ul><h4 id="我们在2018年建造的"><a href="#我们在2018年建造的" class="headerlink" title="我们在2018年建造的"></a>我们在2018年建造的</h4><p>在2018年，我们写了很多代码。以下是一些亮点（您可以在我们的<a href="https://blog.gruntwork.io/tagged/gruntwork-newsletter" target="_blank" rel="noopener">月刊中</a>获得所有血腥细节）：</p><ul><li><strong>Gruntwork Houston：</strong>我们推出了<a href="https://blog.gruntwork.io/gruntwork-houston-a-fundamentally-better-devops-experience-is-now-in-beta-3a4603852db1" target="_blank" rel="noopener">Gruntwork Houston</a>的第一个版本！私有测试版提供了一种更好的方式来处理AWS上的身份验证，允许您使用现有的身份提供商（例如，ADFS，Google，Okta等）通过Web，命令行，VPN和SSH访问您的AWS账户。私有alpha提供了一个简单的Web界面，您的开发团队可以使用它来部署和管理基础架构，而在幕后，Web界面以及它如何管理基础架构完全由您的Ops团队定义和控制为代码。</li><li><strong>Kubernetes</strong>：我们在<a href="https://gruntwork.io/infrastructure-as-code-library/" target="_blank" rel="noopener">基础架构中</a>添加了一组模块<a href="https://gruntwork.io/infrastructure-as-code-library/" target="_blank" rel="noopener">作为代码库，</a>以使用EKS <a href="https://blog.gruntwork.io/gruntwork-newsletter-december-2018-17971f237bf1" target="_blank" rel="noopener">在AWS中部署和管理Kubernetes集群</a>。</li><li><strong>ELK堆栈</strong>：我们创建了一组模块，用于<a href="https://blog.gruntwork.io/gruntwork-newsletter-august-2018-4654d6064e65" target="_blank" rel="noopener">在AWS上运行您自己的Elasticsearch，Logstash和Kibana（ELK）集群</a>。</li><li><strong>InfluxDB企业版</strong>：我们与InfluxData团队合作，构建和开源一组模块，以<a href="https://blog.gruntwork.io/get-up-and-running-with-influxdb-enterprise-on-aws-ff4dc79f6305" target="_blank" rel="noopener">在AWS上运行InfluxDB企业</a>。</li><li><strong>Couchbase</strong>：我们与Couchbase团队合作，构建并开源了一组模块，以<a href="https://blog.gruntwork.io/get-couchbase-running-on-aws-in-5-minutes-732d3be36784" target="_blank" rel="noopener">在AWS上运行Couchbase和Sync Gateway</a>。</li><li><strong>Lambda + API网关</strong>：我们创建了一组模块，使您可以<a href="https://blog.gruntwork.io/gruntwork-newsletter-march-2018-37dbd051607c#c013" target="_blank" rel="noopener">使用AWS Lambda，API Gateway和Swagger构建无服务器的Web应用程序</a>。</li><li><strong>ECS改进</strong>：我们更新了ECS模块以支持<a href="https://blog.gruntwork.io/gruntwork-newsletter-may-2018-c0323ab4d5a4#3a01" target="_blank" rel="noopener">Fargate</a>，<a href="https://blog.gruntwork.io/gruntwork-newsletter-september-2018-29b646feba56#2590" target="_blank" rel="noopener">服务发现</a>，<a href="https://blog.gruntwork.io/gruntwork-newsletter-september-2018-29b646feba56#ae4f" target="_blank" rel="noopener">守护程序服务</a>和<a href="https://blog.gruntwork.io/gruntwork-newsletter-november-2018-256cf63ed123#42cc" target="_blank" rel="noopener">部署检查</a>。</li><li><strong>NLB</strong>：我们添加了模块来<a href="https://blog.gruntwork.io/gruntwork-newsletter-april-2018-1f90b51effe1#955f" target="_blank" rel="noopener">部署和管理亚马逊的网络负载均衡器（NLB）</a>。</li><li><strong>Terratest</strong>：我们<a href="https://blog.gruntwork.io/open-sourcing-terratest-a-swiss-army-knife-for-testing-infrastructure-code-5d883336fcd5" target="_blank" rel="noopener">开源Terratest</a>，我们用于测试基础设施代码的瑞士军刀，并对该库进行了大量改进，包括添加对<a href="https://blog.gruntwork.io/gruntwork-newsletter-september-2018-29b646feba56#aeaa" target="_blank" rel="noopener">Google Cloud</a>，<a href="https://blog.gruntwork.io/gruntwork-newsletter-december-2018-17971f237bf1#9596" target="_blank" rel="noopener">Kubernetes</a>，<a href="https://blog.gruntwork.io/gruntwork-newsletter-november-2018-256cf63ed123#2ea4" target="_blank" rel="noopener">日志解析</a>和<a href="https://blog.gruntwork.io/gruntwork-newsletter-september-2018-29b646feba56#aeaa" target="_blank" rel="noopener">日志文件收集的支持</a>。</li><li><strong>Terragrunt</strong>：我们做了很多的改进<a href="https://github.com/gruntwork-io/terragrunt" target="_blank" rel="noopener">Terragrunt</a>，我们的开源Terraform包装，包括增加支持<a href="https://blog.gruntwork.io/gruntwork-newsletter-october-2018-594decf5eb2e#f953" target="_blank" rel="noopener">的错误重试</a>，<a href="https://blog.gruntwork.io/gruntwork-newsletter-april-2018-1f90b51effe1#c045" target="_blank" rel="noopener">前/挂机后</a>，和许多改进的<a href="https://blog.gruntwork.io/gruntwork-newsletter-july-2018-7354835132f8#7681" target="_blank" rel="noopener">init命令和缓存</a>。</li><li><strong>cloud-nuke</strong>：<a href="https://blog.gruntwork.io/cloud-nuke-how-we-reduced-our-aws-bill-by-85-f3aced4e5876" target="_blank" rel="noopener">我们开源的cloud-nuke</a>是一个用于删除AWS账户中所有资源的CLI工具，我们用它来大大减少用于自动化测试的账户的AWS账单。</li><li><strong>bash-commons</strong>：<a href="https://blog.gruntwork.io/gruntwork-newsletter-may-2018-c0323ab4d5a4#784d" target="_blank" rel="noopener">我们开源bash-commons</a>，一组可重复使用的bash实用程序，包括文档和自动化测试。</li><li><strong>Redis</strong>：我们<a href="https://blog.gruntwork.io/gruntwork-newsletter-april-2018-1f90b51effe1" target="_blank" rel="noopener">重构了我们的Redis模块，</a>以使用最新的Terraform资源，并增加了对身份验证，加密和分片的支持。</li><li><strong>还有更多</strong>：我们对AWS和GCP的<a href="https://github.com/hashicorp/terraform-aws-consul/" target="_blank" rel="noopener">Consul</a>和<a href="https://github.com/hashicorp/terraform-aws-vault/" target="_blank" rel="noopener">Vault</a>模块进行了大量更新（增加了对Consul和Vault Enterprise，Auto Pilot，Auto Unseal和Auth方法的支持），更新了所有模块以与<a href="https://blog.gruntwork.io/gruntwork-newsletter-feburary-2018-891fa0e6cbd9" target="_blank" rel="noopener">Terraform 0.11配合使用</a>，添加了<a href="https://blog.gruntwork.io/gruntwork-newsletter-may-2018-c0323ab4d5a4#ce71" target="_blank" rel="noopener">ip-lockdown模块</a>可以在使用IAM角色时显着提高安全性，还有更多。</li></ul><h4 id="期待2019年"><a href="#期待2019年" class="headerlink" title="期待2019年"></a>期待2019年</h4><p>我们对明年非常兴奋。以下是我们所关注的内容：</p><ul><li><strong>Gruntwork Houston：</strong>休斯顿是2019年我们的首要任务，我们将尽可能地<strong>加大</strong>开发力度，因为我们相信它提供了一个从根本上更好的DevOps体验。最初，我们将继续与私人测试版和阿尔法客户一起测试休斯顿（如果您有兴趣，请发送电子邮件至<a href="mailto:info@gruntwork.io" target="_blank" rel="noopener">info@gruntwork.io</a>），但只要我们确定了用户体验，我们就会将休斯顿公之于众。给大家。</li><li><strong>Google Cloud和Azure：</strong> 2019年，我们将扩展Gruntwork <a href="https://gruntwork.io/infrastructure-as-code-library/" target="_blank" rel="noopener">Infrastructure作为代码库</a>，为Google Cloud和Azure提供一流的支持！今天，图书馆主要关注AWS，但在明年，我们可以在大约一天内将您的整个基础架构定义为任何（或所有！）主要公共云的代码！我们正在寻找与我们合作的公司，所以如果您有兴趣，请发送电子邮件至<a href="mailto:info@gruntwork.io" target="_blank" rel="noopener">info@gruntwork.io</a>！</li><li><strong>AWS：</strong>我们当然也将继续投资我们的AWS产品，包括改善使用Lambda和API Gateway构建无服务器应用程序的端到端体验，对CloudWatch监控，警报和日志聚合工具的主要更新，添加ECS集群调整大小/重新部署工具，更新所有模块以支持Amazon Linux 2和systemd，将Kafka模块更新为Kafka 2.x，改进ZooKeeper模块的运行状况检查等等。</li><li><strong>Kubernetes：</strong>我们将使用可重复使用的模块扩展我们的Kubernetes代码，用于定义和管理您的Kubernetes服务作为代码，一流（安全！）Helm / Tiller支持，以及<a href="https://gruntwork.io/reference-architecture/" target="_blank" rel="noopener">Gruntwork参考架构</a>中的一流支持。此外，我们将浏览现有的基于VM的模块<a href="https://gruntwork.io/infrastructure-as-code-library/" target="_blank" rel="noopener">库</a>，并开始添加在Kubernetes上运行的类似基于Docker的模块。这将允许公司使用Kubernetes定义和管理其大部分基础架构，使其基础架构更加一致，可在云之间移植，并且更易于测试。</li><li><strong>支持和维护：</strong>公司成为Gruntwork客户的主要原因是，我们不仅可以访问<a href="https://gruntwork.io/infrastructure-as-code-library/" target="_blank" rel="noopener">基础设施作为代码库</a>中的300,000多个经过实战检验的代码，还可以访问该库的持续支持和维护。我们将在2019年继续这样做，包括更新整个库以支持和利用<a href="https://www.hashicorp.com/blog/terraform-0-1-2-preview" target="_blank" rel="noopener">Terraform 0.12中</a>的所有更改，添加对新的最佳实践的支持，并修复我们发现的任何错误。</li><li><strong>战略计划：</strong>我们将扩展Gruntwork合作伙伴计划，使我们的客户更容易找到DevOps顾问和托管服务提供商，与熟悉Gruntwork代码的人员合作，并使我们的合作伙伴更轻松地使用和转售Gruntwork Infrastructure作为代码库作为自己产品的一部分。我们还将对<a href="https://gruntwork.io/" target="_blank" rel="noopener">Gruntwork网站</a>进行重大更改，包括提供试用期以及使订阅和用户管理完全自助服务和自动化。</li><li><strong>我们正在接受请求！</strong>在Gruntwork，我们没有在真空中提出我们的路线图，并在洞穴中消失了6个月来构建它。我们在Gruntwork建立的每一件事都是客户提出并付费的事情（看<a href="https://blog.gruntwork.io/how-we-built-a-distributed-self-funded-family-friendly-profitable-startup-93635feb5ace#d592" target="_blank" rel="noopener">我们如何引导公司</a>）。如果您希望我们在2019年建立一些不在列表中的东西，我们提供<a href="https://gruntwork.io/custom-module-development/" target="_blank" rel="noopener">定制模块开发</a>，请发送电子邮件至<a href="mailto:info@gruntwork.io" target="_blank" rel="noopener">info@gruntwork.io</a>告诉我们您的需求！</li></ul><p>2018年是地狱般的一年，预祝2019年一帆风顺！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在Gruntwork，我们在冬季关闭了几个星期，让每个人都回家，与家人共度时光，庆祝节日，放松，并花些时间思考。我发现这是暂停和思考这一年的好时机。&lt;/p&gt;
+&lt;p&gt;很容易迷失在细节中，为眼前的失败而感到到沮丧，并沉迷于没有完成的事情，所以你经常忘记环顾四周，看看你到底有多远
+      
+    
+    </summary>
+    
+      <category term="观点" scheme="http://blog.ozairs.com/categories/%E8%A7%82%E7%82%B9/"/>
+    
+    
+      <category term="DevOps" scheme="http://blog.ozairs.com/tags/DevOps/"/>
+    
+  </entry>
   
   <entry>
     <title>Azure服务之旅</title>
@@ -497,33 +523,6 @@
     
     
       <category term="励志" scheme="http://blog.ozairs.com/tags/%E5%8A%B1%E5%BF%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jenkins自动化部署</title>
-    <link href="http://blog.ozairs.com/Jenkins/Jenkins%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/"/>
-    <id>http://blog.ozairs.com/Jenkins/Jenkins自动化部署/</id>
-    <published>2019-03-25T10:13:57.000Z</published>
-    <updated>2019-03-25T11:48:37.525Z</updated>
-    
-    <content type="html"><![CDATA[<p>一、 Pipeline平台部署</p><ol><li><a href="https://www.cnblogs.com/shenh/p/8963688.html" target="_blank" rel="noopener">jenkins + pipeline构建自动化部署</a></li></ol><p><a href="https://www.cnblogs.com/shenh/p/8963688.html" target="_blank" rel="noopener">https://www.cnblogs.com/shenh/p/8963688.html</a></p><ol start="2"><li><p><a href="https://zhuanlan.zhihu.com/p/51533506" target="_blank" rel="noopener">Jenkins pipeline脚本编写实践分享（一）上篇</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/59160884" target="_blank" rel="noopener">Jenkins pipeline脚本编写实践分享（二）</a></p></li><li><p><a href="https://zhuanlan.zhihu.com/p/41604558" target="_blank" rel="noopener">jenkins学习之pipeline</a></p></li><li><a href="https://www.xncoding.com/2017/03/22/fullstack/jenkins02.html" target="_blank" rel="noopener">Jenkins持续集成 - 管道详解</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一、 Pipeline平台部署&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/shenh/p/8963688.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;jenkins + pipeline构建自动
-      
-    
-    </summary>
-    
-      <category term="Jenkins" scheme="http://blog.ozairs.com/categories/Jenkins/"/>
-    
-    
-      <category term="Jenkins" scheme="http://blog.ozairs.com/tags/Jenkins/"/>
     
   </entry>
   
