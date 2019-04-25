@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="AWS">
+
+
+    <meta name="description" content="你刚刚建立了你的惊人的新应用程序 它会改变一切。但首先，您需要将其部署到AWS。你究竟是怎么做到的？
+事实证明，有很多步骤。事实上几百个。你可能错过了一些。例如：
+
+您是否记得加密所有应用程序机...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>AWS的生产环境准备清单 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/评论"><i class="fa "></i>评论</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="AWS的生产环境准备清单">
+            
+	            AWS的生产环境准备清单
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/DevOps/">DevOps</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/AWS/">AWS</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/25</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>你刚刚建立了你的惊人的新应用程序 它会改变<em>一切</em>。但首先，您需要将其部署到AWS。你究竟是怎么做到的？</p>
+<p>事实证明，有很多步骤。事实上几百个。你可能错过了一些。例如：</p>
+<ol>
+<li>您是否记得加密所有应用程序机密，或者您是否在某处以纯文本形式存在数据库密码或API密钥？</li>
+<li>您的数据库是否已备份？你怎么知道的？我的意思是，你真的试过从其中一个备份中恢复吗？</li>
+<li>您团队中的每个开发人员是否共享一个到服务器SSH的EC2 KeyPair？如果其中一个开发者离开公司，你打算做什么？</li>
+<li>您是否在EC2实例中使用IAM角色？您是否记得锁定EC2元数据端点以便只能<code>root</code>访问它？</li>
+<li>您的实例是否在ASG中运行，启用了ELB运行状况检查，部署在多个AZ，私有子网中，受NACL保护？</li>
+</ol>
+<p>我敢打赌，至少有一些人在阅读上面的一些项目时感到畏缩。也许你对所有人都感到畏缩。你们中的一些人可能会觉得这样：</p>
+<p>好吧，我们为您提供解决方案。在Gruntwork，我们通过全面的检查表帮助数百家公司在AWS上运行。今天，我们很高兴与大家分享清单：</p>
+<p><a href="https://gruntwork.io/devops-checklist/?ref=prod-readiness-blog-post" target="_blank" rel="noopener"><strong>AWS的生产准备清单</strong></a></p>
+<p>此核对表是您在AWS中部署安全，可扩展且高度可用的基础架构的最佳实践的指南。它涵盖了一系列主题，包括服务器端应用程序，客户端应用程序，持续集成，持续交付，架构，安全性，监控以及利用现代DevOps和云原生实践所需的一切。在您上线之前，请仔细检查每个项目，并确保您没有错过任何重要的内容！</p>
+<p>哦，如果所有这些基础设施工作感觉有点压倒性，请记住道格拉斯亚当斯的话：不要恐慌。创建一个生产就绪的基础设施是很多工作，但我们已经为您提供了保障。清单中的所有内容都已<a href="https://gruntwork.io/infrastructure-as-code-library" target="_blank" rel="noopener">作为代码库</a>的Gruntwork <a href="https://gruntwork.io/infrastructure-as-code-library" target="_blank" rel="noopener">Infrastructure的</a>一部分，并且可作为<a href="https://gruntwork.io/reference-architecture" target="_blank" rel="noopener">参考体系结构的</a>一部分在1天内部署在您的AWS账户中。</p>
+<p>因此，请开始使用<a href="https://gruntwork.io/devops-checklist/?ref=prod-readiness-blog-post" target="_blank" rel="noopener">清单</a>并让您的应用程序正常运行！</p>
+<p><em>整个基础设施，定义为代码，大约需要一天。</em></p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/评论/Gruntwork-2018年回顾/" class="next-post btn btn-default" title="Gruntwork 2018年回顾">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Gruntwork 2018年回顾</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
