@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/%E8%AF%84%E8%AE%BA/%E4%BD%9C%E4%B8%BA%E9%A2%86%E5%AF%BC%E8%80%85%EF%BC%8C%E6%97%B6%E9%97%B4%E6%98%AF%E6%82%A8%E6%9C%80%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84%E8%B5%84%E6%BA%90/</loc>
+    
+    <lastmod>2019-04-27T06:56:18.829Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/DevOps/AWS%E7%9A%84%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%E6%B8%85%E5%8D%95/</loc>
     
-    <lastmod>2019-04-25T10:27:51.221Z</lastmod>
+    <lastmod>2019-04-25T10:28:04.880Z</lastmod>
     
   </url>
   
@@ -464,14 +471,14 @@
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/tags/index.html</loc>
+    <loc>http://blog.ozairs.com/categories/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://blog.ozairs.com/categories/index.html</loc>
+    <loc>http://blog.ozairs.com/tags/index.html</loc>
     
     <lastmod>2019-03-08T23:14:56.361Z</lastmod>
     
