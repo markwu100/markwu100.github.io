@@ -16,14 +16,11 @@
     <link rel="dns-prefetch" href="http://blog.ozairs.com">
     <!--SEO-->
 
-    <meta name="keywords" content="Minikube">
+    <meta name="keywords" content="Azure">
 
 
-    <meta name="description" content="目标：本文介绍了如何在Mac OS上开始使用Minikube的详细步骤。
-这是学习Kubernetes的一个很好的起点。
-操作环境：Mac OS 10.14 
-Minikube v0.30.0
-...">
+    <meta name="description" content="1. 用户交互式登陆前提条件：有一个AAD account此种登陆方式会弹出一个登陆框，让你输入一个.onmschina.cn的账号，然后根据选择的订阅操作相应的资源。
+123456789# s...">
 
 
 
@@ -35,7 +32,7 @@ Minikube v0.30.0
     <!--Title-->
 
 
-<title>How-to-get-started-with-Minikube-on-Mac-OS | 带你走进美丽的墨尔本</title>
+<title>通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式 | 带你走进美丽的墨尔本</title>
 
 
     <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
@@ -200,16 +197,16 @@ Minikube v0.30.0
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="How-to-get-started-with-Minikube-on-Mac-OS">
+        <h1 id="通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式">
             
-	            How-to-get-started-with-Minikube-on-Mac-OS
+	            通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/Kubernetes/">Kubernetes</a>
+            <a class="category-link" href="/categories/Azure/">Azure</a>
         </span>
     
 
@@ -218,7 +215,7 @@ Minikube v0.30.0
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Minikube/">Minikube</a>
+                    <a class="tag-link" href="/tags/Azure/">Azure</a>
                 
             </span>
         </span>
@@ -228,7 +225,7 @@ Minikube v0.30.0
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/05/05</span>
+            <span class="date-meta">2019/06/19</span>
         </span>
         
     
@@ -238,47 +235,16 @@ Minikube v0.30.0
     </div>
     
     <div class="post-body post-content">
-        <h2 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h2><p>本文介绍了如何在Mac OS上开始使用Minikube的详细步骤。</p>
-<p>这是学习Kubernetes的一个很好的起点。</p>
-<h2 id="操作环境："><a href="#操作环境：" class="headerlink" title="操作环境："></a>操作环境：</h2><p>Mac OS 10.14 </p>
-<p>Minikube v0.30.0</p>
-<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h3 id="1-先决条件"><a href="#1-先决条件" class="headerlink" title="1.先决条件"></a>1.先决条件</h3><p>在Mac上安装xcode：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`xcode-``select` `--``install`</span><br></pre></td></tr></table></figure>
-<p>然后安装</p>
-<p>Homebrew：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`/usr/bin/ruby` `-e ``&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;`</span><br></pre></td></tr></table></figure>
-<p>所以基本上Homebrew会将软件包安装到他们自己的目录中，然后将他们的文件符号链接到/ usr / local。</p>
-<h3 id="2-安装Minikube"><a href="#2-安装Minikube" class="headerlink" title="2.安装Minikube"></a>2.安装Minikube</h3><p>使用Homebrew，我们可以在Mac上轻松安装Minikube：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`brew cask ``install` `minikube`</span><br></pre></td></tr></table></figure>
-<h3 id="3-在VM中启动单个节点Kubernetes群集"><a href="#3-在VM中启动单个节点Kubernetes群集" class="headerlink" title="3.在VM中启动单个节点Kubernetes群集"></a>3.在VM中启动单个节点Kubernetes群集</h3><p>默认情况下，Minikube使用“virtualbox”作为VM驱动程序，您也可以将其更改为其他驱动程序：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ minikube start -h |``grep` `vm-driver``      ``--vm-driver string               VM driver is one of: [virtualbox vmwarefusion kvm xhyve hyperv hyperkit kvm2 none] (default ``&quot;virtualbox&quot;``)`</span><br></pre></td></tr></table></figure>
-<p>现在启动VM中的单节点Kubernetes集群（默认内存大小为2G）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`minikube start`</span><br></pre></td></tr></table></figure>
-<h3 id="4-启动Kubernetes-Web-Dashboard"><a href="#4-启动Kubernetes-Web-Dashboard" class="headerlink" title="4.启动Kubernetes Web Dashboard"></a>4.启动Kubernetes Web Dashboard</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`minikube dashboard`</span><br></pre></td></tr></table></figure>
-<p>只有一个节点显示：</p>
-<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/1.png" alt=""></p>
-<h3 id="5-将hello-world-Node-js应用程序部署到Minikube中"><a href="#5-将hello-world-Node-js应用程序部署到Minikube中" class="headerlink" title="5.将hello world Node.js应用程序部署到Minikube中"></a>5.将hello world Node.js应用程序部署到Minikube中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl run hello-minikube --image=k8s.gcr.io``/echoserver``:1.4 --port=8080`</span><br></pre></td></tr></table></figure>
-<p>显示在仪表板的“部署”中：</p>
-<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/2.png" alt=""></p>
-<p>或者在CLI中显示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ kubectl get deployments``NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE``hello-minikube   1         1         1            1           15m`</span><br></pre></td></tr></table></figure>
-<h3 id="6-将部署公开为服务"><a href="#6-将部署公开为服务" class="headerlink" title="6.将部署公开为服务"></a>6.将部署公开为服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl expose deployment hello-minikube --``type``=NodePort`</span><br></pre></td></tr></table></figure>
-<p>在仪表板中显示服务信息：</p>
-<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/3.png" alt=""></p>
-<p>或者在CLI中显示服务信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ kubectl get services hello-minikube``NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE``hello-minikube   NodePort   xxx.xxx.xxx.xxx &lt;none&gt;        8080:31978``/TCP`   `3m`</span><br></pre></td></tr></table></figure>
-<h3 id="7-等待pod启动并运行"><a href="#7-等待pod启动并运行" class="headerlink" title="7.等待pod启动并运行"></a>7.等待pod启动并运行</h3><p>继续在命令下运行，直到pod的状态正在运行并准备就绪。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$  kubectl get pods``NAME                             READY   STATUS    RESTARTS   AGE``hello-minikube-6c47c66d8-gv7n2   1``/1`     `Running   0          31m`</span><br></pre></td></tr></table></figure>
-<h3 id="8-访问服务"><a href="#8-访问服务" class="headerlink" title="8.访问服务"></a>8.访问服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`curl $(minikube service hello-minikube --url)`</span><br></pre></td></tr></table></figure>
-<p>或直接转到浏览器中的网址：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ minikube service hello-minikube --url``http:``//192``.168.99.100:31978`</span><br></pre></td></tr></table></figure>
-<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/4.png" alt=""></p>
-<h3 id="9-关闭群集"><a href="#9-关闭群集" class="headerlink" title="9.关闭群集"></a>9.关闭群集</h3><p>删除服务（服务在此之后消失）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl delete service hello-minikube`</span><br></pre></td></tr></table></figure>
-<p>删除部署（之后部署和pod都消失了）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl delete deployment hello-minikube`</span><br></pre></td></tr></table></figure>
-<p>停止minikube集群：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`minikube stop`</span><br></pre></td></tr></table></figure>
+        <h4 id="1-用户交互式登陆"><a href="#1-用户交互式登陆" class="headerlink" title="1. 用户交互式登陆"></a>1. 用户交互式登陆</h4><p>前提条件：有一个AAD account<br>此种登陆方式会弹出一个登陆框，让你输入一个.onmschina.cn的账号，然后根据选择的订阅操作相应的资源。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># set Azure Enviroment into China Mooncake.  </span><br><span class="line">$EnvironmentName =&quot;AzureChinaCloud&quot; </span><br><span class="line"> </span><br><span class="line"># Give your subcriptionID here.  </span><br><span class="line">$SubscriptionId=&quot;*********&quot; </span><br><span class="line"> </span><br><span class="line">##login  </span><br><span class="line">Login-AzureRmAccount -EnvironmentName &apos;AzureChinaCloud&apos; </span><br><span class="line">Set-AzureRmContext -SubscriptionId $SubscriptionId</span><br></pre></td></tr></table></figure>
+<p>缺点：会弹出登陆框，让你输入账号密码进行登陆，不适合自动化场景。</p>
+<blockquote>
+<p>此处也能改成隐式登陆的。具体参考<a href="https://stackoverflow.com/questions/37249623/how-to-login-without-prompt" target="_blank" rel="noopener">https://stackoverflow.com/questions/37249623/how-to-login-without-prompt</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Read-Host &quot;Enter Password&quot; -AsSecureString | ConvertTo-SecureString `</span><br><span class="line">-AsPlainText -Force | ConvertFrom-SecureString | Out-File &quot;C:\Password.txt&quot;</span><br><span class="line"># The azure account here must not be a Live ID.</span><br><span class="line">$username = &quot;&lt;your Azure account&gt;&quot;</span><br><span class="line">$SecurePassword = Get-Content &quot;C:\Password.txt&quot; | ConvertTo-SecureString</span><br><span class="line">$cred = new-object -typename System.Management.Automation.PSCredential `</span><br><span class="line">     -argumentlist $username, $SecurePassword</span><br><span class="line"></span><br><span class="line">Login-AzureRmAccount -Credential $cred -EnvironmentName &apos;AzureChinaCloud&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="2-AAD-Service-Principal登陆-前提条件："><a href="#2-AAD-Service-Principal登陆-前提条件：" class="headerlink" title="2. AAD Service Principal登陆 前提条件："></a>2. AAD Service Principal登陆 前提条件：</h4><p>需要在Azure AD 中去<a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications" target="_blank" rel="noopener">注册一个app（service principal）</a>，并拿到这个app的Appliaction和key。此处你需要为app添加相应的权限。<br>运行完，直接根据选定的订阅就能操作Azure 订阅资源了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># the AAD app applicationID  </span><br><span class="line">$ServicePrincipalApplicationId=&quot;9059226d-******&quot; </span><br><span class="line"> </span><br><span class="line"># AAD app key  </span><br><span class="line">$ServicePrincipalPassword=&quot;********************&quot; </span><br><span class="line"> </span><br><span class="line"># the AAD directory ID = tenantID  </span><br><span class="line">$TenantId= &quot;*********************&quot; </span><br><span class="line"> </span><br><span class="line"># set Azure to Mooncake  </span><br><span class="line">$EnvironmentName =&quot;AzureChinaCloud&quot; </span><br><span class="line">$SubscriptionId=&quot;*******************************&quot; </span><br><span class="line">$spPassword =  ConvertTo-SecureString $ServicePrincipalPassword -AsPlainText -Force</span><br><span class="line">  </span><br><span class="line">$AzureServicePrincipalCreds = New-Object System.Management.Automation.PSCredential ($ServicePrincipalApplicationId, $spPassword)  </span><br><span class="line">Add-AzureRmAccount -Credential $AzureServicePrincipalCreds -ServicePrincipal -TenantId $TenantId -Environment $EnvironmentName </span><br><span class="line">Set-AzureRmContext -SubscriptionId $SubscriptionId</span><br></pre></td></tr></table></figure>
+<p>缺点：泄露AAD app 的applicationID 和key 会比较麻烦。</p>
 
     </div>
     
@@ -312,15 +278,10 @@ Minikube v0.30.0
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/Azure/通过Powershell-登陆Azure（Azure-MoonCake为例）一般常见的有两种方式/" class="pre-post btn btn-default" title="通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式</span>
-        </a>
     
-    
-        <a href="/Cloud-Service/深入探讨AKS和AAD/" class="next-post btn btn-default" title="深入探讨AKS和AAD">
+        <a href="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/" class="next-post btn btn-default" title="How-to-get-started-with-Minikube-on-Mac-OS">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">深入探讨AKS和AAD</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">How-to-get-started-with-Minikube-on-Mac-OS</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -363,7 +324,7 @@ Minikube v0.30.0
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标："><span class="toc-text">目标：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作环境："><span class="toc-text">操作环境：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案："><span class="toc-text">解决方案：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先决条件"><span class="toc-text">1.先决条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装Minikube"><span class="toc-text">2.安装Minikube</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在VM中启动单个节点Kubernetes群集"><span class="toc-text">3.在VM中启动单个节点Kubernetes群集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-启动Kubernetes-Web-Dashboard"><span class="toc-text">4.启动Kubernetes Web Dashboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-将hello-world-Node-js应用程序部署到Minikube中"><span class="toc-text">5.将hello world Node.js应用程序部署到Minikube中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-将部署公开为服务"><span class="toc-text">6.将部署公开为服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-等待pod启动并运行"><span class="toc-text">7.等待pod启动并运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-访问服务"><span class="toc-text">8.访问服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-关闭群集"><span class="toc-text">9.关闭群集</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-用户交互式登陆"><span class="toc-text">1. 用户交互式登陆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-AAD-Service-Principal登陆-前提条件："><span class="toc-text">2. AAD Service Principal登陆 前提条件：</span></a></li></ol>
         
     </div>
 </aside>

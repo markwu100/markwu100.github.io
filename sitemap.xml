@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Azure/%E9%80%9A%E8%BF%87Powershell-%E7%99%BB%E9%99%86Azure%EF%BC%88Azure-MoonCake%E4%B8%BA%E4%BE%8B%EF%BC%89%E4%B8%80%E8%88%AC%E5%B8%B8%E8%A7%81%E7%9A%84%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F/</loc>
+    
+    <lastmod>2019-06-19T12:04:40.949Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/</loc>
     
     <lastmod>2019-05-05T07:18:20.204Z</lastmod>
