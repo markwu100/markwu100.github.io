@@ -1,0 +1,429 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Kops">
+
+
+    <meta name="description" content="今天，我们将以我们最近对Kubernetes生态系统的报道为基础，以更深入地讨论Kops。这篇文章是对我们今年早些时候的Kubernetes网络研讨会的补充，并且是在之前的文章中介绍的，这些文章...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>什么是Kops? | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/English-Skills"><i class="fa "></i>English Skills</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Investment"><i class="fa "></i>Investment</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/评论"><i class="fa "></i>评论</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="什么是Kops?">
+            
+	            什么是Kops?
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Kubernetes/">Kubernetes</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Kops/">Kops</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/09/25</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>今天，我们将以我们最近对<a href="https://cloudacademy.com/blog/kubernetes-ecosystem-operations/" target="_blank" rel="noopener"><strong>Kubernetes生态系统的</strong></a>报道为基础，以更深入地讨论Kops。这篇文章是对我们<a href="https://cloudacademy.com/webinars/hands-kubernetes-part-1-38/" target="_blank" rel="noopener">今年</a>早些时候的<a href="https://cloudacademy.com/webinars/hands-kubernetes-part-1-38/" target="_blank" rel="noopener">Kubernetes网络研讨会</a>的补充，并且是在之前的文章中介绍的，这些文章涵盖了  <a href="https://cloudacademy.com/deploying-kubernetes-applications-with-helm/" target="_blank" rel="noopener">使用Helm部署应用程序</a>  以及使用Kops 创建和维护<a href="https://cloudacademy.com/blog/category/kubernetes/" target="_blank" rel="noopener">Kubernetes</a>集群。让我们首先解决一个基本问题：什么是Kops？</p>
+<h2 id="什么是Kops？"><a href="#什么是Kops？" class="headerlink" title="什么是Kops？"></a>什么是Kops？</h2><p><a href="https://github.com/kubernetes/kops" target="_blank" rel="noopener">Kops是Kubernetes的官方项目，</a>用于管理生产级Kubernetes集群。Kops当前是将Kubernetes集群部署到Amazon Web Services的最佳工具。该项目将自己描述为集群的kubectl。</p>
+<p><a href="https://github.com/kubernetes/kops" target="_blank" rel="noopener">(Kops is an official Kubernetes project</a> for managing production-grade Kubernetes clusters. Kops is currently the best tool to deploy Kubernetes clusters to Amazon Web Services. The project describes itself as kubectl for clusters.)</p>
+<p>如果您熟悉kubectl，那么Kops会让您感到宾至如归。它具有创建集群，更新集群设置和应用更改的命令。Kops使用声明性配置，因此足够聪明，知道如何将基础结构更改应用于现有集群。它还支持集群操作任务，例如扩展节点或水平扩展集群。Kops可以在AWS上自动运行大部分Kubernetes。</p>
+<p>在继续进行示例之前，让我们看一下它的主要功能：</p>
+<ul>
+<li>将群集部署到现有的虚拟私有云（VPC）或从头开始创建新的VPC</li>
+<li>支持公共和私有拓扑</li>
+<li>设置单个或多个主群集</li>
+<li>可配置的堡垒机器，用于通过SSH访问单个群集节点</li>
+<li>建立在状态同步模型上以实现空运行和自动幂等</li>
+<li>直接基础架构操纵，或与CloudFormation和Terraform一起使用</li>
+<li>滚动集群更新</li>
+<li>通过创建多个实例组来支持异构集群</li>
+</ul>
+<p>请查看此  <a href="https://asciinema.org/a/97298" target="_blank" rel="noopener">简短的ASCII转换演示</a>  以获取更多信息。<br>现在，我们将解决一个常见的情况：创建一个集群并为您的用例进行配置。</p>
+<h3 id="在AWS上创建第一个Kubernetes集群"><a href="#在AWS上创建第一个Kubernetes集群" class="headerlink" title="在AWS上创建第一个Kubernetes集群"></a>在AWS上创建第一个Kubernetes集群</h3><p>您需要配置IAM权限和的S3存储桶<code>KOPS_STATE_STORE</code>。KOPS_STATE_STORE是Kops管理的所有集群的真实来源。您需要适当的IAM权限，以便Kops可以代表您进行API调用。我不会在这篇文章中介绍它，但是您可以按照<a href="https://github.com/kubernetes/kops/blob/master/docs/aws.md" target="_blank" rel="noopener">此处</a>的<a href="https://github.com/kubernetes/kops/blob/master/docs/aws.md" target="_blank" rel="noopener">说明进行操作</a>。</p>
+<p>您还需要配置DNS。Kops支持多种配置。每个都有自己的<a href="https://github.com/kubernetes/kops/blob/master/docs/aws.md" target="_blank" rel="noopener">设置说明</a>。具有现有HostedZone的AWS Route53是最简单的。<code>slashdeploy.com</code>在这些示例中，我们假设有一个现有的AWS Route53 HostedZone 。<br>Kops群集必须是有效的DNS名称。让我们创建<code>demo.slashdeploy.com</code>集群。Kops还将在<code>api.demo.slashdeploy.com</code>和处为Kubernetes API服务器创建DNS记录<code>bastion.demo.slashdeploy.com</code>。请记住，DNS名称可能只有这么长，因此请勿使用太长的基本群集名称。一切始于<code>kops create</code>。您可以将选项直接传递给命令或编写<a href="https://github.com/kubernetes/kops/blob/master/docs/cluster_spec.md" target="_blank" rel="noopener">集群规范文件</a>。在本练习中，我们将使用命令行选项。使用专用文件非常适合源代码控制和其他形式的配置管理。<code>kops create</code>接受很多选择。我们将从最简单的情况开始，仅提供所需的选项。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ kops create cluster \</span><br><span class="line">	--yes \</span><br><span class="line">	--zones=eu-west-1a,eu-west-1b,eu-west-1c \</span><br><span class="line">	demo.slashdeploy.com</span><br></pre></td></tr></table></figure>
+<p>有两个必需的值。<code>--zones</code>指出GCP区域/ AWS地区在何处创建基础架构。在此，指定了eu-west-1a，eu-west-1b，eu-west-1c。这指示Kops在每个eu-west-1可用区中创建基础结构。这很重要，因为Kops旨在创建高可用性生产集群。多个可用区通过防止一个可用区中的故障使群集更加可靠。</p>
+<p>您还必须指定群集名称。<code>--yes</code>确认通常提示确认的操作。为新集群<code>kops create</code> 添加一个<code>kubectl</code>配置条目，因此您可以立即使用它。该命令是异步的。它会触发<strong>基础结构的创建</strong>，但不会完全阻止它。幸运的是，Kops包含用于验证集群的命令。您可以  <em>重新运行</em>此命令，直到成功为止。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kops validate demo.slashdeploy.com</span><br></pre></td></tr></table></figure>
+<p>一切完成后，您应该会看到类似以下内容的内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ kops validate cluster demo.slashdeploy.com</span><br><span class="line">Validating cluster demo.slashdeploy.com</span><br><span class="line">INSTANCE GROUPS</span><br><span class="line">NAME                    ROLE    MACHINETYPE     MIN     MAX     SUBNETS</span><br><span class="line">master-eu-west-1a       Master  m3.medium       1       1       eu-west-1a</span><br><span class="line">master-eu-west-1b       Master  m3.medium       1       1       eu-west-1b</span><br><span class="line">master-eu-west-1c       Master  m3.medium       1       1       eu-west-1c</span><br><span class="line">nodes                   Node    t2.medium       2       2       eu-west-1a,eu-west-1b,eu-west-1c</span><br><span class="line">NODE STATUS</span><br><span class="line">NAME                                            ROLE    READY</span><br><span class="line">ip-172-20-120-240.eu-west-1.compute.internal    master  True</span><br><span class="line">ip-172-20-50-132.eu-west-1.compute.internal     master  True</span><br><span class="line">ip-172-20-66-106.eu-west-1.compute.internal     master  True</span><br><span class="line">ip-172-20-75-89.eu-west-1.compute.internal      node    True</span><br><span class="line">Your cluster demo.slashdeploy.com is ready</span><br></pre></td></tr></table></figure>
+<p>现在，您可以运行任何<code>kubectl</code>命令，例如<code>kubectl get pods -n kube-system</code>。集群有点奇怪，因为它有三个主服务器，只有一个从服务。让我们更新节点实例组。</p>
+<h3 id="修改集群基础架构"><a href="#修改集群基础架构" class="headerlink" title="修改集群基础架构"></a>修改集群基础架构</h3><p>记住，<code>kops</code>行为就像<code>kubectl</code>。这意味着您可以<code>kops edit</code>在编辑器中编辑配置文件。下一步是运行<code>kops update</code>。这将应用配置更改，但不会修改正在运行的基础结构。<code>kops rolling-update</code>管理更新或重新创建基础结构。</p>
+<p>此过程适用于各种配置更改。首先<code>edit</code>，然后<code>update</code>，最后   <code>rolling-update</code>。让我们通过编辑节点实例组以增加辅助节点的数量来尝试一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kops edit instancegroup nodes</span><br></pre></td></tr></table></figure>
+<p>这将在编辑器中打开一个YAML文件。您将看到类似于以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: kops/v1alpha2</span><br><span class="line">kind: InstanceGroup</span><br><span class="line">metadata:</span><br><span class="line">  creationTimestamp: &quot;2017-04-05T15:33:52Z&quot;</span><br><span class="line">  labels:</span><br><span class="line">    kops.k8s.io/cluster: demo.slashdeploy.com</span><br><span class="line">  name: nodes</span><br><span class="line">spec:</span><br><span class="line">  image: kope.io/k8s-1.5-debian-jessie-amd64-hvm-ebs-2017-01-09</span><br><span class="line">  machineType: t2.medium</span><br><span class="line">  maxSize: 1</span><br><span class="line">  minSize: 1</span><br><span class="line">  role: Node</span><br><span class="line">  subnets:</span><br><span class="line">  - eu-west-1a</span><br><span class="line">  - eu-west-1b</span><br><span class="line">  - eu-west-1c</span><br></pre></td></tr></table></figure>
+<p>我们需要做的就是替换<code>minSize</code> 并<code>maxSize</code> 使用适当的值。我将两个值都设置为<code>3</code> 并保存文件。这会将更新的文件写回到<code>KOPS_STATE_STORE</code>。现在，我们需要<code>update</code> 集群。同样，我们将提供<code>--yes</code> 确认更改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ kops update cluster --yes</span><br><span class="line">Using cluster from kubectl context: demo.slashdeploy.com</span><br><span class="line">I0422 07:34:58.458492   26834 executor.go:91] Tasks: 0 done / 114 total; 35 can run</span><br><span class="line">I0422 07:34:59.990241   26834 executor.go:91] Tasks: 35 done / 114 total; 26 can run</span><br><span class="line">I0422 07:35:01.211466   26834 executor.go:91] Tasks: 61 done / 114 total; 36 can run</span><br><span class="line">I0422 07:35:04.215344   26834 executor.go:91] Tasks: 97 done / 114 total; 10 can run</span><br><span class="line">I0422 07:35:04.845173   26834 dnsname.go:107] AliasTarget for &quot;api.demo.slashdeploy.com.&quot; is &quot;api-demo-1201911436.eu-west-1.elb.amazonaws.com.&quot;</span><br><span class="line">I0422 07:35:05.045363   26834 executor.go:91] Tasks: 107 done / 114 total; 7 can run</span><br><span class="line">I0422 07:35:05.438759   26834 executor.go:91] Tasks: 114 done / 114 total; 0 can run</span><br><span class="line">I0422 07:35:05.438811   26834 dns.go:140] Pre-creating DNS records</span><br><span class="line">I0422 07:35:06.707548   26834 update_cluster.go:204] Exporting kubecfg for cluster</span><br><span class="line">Wrote config for demo.slashdeploy.com to &quot;/home/ubuntu/.kube/config&quot;</span><br><span class="line">Kops has set your kubectl context to demo.slashdeploy.com</span><br><span class="line">Cluster changes have been applied to the cloud.</span><br><span class="line">Changes may require instances to restart: kops rolling-update cluster</span><br></pre></td></tr></table></figure>
+<p>最后，应用<code>rolling-update</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ kops rolling-update cluster --yes</span><br><span class="line">Using cluster from kubectl context: demo.slashdeploy.com</span><br><span class="line">NAME                    STATUS  NEEDUPDATE      READY   MIN     MAX     NODES</span><br><span class="line">bastions                Ready   0               1       1       1       0</span><br><span class="line">master-eu-west-1a       Ready   0               1       1       1       1</span><br><span class="line">master-eu-west-1b       Ready   0               1       1       1       1</span><br><span class="line">master-eu-west-1c       Ready   0               1       1       1       1</span><br><span class="line">nodes                   Ready   0               3       3       3       3</span><br><span class="line">No rolling-update required</span><br></pre></td></tr></table></figure>
+<p>有点奇怪 Kops说，不需要滚动更新。这是正确的，因为我们仅更改了<code>nodes</code> 自动伸缩组中的最小实例数和最大实例数。这不需要对现有基础架构进行任何更改。AWS仅触发两个实例的创建。<br>让我们进行另一项需要更改基础结构的更改。想象一下，现有的t2 <code>.medium</code> 实例没有削减它。我们需要扩大规模以满足工作量要求。为此，我们需要更改实例类型。同样的<code>edit</code>，<code>update</code>和<code>rolling-update</code> 流程适用于此处。让我们升级到<code>m4.large</code>。重复练习，将t2替换为<code>.medium</code> ，<code>m4.large</code> 然后应用<code>rolling-update</code>。现在，Kops杀死每个节点以触发创建最新节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ kops rolling-update cluster --yes</span><br><span class="line">Using cluster from kubectl context: demo.slashdeploy.com</span><br><span class="line">NAME                    STATUS          NEEDUPDATE      READY   MIN     MAX     NODES</span><br><span class="line">bastions                Ready           0               1       1       1       0</span><br><span class="line">master-eu-west-1a       Ready           0               1       1       1       1</span><br><span class="line">master-eu-west-1b       Ready           0               1       1       1       1</span><br><span class="line">master-eu-west-1c       Ready           0               1       1       1       1</span><br><span class="line">nodes                   NeedsUpdate     3               0       3       3       3</span><br><span class="line">I0422 07:42:31.615734     659 rollingupdate_cluster.go:281] Stopping instance &quot;i-038cbac0aeaca24d4&quot; in AWS ASG &quot;nodes.demo.slashdeploy.com&quot;</span><br><span class="line">I0422 07:44:31.920426     659 rollingupdate_cluster.go:281] Stopping instance &quot;i-046fe9866a3b51fe6&quot; in AWS ASG &quot;nodes.demo.slashdeploy.com&quot;</span><br><span class="line">I0422 07:46:33.539412     659 rollingupdate_cluster.go:281] Stopping instance &quot;i-07f924becaa46d2ab&quot; in AWS ASG &quot;n</span><br></pre></td></tr></table></figure>
+<p>注意！当前版本（&lt;= 1.6）尚未执行真正的滚动更新。将会发生停机。<a href="https://github.com/kubernetes/kops/issues/37" target="_blank" rel="noopener">问题＃37</a>我们实现了一项新功能，该功能可以耗尽并验证节点。此功能是实验性的，您可以通过设置使用新功能<code>export KOPS_FEATURE_FLAGS=&quot;+DrainAndValidateRollingUpdate&quot;</code>。此问题应在将来的版本中修复。</p>
+<p>此过程适用于基础结构和配置（例如<code>kubelet</code> 标志或API服务器标志）。该<a href="https://github.com/kubernetes/kops/tree/master/docs" target="_blank" rel="noopener">文档</a>涵盖以下特定情况：</p>
+<ul>
+<li><a href="https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md#changing-the-root-volume-size-or-type" target="_blank" rel="noopener">更改根卷大小</a></li>
+<li><a href="https://github.com/kubernetes/kops/blob/master/docs/instance_groups.md#converting-an-instance-group-to-use-spot-instances" target="_blank" rel="noopener">使用竞价型实例</a></li>
+<li><a href="https://github.com/kubernetes/kops/blob/master/docs/cluster_spec.md#kubelet" target="_blank" rel="noopener">配置kubelet标志</a></li>
+<li><a href="https://github.com/kubernetes/kops/blob/master/docs/cluster_spec.md#runtimeconfig" target="_blank" rel="noopener">配置api服务器标志</a></li>
+</ul>
+<p>与往常一样，您可以参考<a href="https://github.com/kubernetes/kops/tree/master/docs" target="_blank" rel="noopener">文档</a>以获取完整信息。</p>
+<h3 id="自定义集群基础架构"><a href="#自定义集群基础架构" class="headerlink" title="自定义集群基础架构"></a>自定义集群基础架构</h3><p>我们的示例涵盖了最简单的情况，但这并不适用于所有情况。让我们逐步了解可用的不同选项  <code>kops create cluster</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">$ kops create cluster --help</span><br><span class="line">Creates a k8s cluster.</span><br><span class="line">Usage:</span><br><span class="line">  kops create cluster [flags]</span><br><span class="line">Flags:</span><br><span class="line">      --admin-access stringSlice             Restrict access to admin endpoints (SSH, HTTPS) to this CIDR.  If not set, access will not be restricted by IP. (default [0.0.0.0/0])</span><br><span class="line">      --associate-public-ip                  Specify --associate-public-ip=[true|false] to enable/disable association of public IP for master ASG and nodes. Default is &apos;true&apos;.</span><br><span class="line">      --bastion                              Pass the --bastion flag to enable a bastion instance group. Only applies to private topology.</span><br><span class="line">      --channel string                       Channel for default versions and configuration to use (default &quot;stable&quot;)</span><br><span class="line">      --cloud string                         Cloud provider to use - gce, aws</span><br><span class="line">      --dns string                           DNS hosted zone to use: public|private. Default is &apos;public&apos;. (default &quot;Public&quot;)</span><br><span class="line">      --dns-zone string                      DNS hosted zone to use (defaults to longest matching zone)</span><br><span class="line">      --image string                         Image to use</span><br><span class="line">      --kubernetes-version string            Version of kubernetes to run (defaults to version in channel)</span><br><span class="line">      --master-count int32                   Set the number of masters.  Defaults to one master per master-zone</span><br><span class="line">      --master-security-groups stringSlice   Add precreated additional security groups to masters.</span><br><span class="line">      --master-size string                   Set instance size for masters</span><br><span class="line">      --master-zones stringSlice             Zones in which to run masters (must be an odd number)</span><br><span class="line">      --model string                         Models to apply (separate multiple models with commas) (default &quot;config,proto,cloudup&quot;)</span><br><span class="line">      --network-cidr string                  Set to override the default network CIDR</span><br><span class="line">      --networking string                    Networking mode to use.  kubenet (default), classic, external, cni, kopeio-vxlan, weave, calico. (default &quot;kubenet&quot;)</span><br><span class="line">      --node-count int32                     Set the number of nodes</span><br><span class="line">      --node-security-groups stringSlice     Add precreated additional security groups to nodes.</span><br><span class="line">      --node-size string                     Set instance size for nodes</span><br><span class="line">      --out string                           Path to write any local output</span><br><span class="line">      --project string                       Project to use (must be set on GCE)</span><br><span class="line">      --ssh-public-key string                SSH public key to use (default &quot;~/.ssh/id_rsa.pub&quot;)</span><br><span class="line">      --target string                        Target - direct, terraform (default &quot;direct&quot;)</span><br><span class="line">  -t, --topology string                      Controls network topology for the cluster. public|private. Default is &apos;public&apos;. (default &quot;public&quot;)</span><br><span class="line">      --vpc string                           Set to use a shared VPC</span><br><span class="line">      --yes                                  Specify --yes to immediately create the cluster</span><br><span class="line">      --zones stringSlice                    Zones in which to run the cluster</span><br><span class="line">--vpc and --newtork-cidr can be used when deploying to an existing AWS VPC.</span><br><span class="line">--bastion generates a dedicated SSH jump host for SSH access to cluster instances. This is best used with --associate-public-ip=false.</span><br><span class="line">--master-zones specifies all of the zones where masters run. This is key for HA setups.</span><br><span class="line">--networking sets the default network. Note that your particular choice depends on your requirements and may work with the specified --topology.</span><br><span class="line">--topology is the internal networking state. I prefer --bastion --topology=private --associate-public-ip=false --networking=weave to keep the clusters inaccessible on the public internet.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>--vpc</code> 并且<code>--newtork-cidr</code> 可以在部署到现有的AWS VPC时使用。</li>
+<li><code>--bastion</code> 生成<a href="https://github.com/kubernetes/kops/blob/master/docs/bastion.md" target="_blank" rel="noopener">专用的SSH跳转服务器，</a>以SSH访问群集实例。最好与<code>--associate-public-ip=false.</code></li>
+<li><code>--master-zones</code> 指定主服务器运行的所有区域。这是HA设置的关键。</li>
+<li><code>--networking</code> 设置默认<a href="https://github.com/kubernetes/kops/blob/master/docs/networking.md" target="_blank" rel="noopener">网络</a>。请注意，您的特定选择取决于您的要求，并且可以与指定的<code>--topology.</code></li>
+<li><code>--topology</code> 是内部联网状态。我更喜欢<code>--bastion --topology=private --associate-public-ip=false --networking=weave</code>使群集无法在公共互联网上访问。</li>
+</ul>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/uncategorized/St-Margret-s-School校园参观感受/" class="next-post btn btn-default" title="St Margret" s="" school校园参观感受'="">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">St Margret's School校园参观感受</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Kops？"><span class="toc-text">什么是Kops？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在AWS上创建第一个Kubernetes集群"><span class="toc-text">在AWS上创建第一个Kubernetes集群</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改集群基础架构"><span class="toc-text">修改集群基础架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义集群基础架构"><span class="toc-text">自定义集群基础架构</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
