@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/Apache/Why-We-Moved-to-Apache-Pulsar/</loc>
+    
+    <lastmod>2019-10-25T11:57:12.570Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Kubernetes/%E4%BB%80%E4%B9%88%E6%98%AFKops/</loc>
     
-    <lastmod>2019-09-25T12:36:39.552Z</lastmod>
+    <lastmod>2019-09-25T12:36:53.182Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.ozairs.com/uncategorized/St-Margret-s-School%E6%A0%A1%E5%9B%AD%E5%8F%82%E8%A7%82%E6%84%9F%E5%8F%97/</loc>
     
-    <lastmod>2019-09-16T11:22:48.352Z</lastmod>
+    <lastmod>2019-09-25T12:36:53.180Z</lastmod>
     
   </url>
   
