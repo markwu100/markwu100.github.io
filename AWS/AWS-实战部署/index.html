@@ -1,0 +1,549 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="ECS">
+
+
+    <meta name="description" content="如果您已注册 Amazon Web Services (AWS) 并已在使用 Amazon Elastic Compute Cloud (Amazon EC2)，您与使用 Amazon ECS ...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>AWS 实战部署 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="AWS 实战部署">
+            
+	            AWS 实战部署
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/AWS/">AWS</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/ECS/">ECS</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/22</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>316</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>如果您已注册 Amazon Web Services (AWS) 并已在使用 Amazon Elastic Compute Cloud (Amazon EC2)，您与使用 Amazon ECS 已近在咫尺。这两个服务的设置过程相似。以下指南将帮助您做好使用 Amazon ECS 首次运行向导或 Amazon ECS 命令行界面 (CLI) 启动首个集群的准备。</p>
+<p>注意</p>
+<p>因为 Amazon ECS 使用 Amazon EC2 的许多组件，所以，您可以将 Amazon EC2 控制台用于这些步骤中的许多步骤。</p>
+<p>要开始设置 Amazon ECS，请完成以下任务。如果您已完成以下任何步骤，可以将其跳过并继续安装自定义 AWS CLI。</p>
+<ol>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#sign-up-for-aws" target="_blank" rel="noopener">注册 AWS</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-an-iam-user" target="_blank" rel="noopener">创建 IAM 用户</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-an-iam-role" target="_blank" rel="noopener">创建 IAM 角色</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-a-key-pair" target="_blank" rel="noopener">创建密钥对</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-a-vpc" target="_blank" rel="noopener">创建 Virtual Private Cloud</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-a-base-security-group" target="_blank" rel="noopener">创建安全组</a></li>
+<li><a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#install_aws_cli" target="_blank" rel="noopener">安装 AWS CLI</a></li>
+</ol>
+<h2 id="注册-AWS"><a href="#注册-AWS" class="headerlink" title="注册 AWS"></a>注册 AWS</h2><p>当您注册 AWS 时，您的 AWS 账户会自动注册所有服务，包括 Amazon EC2 和 Amazon ECS。您只需为使用的服务付费。</p>
+<p>如果您已有 AWS 账户，请跳到下一个任务。如果您还没有 AWS 账户，请使用以下步骤创建。</p>
+<p><strong>创建 AWS 账户</strong></p>
+<ol>
+<li><p>打开 <a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html" target="_blank" rel="noopener">https://aws.amazon.com/</a>，然后选择 <strong>Create an AWS Account (创建 AWS 账户)</strong>。</p>
+<p>注意</p>
+<p>如果您之前曾使用 AWS 账户根用户 凭证登录 AWS 管理控制台，请选择 <strong>Sign in to a different account (登录其他账户)</strong>。如果您之前曾使用 IAM 凭证登录控制台，请选择 <strong>Sign-in using root account credentials (使用根账户凭证登录)</strong>。然后选择 <strong>Create a new AWS account (创建新的 AWS 账户)</strong>。</p>
+</li>
+<li><p>按照联机说明操作。</p>
+<p>在注册时，您将接到一通电话，要求您使用电话键盘输入一个验证码。</p>
+</li>
+</ol>
+<p>请记下您的 AWS 账号，因为在下一个任务中您会用到它。</p>
+<h2 id="创建-IAM-用户"><a href="#创建-IAM-用户" class="headerlink" title="创建 IAM 用户"></a>创建 IAM 用户</h2><p>AWS 中的服务（如 Amazon EC2 和 Amazon ECS）要求您在访问时提供凭证，以便服务可以确定您是否有权限访问其资源。控制台要求您的密码。您可以为您的 AWS 账户创建访问密钥以访问命令行界面或 API。但是，我们不建议您使用 AWS 账户的凭证访问 AWS，而建议您改用 AWS Identity and Access Management (IAM)。创建 IAM 用户，然后将该用户添加到具有管理权限的 IAM 组或授予此用户管理权限。然后，您就可以使用专门的 URL 和该 IAM 用户的凭证来访问 AWS。</p>
+<p>如果您已注册 AWS 但尚未为自己创建一个 IAM 用户，则可以使用 IAM 控制台自行创建。</p>
+<p><strong>为您自己创建一个 IAM 用户并将该用户添加到管理员组</strong></p>
+<ol>
+<li><p>使用 AWS 账户电子邮件地址和密码，以 <em>AWS 账户根用户</em> 身份登录到 IAM 控制台 (<a href="https://console.aws.amazon.com/iam/" target="_blank" rel="noopener">https://console.aws.amazon.com/iam/</a>)。</p>
+<p>注意</p>
+<p>强烈建议您遵守以下使用 <strong>Administrator</strong> IAM 用户的最佳实践，妥善保存根用户凭证。只在执行少数<a href="https://docs.aws.amazon.com/general/latest/gr/aws_tasks-that-require-root.html" target="_blank" rel="noopener">账户和服务管理任务</a>时才作为根用户登录。</p>
+</li>
+<li><p>在控制台的导航窗格中，选择 <strong>Users (用户)</strong>，然后选择 <strong>Add user (添加用户)</strong>。</p>
+</li>
+<li><p>对于 <strong>User name (用户名)</strong>，键入 <strong>Administrator</strong>。</p>
+</li>
+<li><p>选中 <strong>AWS 管理控制台 access (AWS 管理控制台访问)</strong> 旁边的复选框，选择 <strong>Custom password (自定义密码)</strong>，然后在文本框中键入新用户的密码。您可以选择 <strong>Require password reset</strong> (需要重置密码) 以强制用户在下次登录时创建新密码。</p>
+</li>
+<li><p>选择<strong>下一步: 权限</strong>。</p>
+</li>
+<li><p>在<strong>设置权限</strong>页面上，选择<strong>将用户添加到组</strong>。</p>
+</li>
+<li><p>选择 <strong>Create group</strong>。</p>
+</li>
+<li><p>在 <strong>Create group (创建组)</strong> 对话框中，对于 <strong>Group name (组名称)</strong>，键入 <strong>Administrators</strong>。</p>
+</li>
+<li><p>对于 <strong>Filter policies (筛选策略)</strong>，选中 <strong>AWS managed - job function (AWS 托管 - 工作职能)</strong> 的复选框。</p>
+</li>
+<li><p>在策略列表中，选中 <strong>AdministratorAccess</strong> 的复选框。然后选择 <strong>Create group</strong>。</p>
+</li>
+<li><p>返回到组列表中，选中您的新组所对应的复选框。如有必要，选择 <strong>Refresh</strong> 以在列表中查看该组。</p>
+</li>
+<li><p>选择 <strong>Next: Tags (下一步: 标签)</strong> 通过以键值对的形式附加标签来向用户添加元数据。</p>
+</li>
+<li><p>选择 <strong>Next: Review</strong> 以查看要添加到新用户的组成员资格的列表。如果您已准备好继续，请选择 <strong>Create user</strong>。</p>
+</li>
+</ol>
+<p>您可使用此相同的流程创建更多的组和用户，并允许您的用户访问 AWS 账户资源。要了解有关使用策略限制用户对特定 AWS 资源的权限的信息，请参阅<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html" target="_blank" rel="noopener">访问管理</a>和<a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_examples.html" target="_blank" rel="noopener">示例策略</a>。</p>
+<p>要以该新 IAM 用户的身份登录，请从 AWS 控制台注销，然后使用以下 URL，其中 <em>your_aws_account_id</em> 是您不带连字符的 AWS 账号（例如，如果您的 AWS 账号是 <code>1234-5678-9012</code>，则您的 AWS 账户 ID 是 <code>123456789012</code>）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://your_aws_account_id.signin.aws.amazon.com/console/</span><br></pre></td></tr></table></figure>
+<p>输入您刚创建的 IAM 用户名和密码。登录后，导航栏显示 <em>your_user_name</em> @ <em>your_aws_account_id</em>。</p>
+<p>如果您不希望您的登录页面 URL 包含 AWS 账户 ID，可以创建账户别名。从 IAM 控制面板中，选择 <strong>Create Account Alias (创建账户别名)</strong>，然后输入一个别名，例如您的公司名称。要在创建账户别名后登录，请使用以下 URL：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://your_account_alias.signin.aws.amazon.com/console/</span><br></pre></td></tr></table></figure>
+<p>要为您的账户验证 IAM 用户的登录链接，请打开 IAM 控制台并在控制面板的 <strong>IAM users sign-in link (IAM 用户登录链接)</strong> 下进行检查。</p>
+<p>有关 IAM 的更多信息，请参阅 <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/" target="_blank" rel="noopener">AWS Identity and Access Management 用户指南</a>。</p>
+<h2 id="创建-IAM-角色"><a href="#创建-IAM-角色" class="headerlink" title="创建 IAM 角色"></a>创建 IAM 角色</h2><p>在 Amazon ECS 容器代理可以代表您调用 Amazon ECS API 操作之前，它需要服务的 IAM 策略和角色，以便了解属于您的代理。</p>
+<p>对于使用 EC2 启动类型的任务，您可以创建一个 IAM 角色，该角色可让代理知道应向哪个账户注册容器实例。当您使用 Amazon 通过此角色提供的经 Amazon ECS 优化的 AMI 启动容器实例时，代理会自动将容器实例注册到 <code>default</code> 集群中。此角色称为 Amazon ECS 容器实例 IAM 角色。有关更多信息，请参阅<a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/instance_IAM_role.html" target="_blank" rel="noopener">Amazon ECS 容器实例 IAM 角色</a>。</p>
+<p>Amazon ECS 容器代理还会代表您调用 Amazon EC2 和 Elastic Load Balancing API，以便在负载均衡器中注册和取消注册容器实例。您必须在启动服务前为其创建一个 IAM 角色，然后才能将负载均衡器附加到 Amazon ECS 服务。此要求适用于您计划用于负载均衡器的任意 Amazon ECS 服务。此角色称为 Amazon ECS 服务计划程序 IAM 角色。有关更多信息，请参阅 <a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/service_IAM_role.html" target="_blank" rel="noopener">Amazon ECS 服务计划程序 IAM 角色</a>。</p>
+<p>对于使用 Fargate 启动类型的任务，您可以创建一个 IAM 角色，该角色允许代理从 Amazon ECR 中提取容器映像或者使用 awslogs 日志驱动程序，该驱动程序是当前唯一受支持的此启动类型的日志记录选项。此角色称为 Amazon ECS 任务执行 IAM 角色。有关更多信息，请参阅 <a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/task_execution_IAM_role.html" target="_blank" rel="noopener">Amazon ECS 任务执行 IAM 角色</a>。</p>
+<p>注意</p>
+<p>在 Amazon ECS 控制台首次运行体验中，将自动为您创建这些 IAM 角色，因此，如果您打算使用控制台，则可以继续下一个部分。如果您不打算使用控制台，而是计划使用 AWS CLI，则需要手动创建这些 IAM 角色。</p>
+<h2 id="创建密钥对"><a href="#创建密钥对" class="headerlink" title="创建密钥对"></a>创建密钥对</h2><p>对于 Amazon ECS，密钥对只有在您打算使用 EC2 启动类型时才需要。</p>
+<p>AWS 使用公有密钥密码术来保护实例的登录信息。 Linux 实例（例如 Amazon ECS 容器实例）没有用于 SSH 访问的密码。您使用密钥对安全地登录到实例。您可以在启动容器实例时指定密钥对的名称，然后提供私有密钥（使用 SSH 登录时）。</p>
+<p>如果您尚未创建密钥对，则可以通过 Amazon EC2 控制台自行创建。如果您计划在多个区域启动实例，则需要在每个区域中创建密钥对。有关区域的更多信息，请参阅 <em>Amazon EC2 用户指南（适用于 Linux 实例）</em> 中的<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html" target="_blank" rel="noopener">区域和可用区</a>。</p>
+<p><strong>创建密钥对</strong></p>
+<ol>
+<li><p>打开 Amazon EC2 控制台 <a href="https://console.aws.amazon.com/ec2/" target="_blank" rel="noopener">https://console.aws.amazon.com/ec2/</a>。</p>
+</li>
+<li><p>从导航栏中，选择密钥对所在的区域。您可以选择向您提供的任何区域，无需理会您身处的位置。但是，密钥对特定于区域。例如，如果您计划在美国东部（俄亥俄）区域中启动容器实例，则必须在美国东部（俄亥俄）区域中为实例创建密钥对。</p>
+<p><img src="/AWS/AWS-实战部署/1.png" alt="                         选择一个区域                     "></p>
+</li>
+<li><p>在导航窗格中的 <strong>NETWORK &amp; SECURITY</strong> 下，选择 <strong>Key Pairs</strong>。</p>
+<p>提示</p>
+<p>导航窗格位于控制台的左侧。如果您看不到窗格，它可能被最小化了；请选择箭头展开该窗格。您可能必须向下滚动才能看到 <strong>Key Pairs</strong> 链接。</p>
+<p><img src="/AWS/AWS-实战部署/2.png" alt="                         打开密钥对页                     "></p>
+</li>
+<li><p>选择 <strong>Create Key Pair</strong>。</p>
+</li>
+<li><p>在 <strong>Create Key Pair</strong> 对话框的 <strong>Key pair name</strong> 字段中输入新密钥对的名称，然后选择 <strong>Create</strong>。使用一个容易记住的名称 (如您的 IAM 用户名) 后跟 <code>-key-pair</code> 加区域名称。例如，<em>me</em>-key-pair-<em>useast2</em>。</p>
+</li>
+<li><p>您的浏览器会自动下载私有密钥文件。基本文件名是您为密钥对指定的名称，文件扩展名为 <code>.pem</code>。将私有密钥文件保存在安全位置。</p>
+<p>重要</p>
+<p>这是您保存私有密钥文件的唯一机会。启动实例时，提供密钥对的名称；每次连接到实例时，提供相应的私有密钥。</p>
+</li>
+<li><p>如果您在 macOS 或 Linux 计算机上使用 SSH 客户端连接到您的 Linux 实例，请使用以下命令设置您私有密钥文件的权限，以确保只有您可以读取它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 400 your_user_name-key-pair-region_name.pem</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>有关更多信息，请参阅 <em>Amazon EC2 用户指南（适用于 Linux 实例）</em> 中的 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html" target="_blank" rel="noopener">Amazon EC2 密钥对</a>。</p>
+<p><strong>使用密钥对连接到实例</strong></p>
+<p>要从运行 macOS 或 Linux 的计算机连接到 Linux 实例，需要使用 <code>-i</code> 选项对 SSH 客户端指定 <code>.pem</code> 文件和私有密钥的路径。若要从运行 Windows 的计算机连接到 Linux 实例，可以使用 MindTerm 或 PuTTY。如果您计划使用 PuTTY，则需要安装它并遵循以下过程将 <code>.pem</code> 文件转换为 <code>.ppk</code> 文件。</p>
+<p><strong>（可选）准备使用 PuTTY 从 Windows 连接到 Linux 实例</strong></p>
+<ol>
+<li><p>从 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/" target="_blank" rel="noopener">http://www.chiark.greenend.org.uk/~sgtatham/putty/</a> 下载并安装 PuTTY。请务必安装整个套件。</p>
+</li>
+<li><p>启动 PuTTYgen（例如，在<strong>开始</strong>菜单中，依次单击<strong>所有程序 &gt; PuTTY &gt; PuTTYgen</strong> ）。</p>
+</li>
+<li><p>在 <strong>Type of key to generate</strong> 下，选择 <strong>RSA</strong>。</p>
+<p><img src="/AWS/AWS-实战部署/3.png" alt="                         PuTTYgen 中的 SSH-2 RSA 密钥                     "></p>
+</li>
+<li><p>选择 <strong>Load</strong>。默认情况下，PuTTYgen 仅显示扩展名为 <code>.ppk</code> 的文件。要找到您的 <code>.pem</code> 文件，请选择显示所有类型的文件的选项。</p>
+<p><img src="/AWS/AWS-实战部署/4.png" alt="                         选择所有文件类型                     "></p>
+</li>
+<li><p>选择您在上一个过程中创建的私有密钥文件，然后选择 <strong>Open</strong>。选择 <strong>OK</strong> 关闭确认对话框。</p>
+</li>
+<li><p>选择 <strong>Save private key (保存私有密钥)</strong>。PuTTYgen 会显示一条警告，提示将在未提供口令的情况下保存密钥。选择<strong>是</strong>。</p>
+</li>
+<li><p>为密钥指定密钥对所用的相同名称。PuTTY 会自动添加 <code>.ppk</code> 文件扩展名。</p>
+</li>
+</ol>
+<h2 id="创建-Virtual-Private-Cloud"><a href="#创建-Virtual-Private-Cloud" class="headerlink" title="创建 Virtual Private Cloud"></a>创建 Virtual Private Cloud</h2><p>Amazon Virtual Private Cloud (Amazon VPC) 允许您在已定义的虚拟网络内启动 AWS 资源。强烈建议您在 VPC 中启动您的容器实例。</p>
+<p>注意</p>
+<p>Amazon ECS 控制台首次运行体验会为您的集群创建 VPC，因此，如果您打算使用 Amazon ECS 控制台，则可以跳到下一个部分。</p>
+<p>如果您有默认 VPC，也可以跳过此部分并进入下一个任务，即 <a href="https://docs.aws.amazon.com/zh_cn/AmazonECS/latest/developerguide/get-set-up-for-amazon-ecs.html#create-a-base-security-group" target="_blank" rel="noopener">创建安全组</a>。要确定您是否具有默认 VPC，请参阅 <em>Amazon EC2 用户指南（适用于 Linux 实例）</em> 中的 <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html#console-updates" target="_blank" rel="noopener">Amazon EC2 控制台中支持的平台</a>。否则，您可以使用以下步骤在账户中创建非默认 VPC。</p>
+<p>重要</p>
+<p>如果您的账户在某个区域中支持 Amazon EC2 Classic，则您在该区域没有默认 VPC。</p>
+<p><strong>创建非默认 VPC</strong></p>
+<ol>
+<li>打开 Amazon VPC 控制台 <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="noopener">https://console.aws.amazon.com/vpc/</a>。</li>
+<li>从导航栏中，为 VPC 选择区域。VPC 特定于某一区域，因此您应选择已创建密钥对的区域。</li>
+<li>在 VPC 控制面板上，选择 <strong>Launch VPC Wizard (启动 VPC 向导)</strong>。</li>
+<li>在 <strong>Step 1: Select a VPC Configuration</strong> 页面上，确保选中 <strong>VPC with a Single Public Subnet</strong>，然后选择 <strong>Select</strong>。</li>
+<li>在 <strong>Step 2: VPC with a Single Public Subnet (步骤 2: 带有单个公有子网的 VPC)</strong> 页面上，在 <strong>VPC name (VPC 名称)</strong> 字段中为您的 VPC 输入友好名称。保留其他默认配置设置，然后选择 <strong>Create VPC</strong>。在确认页面上，请选择 <strong>OK</strong>。</li>
+</ol>
+<p>有关 Amazon VPC 的更多信息，请参阅 <em>Amazon VPC 用户指南</em> 中的 <a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/" target="_blank" rel="noopener">Amazon VPC 是什么？</a>。</p>
+<h2 id="创建安全组"><a href="#创建安全组" class="headerlink" title="创建安全组"></a>创建安全组</h2><p>安全组用作相关容器实例的防火墙，可在容器实例级别控制入站和出站流量。您可以向安全组添加规则，以便使用 SSH 从您的 IP 地址连接到容器实例。您还可以添加允许来自任意位置的入站和出站 HTTP 和 HTTPS 访问的规则。向任务所需的开放端口添加任意规则。容器实例需要外部网络访问来与 Amazon ECS 服务终端节点通信。</p>
+<p>注意</p>
+<p>Amazon ECS 控制台首次运行时会为您的实例创建安全组并根据您使用的任务定义创建负载均衡器，因此，如果要使用 Amazon ECS 控制台，则可以跳到下一个部分。</p>
+<p>如果您计划在多个区域中启动容器实例，则需要在每个区域中创建安全组。有关更多信息，请参阅 <em>Amazon EC2 用户指南（适用于 Linux 实例）</em> 中的<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html" target="_blank" rel="noopener">区域和可用区</a>。</p>
+<p>提示</p>
+<p>您需要本地计算机的公有 IP 地址，可以使用服务获得该地址。例如，我们提供以下服务：<a href="http://checkip./" target="_blank" rel="noopener">http://checkip.amazonaws.com/</a> 或 <a href="https://checkip./" target="_blank" rel="noopener">https://checkip.amazonaws.com/</a>。要查找另一项可提供您的 IP 地址的服务，请使用搜索短语“what is my IP address”。 如果您通过 Internet 服务提供商 (ISP) 连接或者在不使用静态 IP 地址的情况下从防火墙后面连接，则必须找出客户端计算机使用的 IP 地址范围。</p>
+<p><strong>为您的 VPC 创建具有最小特权的</strong></p>
+<ol>
+<li><p>打开 Amazon EC2 控制台 <a href="https://console.aws.amazon.com/ec2/" target="_blank" rel="noopener">https://console.aws.amazon.com/ec2/</a>。</p>
+</li>
+<li><p>从导航栏中选择安全组的区域。安全组特定于某一区域，因此您应选择已创建密钥对的区域。</p>
+</li>
+<li><p>在导航窗格中，选择 <strong>Security Groups</strong>，然后选择 <strong>Create Security Group</strong>。</p>
+</li>
+<li><p>输入新安全组的名称和描述。选择一个您容易记住的名称，例如 <em>ecs-instances-default-cluster</em>。</p>
+</li>
+<li><p>在 <strong>VPC</strong> 列表中，确保选择了您的默认 VPC。它标有星号 (*)。</p>
+<p>注意</p>
+<p>如果您的账户支持 Amazon EC2 Classic，请选择您在上一个任务中创建的 VPC。</p>
+</li>
+<li><p>Amazon ECS 容器实例不需要打开任何入站端口。但您可能需要添加 SSH 规则，以便登录容器实例并使用 Docker 命令检查任务。如果您希望容器实例托管运行 Web 服务器的任务，也可以添加适用于 HTTP 和 HTTPS 的规则。容器实例需要外部网络访问来与 Amazon ECS 服务终端节点通信。完成以下步骤可添加这些可选的安全组规则。</p>
+<p>在 <strong>Inbound</strong> 选项卡上，创建以下规则 (为每个新规则选择 <strong>Add Rule</strong>)，然后选择 <strong>Create</strong>：</p>
+<ul>
+<li><p>从 <strong>Type</strong> 列表中选择 <strong>HTTP</strong>，确保 <strong>Source</strong> 设置为 <strong>Anywhere</strong> (<code>0.0.0.0/0</code>)。</p>
+</li>
+<li><p>从 <strong>Type</strong> 列表中选择 <strong>HTTPS</strong>，确保 <strong>Source</strong> 设置为 <strong>Anywhere</strong> (<code>0.0.0.0/0</code>)。</p>
+</li>
+<li><p>从 <strong>Type</strong> 列表中选择 <strong>SSH</strong>。在 <strong>Source</strong> 字段中，确保选中 <strong>Custom IP</strong>，然后采用 CIDR 表示法指定您计算机或网络的公有 IP 地址。要采用 CIDR 表示法指定单个 IP 地址，请添加路由前缀 <code>/32</code>。例如，如果您的 IP 地址是 <code>203.0.113.25</code>，请指定 <code>203.0.113.25/32</code>。如果您的公司要分配同一范围内的地址，请指定整个范围，例如 <code>203.0.113.0/24</code>。</p>
+<p>重要</p>
+<p>出于安全原因，我们不建议您允许从所有 IP 地址 (<code>0.0.0.0/0</code>) 对您的实例进行 SSH 访问（以测试为目的的短暂访问除外）。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="安装-AWS-CLI"><a href="#安装-AWS-CLI" class="headerlink" title="安装 AWS CLI"></a>安装 AWS CLI</h2><p>可以在 AWS 管理控制台中手动管理 Amazon ECS 的所有操作。但是，您可以在本地桌面上安装 AWS CLI 或开发人员工具包并生成脚本，以便在 Amazon ECS 中自动执行常见管理任务。</p>
+<p>要对 Amazon ECS 使用 AWS CLI，请安装最新版本的 AWS CLI。有关安装 AWS CLI 或升级到最新版本的信息，请参阅 <em>AWS Command Line Interface 用户指南</em> 中的<a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html" target="_blank" rel="noopener">安装 AWS 命令行界面</a>。</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Docker/Docker-实战应用/" class="pre-post btn btn-default" title="Docker 实战应用">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Docker 实战应用</span>
+        </a>
+    
+    
+        <a href="/Big-Data/Splunk入门手册/" class="next-post btn btn-default" title="Splunk入门手册">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Splunk入门手册</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册-AWS"><span class="toc-text">注册 AWS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-IAM-用户"><span class="toc-text">创建 IAM 用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-IAM-角色"><span class="toc-text">创建 IAM 角色</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建密钥对"><span class="toc-text">创建密钥对</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-Virtual-Private-Cloud"><span class="toc-text">创建 Virtual Private Cloud</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建安全组"><span class="toc-text">创建安全组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-AWS-CLI"><span class="toc-text">安装 AWS CLI</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Kubernetes">
+
+
+    <meta name="description" content="在这篇文章中我们将会探讨2个主流的Docker编排框架：AWS的ECS（Elastic Container Service）和Google的Kubernetes。
+3个月前，我们在
+nanit....">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>为什么我们抛弃ECS而选择了Kubernetes | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="为什么我们抛弃ECS而选择了Kubernetes">
+            
+	            为什么我们抛弃ECS而选择了Kubernetes
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Kubernetes/">Kubernetes</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Kubernetes/">Kubernetes</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/17</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>322</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>在这篇文章中我们将会探讨2个主流的Docker编排框架：AWS的ECS（Elastic Container Service）和Google的Kubernetes。</p>
+<p>3个月前，我们在</p>
+<p>nanit.com</p>
+<p>希望选择一个合适的Docker编排框架，ECS成为了我们的首选，毕竟，我们对AWS的服务较为熟悉，并且我们的基础设施都是建立在AWS的。经过一段时间的测试，我们发现ECS并不成熟，缺少一些我们需要的关键功能，因此我们开始尝试其他的框架：Kubernetes。令人意外的是，Kubernetes非常成熟，几乎支持我们需要的所有功能。对于我们来说，Kubernetes在ECS的主场完胜了ECS。接下来，就让我们一起来看看Kubernetes赢在哪些方面。</p>
+<p>注意：ECS一直在更新，我们会尽可能的跟进这些内容，但部分内容可能被忽略了，希望读者不要介意。</p>
+<h3 id="构建集群（Cluster-Setup）"><a href="#构建集群（Cluster-Setup）" class="headerlink" title="构建集群（Cluster Setup）"></a>构建集群（Cluster Setup）</h3><p>ECS:为了启动一个ECS集群，用户需要设置一个Auto Scaling Group。用户可以编辑user-data来将EC2实例添加到指定的ECS集群上。当ASG被设置，实例启动之后，用户可以在ECS控制台看到这部分内容。现在，用户可以开始进行task-definition，方式类似于Docker-compose。</p>
+<p>Kubernetes：想要在AWS上启动一个Kubernetes，用户需要先启动一个具有一定权限的EC2实例（通过IAM）。这将会创建多个AWS constructs来支持你的集群：VPC、ASG、一些安全组（Security Groups）和一个Kubernetes主实例。集群需要几分钟来启动，之后用户就能够在上面运行自己的容器。</p>
+<p>比较结果：使用这两种框架来启动一个集群都非常的简单和友好。</p>
+<h3 id="启动基础服务（Basic-Service-Setup）"><a href="#启动基础服务（Basic-Service-Setup）" class="headerlink" title="启动基础服务（Basic Service Setup）"></a>启动基础服务（Basic Service Setup）</h3><p>我们的任务是启动一个Nginx 镜像，并且让其他人能够访问这个Web服务。</p>
+<p>ECS: 首先，我们需要创建一个ELB(Elastic Load Balancer)，它负责80端口的转发。然后，我们需要创建一个task-definition，它负责在80端口上启动一个Docker镜像。最后，需要创建一个Service，它会显示出有多少实例会同时运行。我们需要将它绑定到我们之前创建的ELB上。</p>
+<p>Kubernetes：首先需要创建一个Replication Controller，它会显示出我们希望运行的Docker镜像和有多少镜像会同时运行。之后，我们需要创建一个Service object，这会启动一个ELB并且将ELB的流量转发到对应的容器上。</p>
+<p>比较结果：Kubernetes的方式更舒服一些，更简洁。用户并不需要手工启动或者管理ELB。Kubernetes会完全负责管理：当用户创建了一个service，一个ELB会自动创建；当用户删除了一个service，它会自动从AWS上删除。</p>
+<h3 id="服务发现（Service-Discovery）"><a href="#服务发现（Service-Discovery）" class="headerlink" title="服务发现（Service Discovery）"></a>服务发现（Service Discovery）</h3><p>当你使用了微服务架构和Docker，一个好的服务发现解决方案是至关重要的。Docker容器总是在不同虚拟机中迁移，用户必须有一个可靠的方法来发现在集群内和集群外的服务。</p>
+<p>ECS: ECS并没有提供任何服务发现的解决方案。我能想到的最好方法就是构建一个内部加载平衡器（internal load balancer），并且将每一个service附加到一个平衡器上。平衡器的host name不会被改变，然后你就能够利用这个host name来作为服务的端点。其他的方法还有集成一个外部的程序，比如</p>
+<p>Consul</p>
+<p>。</p>
+<p>Kubernetes：我认为这是Kubernetes的亮点之一。Kubernetes内置了一个完全的解决方案。它是一个插件，因此用户可以选择是否使用，但我强烈建议使用。它能够和namespace一起很好的工作。简单来说，当你创建了一个Kubernetes服务，比如说叫做redis，你就能够在集群的任何地方引用redis这个名字，即便是跨虚拟机。这就像是让docker网络跨越了特定的虚拟机，连通了整个集群。Namespaces允许你将多个服务归纳到一个具有逻辑的组中。现在假设我们有两个命名空间，分别是production和staging，他们都包含有一个redis的服务。一个在production命名空间下的容器可以通过redis来引用在production命名空间下的redis服务，同样的，在stagin命名空间下的容器也能通过redis来引用到位于stagine命名空间下的redis服务。这种自动化识别使得用户不需要花费时间去配置信息就能够构建一个隔离的环境，并且你可以随意在所有的命名空间中使用redis来引用对应的服务，接下来kunernetes会为你自动解析它们。</p>
+<p>比较结果：毫无疑问，Kubernetes小胜一局。使用Kubernetes，用户完全不用关心服务发现的事情，全部交给Kubernetes来做就好了：）</p>
+<h3 id="部署（Deployments）"><a href="#部署（Deployments）" class="headerlink" title="部署（Deployments）"></a>部署（Deployments）</h3><p>当我们升级一个服务的时候，即便还在部署，我们也想要确保它百分之百能用。我们的测试包括一个简单的NginX服务和一些简单的静态网页。我们启动了一个并发为30个请求的负载测试，并且在负载测试期间，我们会对该服务进行升级。</p>
+<p>在部署期间，我们发现ECS丢失了比Kubernetes更多的请求。其中，Kubernetes丢失了0-2个请求，而ECS丢失了9-14个。</p>
+<p>比较结果：说实话，我对ECS非常的失望。同样，我也对Kubernetes表示失望，但是它至少比ECS好多了。值得注意的是，Kubernetes 1.1.1版本应该会对轮询升级机制（rollong update mechanism）进行改善，还有一些其他的系统系能提升，这些改进都会使得这些数字变得更好看。</p>
+<h3 id="持久卷（Persistent-Volumes）"><a href="#持久卷（Persistent-Volumes）" class="headerlink" title="持久卷（Persistent Volumes）"></a>持久卷（Persistent Volumes）</h3><p>我们经常需要挂载一些持久性的文件系统到一个指定的容器上，MySQL就是一个典型的例子。</p>
+<p>ECS：ECS支持Docker原生的解决方案——用户可以启动一个数据容器，然后使用volumes-from命令来挂载它到其他容器上。就拿MySQL来看，你首先需要设置一个mysql-data容器，这个容器仅仅拥有一个数据卷。然后设置另外一个mysql-db容器，这个容器使用volumes-from命令来挂载之前创建的数据卷容器。这个方法看起来不错，但是它是host-sepicific的，这意味着你的mysql-db容器不能够在主机之间移动。你必须指定mysql-db容器在哪一个主机上运行，以此来防止容器被重新分配到其他主机上，最终失去了持久性。</p>
+<p>Kubernetes：除了从一个指定的主机上挂载数据卷，Kubernetes还提供了一个选项：挂载一个EBS（Elastic Book Store）数据卷。这意味着一个容器的持久性存储可以在多个不同的虚拟机之间保留。你再也不需要强制你的MySQL容器必须运行在哪一个具体的虚拟机上。</p>
+<p>注意：EBS同一时间只能被一个虚拟机挂载，这意味着如果有一个服务，它有两个运行在不同虚拟机的容器，他们将不能够挂载和共享这个EBS。</p>
+<p>比较结果：即便Kubernetes的EBS挂载有一定的限制，但它依旧非常的独特和有用。</p>
+<h3 id="健康检查（Health-Checks）"><a href="#健康检查（Health-Checks）" class="headerlink" title="健康检查（Health-Checks）"></a>健康检查（Health-Checks）</h3><p>确保拥有足够的服务容量是高可用性和冗余性的核心思想。健康检查就是用来确保服务不仅仅是运行的，并且它们还是健康和可操作的。</p>
+<p>ECS：ECS使用ELB(Elastic Load Balancer)健康检查，这种方式有三个主要的缺点：</p>
+<p>\1. ELB健康检查仅仅限于HTTP/TCP检查</p>
+<p>\2. 如果你想要对一个不开放TCP端口的服务进行检查，这是不行的。仅仅是为了能够进行健康检查，你就必须运行一个HTTP/TCP服务器。</p>
+<p>\3. 即便你拥有一个支持HTTP/TCP的服务，你还需要创建一个ELB，并将它绑定到这个服务上，这样才能进行健康检查。</p>
+<p>Kubernetes：除了基于HTTP/TCP的健康检查，Kubernetes还提供了一种叫做Exec的方式。Exec可以让用户在容器中运行命令。如果命令结束，并且返回0则表示这个服务是健康的，否则这个服务很可能是不健康的，它会被其他的实例所替换。</p>
+<p>比较结果：Kubernetes的方式更灵活，更简单配置。用户并不需要去启动一个冗余的HTTP/TCP服务器仅仅为了进行健康检查，并且即便服务没有绑定ELB，你也可以对它们进行健康检查。</p>
+<h3 id="端口管理（Port-Management）"><a href="#端口管理（Port-Management）" class="headerlink" title="端口管理（Port Management）"></a>端口管理（Port Management）</h3><p>从我们的上篇文章中可以看出，端口管理在Docker中是比较困难的。我们想通过一个简单的例子来说明Kubernetes如何比ECS更优雅的解决了这个问题。我们拥有一台虚拟机和两个监听80端口的网站。我们不能够在同一个虚拟机上开2个80端口，因此我们需要寻找一个方法来解决这个问题。</p>
+<p>ECS:用户必须手工确定两个服务没有使用同一个端口。我们只有一台虚拟机，因此只能运行一个开放80端口的容器。当我们想要开启第二个开放80端口的容器时，这是不行的，因为我们没有多余的虚拟机了。也就是说，能够开放多少个x端口的服务取决于拥有多少个虚拟机。在小型集群中，这是非常容易满足的条件，但是当你的服务数量变得越来越多时，这将成为一个头疼的问题，因为当你想要扩充容器时，你必须确认你还有足够的端口。</p>
+<p>Kubernetes：Kubernetes非常优雅的解决了这个问题。它为每一个虚拟机上的容器都分配了一个随机的端口。然后它创建了2个ELB，一个将80端口转发到容器A的随机端口上，另外一个转发到容器B的随机端口上。一个内部的路由机制会负责将数据包转发到对应容器端口。</p>
+<p>比较结果：Kubernetes使用虚拟端口的方式代替绑定原始端口的方法，很好的解决了这个头疼的问题。</p>
+<h3 id="记录（Logging）"><a href="#记录（Logging）" class="headerlink" title="记录（Logging）"></a>记录（Logging）</h3><p>没有什么系统不需要记录功能。</p>
+<p>我从没有想过记录会成为一个大问题，但能够为你解决问题令我非常的高兴，即便这个问题非常简单。我们之前提到Kubernetes提供了一个服务发现的扩展功能，在这里，我想说的是记录的扩展功能。它含有两个不同的记录和度量收集（metric collection）的机制。第一种是著名的</p>
+<p>ELK</p>
+<p>方法，ELK会收集容器的所有记录，并且能够让用户通过Kibana接口来查询和可视化这些记录。第二种是InfluxDB，它使用</p>
+<p>Grafana</p>
+<p>作为可视化工具来查询系统信息，如CPU和内存使用情况。</p>
+<p>比较结果：Kubernetes的扩展功能更胜一筹。当然，你会说我并不需要这些扩展，系统也能很好工作，但是，它们效果如此之好，并且能适用于99%的用例，为什么不使用呢？ECS并没有提供内置的记录功能，用户想要集成一个进去并不是很困难，但是这些并不能和Kubernetes提供的功能相提并论。</p>
+<h3 id="未知的云平台（Cloud-Agnostic）"><a href="#未知的云平台（Cloud-Agnostic）" class="headerlink" title="未知的云平台（Cloud Agnostic）"></a>未知的云平台（Cloud Agnostic）</h3><p>其实，Kubernetes和ECS之间并不存在竞争：）</p>
+<p>ECS会专注于AWS平台，如果你已经在ECS上构建了你的基础架构，当你想要转移到其他云平台时，你将会遇到很多困难。</p>
+<p>Kubernetes适用于多个云平台。你可以在AWS，Google Cloud，微软的ZURE，Rackspace等等上运行你的集群，并且运行效果或多或少都是相同的。在这里，或多或少指的是有一些功能只有部分云供应商提供。你必须确认你选择的新供应商能够支持Kubernetes中使用的功能，至少确保迁移是可能的。</p>
+<h3 id="开源软件（OSS）"><a href="#开源软件（OSS）" class="headerlink" title="开源软件（OSS）"></a>开源软件（OSS）</h3><p>Kubernetes是开源的项目，而ECS不是。这意味着，所有的一切，从源代码到未来的发展路线都是对你开放的。发现了漏洞？你可以创建一个issue或者直接提交一个pull 请求来修复它。新的功能会被添加到每一个新版本，其中的贡献人数和pull请求是惊人的。</p>
+<p>ECS有着不同的性质，我不能够在网上找到关于它未来发展路线的规划。你不能够获得一个漏洞和issue的列表，你必须深入到论坛上去寻找想要的答案。并且你寻找的答案往往都是缺乏实际的，并不能够提供任何帮助（请看</p>
+<p>这里</p>
+<p>）。也许这仅仅是因为我个人的糟糕经历，但是不管怎么说，这都是令人烦躁和失望的。</p>
+<p>比较结果：就我个人而言，我更喜欢开源软件。我喜欢Kubernetes的开放性，每个人都能够参与讨论和贡献代码。我相信社区的力量会给我们带来一个更好的产品。</p>
+<h3 id="多可用区域（Multi-AZ）"><a href="#多可用区域（Multi-AZ）" class="headerlink" title="多可用区域（Multi-AZ）"></a>多可用区域（Multi-AZ）</h3><p>当谈论到Kubernetes时，有一件事情困扰着我：它不支持AWS上的多可用区域集群（multiple availability-zones cluters）。这意味着所有EC2实例都集中在一个AZ上，这使得你的集群很可能会遭受到中断问题。</p>
+<p>ECS有对Multi-AZ有很好的支持。</p>
+<p>比较结果：在Kubernetes的issue上，已经有一些工作正在进行。我十分确定下个版本会很好的得到改善。因此ECS在这一点上的胜利并不会长久。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>很多公司都开始使用Docker作为他们的主要基础设置，传递机制（delivery mechanism）和编排框架（orchestration frameworks）成为了系统的核心，并且影响着我们开发，迁移，运行，升级的方式。当我想要比较ECS和Kubernetes时，我找不到类似的文章。所以我认为把我们的经验公布出来非常的重要，这样其他人能够站在我们的肩膀上看的更远。</p>
+<p>对于nanit.com来说，Kubernetes毫无疑问获得了胜利。如果你有任何的异议，请告诉我理由，我非常想要知道这些内容：）</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Ansible/Ansible实战汇总/" class="pre-post btn btn-default" title="Ansible实战汇总">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Ansible实战汇总</span>
+        </a>
+    
+    
+        <a href="/DevOps/Jenkins与Docker的自动化CI-CD实战/" class="next-post btn btn-default" title="Jenkins与Docker的自动化CI/CD实战">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Jenkins与Docker的自动化CI/CD实战</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#构建集群（Cluster-Setup）"><span class="toc-text">构建集群（Cluster Setup）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动基础服务（Basic-Service-Setup）"><span class="toc-text">启动基础服务（Basic Service Setup）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务发现（Service-Discovery）"><span class="toc-text">服务发现（Service Discovery）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署（Deployments）"><span class="toc-text">部署（Deployments）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#持久卷（Persistent-Volumes）"><span class="toc-text">持久卷（Persistent Volumes）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#健康检查（Health-Checks）"><span class="toc-text">健康检查（Health-Checks）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端口管理（Port-Management）"><span class="toc-text">端口管理（Port Management）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录（Logging）"><span class="toc-text">记录（Logging）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#未知的云平台（Cloud-Agnostic）"><span class="toc-text">未知的云平台（Cloud Agnostic）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开源软件（OSS）"><span class="toc-text">开源软件（OSS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多可用区域（Multi-AZ）"><span class="toc-text">多可用区域（Multi-AZ）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

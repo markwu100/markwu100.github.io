@@ -1,0 +1,417 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Minikube">
+
+
+    <meta name="description" content="目标：本文介绍了如何在Mac OS上开始使用Minikube的详细步骤。
+这是学习Kubernetes的一个很好的起点。
+操作环境：Mac OS 10.14 
+Minikube v0.30.0
+...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>How-to-get-started-with-Minikube-on-Mac-OS | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="How-to-get-started-with-Minikube-on-Mac-OS">
+            
+	            How-to-get-started-with-Minikube-on-Mac-OS
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Kubernetes/">Kubernetes</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Minikube/">Minikube</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/05/05</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="目标："><a href="#目标：" class="headerlink" title="目标："></a>目标：</h2><p>本文介绍了如何在Mac OS上开始使用Minikube的详细步骤。</p>
+<p>这是学习Kubernetes的一个很好的起点。</p>
+<h2 id="操作环境："><a href="#操作环境：" class="headerlink" title="操作环境："></a>操作环境：</h2><p>Mac OS 10.14 </p>
+<p>Minikube v0.30.0</p>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><h3 id="1-先决条件"><a href="#1-先决条件" class="headerlink" title="1.先决条件"></a>1.先决条件</h3><p>在Mac上安装xcode：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`xcode-``select` `--``install`</span><br></pre></td></tr></table></figure>
+<p>然后安装</p>
+<p>Homebrew：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`/usr/bin/ruby` `-e ``&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;`</span><br></pre></td></tr></table></figure>
+<p>所以基本上Homebrew会将软件包安装到他们自己的目录中，然后将他们的文件符号链接到/ usr / local。</p>
+<h3 id="2-安装Minikube"><a href="#2-安装Minikube" class="headerlink" title="2.安装Minikube"></a>2.安装Minikube</h3><p>使用Homebrew，我们可以在Mac上轻松安装Minikube：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`brew cask ``install` `minikube`</span><br></pre></td></tr></table></figure>
+<h3 id="3-在VM中启动单个节点Kubernetes群集"><a href="#3-在VM中启动单个节点Kubernetes群集" class="headerlink" title="3.在VM中启动单个节点Kubernetes群集"></a>3.在VM中启动单个节点Kubernetes群集</h3><p>默认情况下，Minikube使用“virtualbox”作为VM驱动程序，您也可以将其更改为其他驱动程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ minikube start -h |``grep` `vm-driver``      ``--vm-driver string               VM driver is one of: [virtualbox vmwarefusion kvm xhyve hyperv hyperkit kvm2 none] (default ``&quot;virtualbox&quot;``)`</span><br></pre></td></tr></table></figure>
+<p>现在启动VM中的单节点Kubernetes集群（默认内存大小为2G）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`minikube start`</span><br></pre></td></tr></table></figure>
+<h3 id="4-启动Kubernetes-Web-Dashboard"><a href="#4-启动Kubernetes-Web-Dashboard" class="headerlink" title="4.启动Kubernetes Web Dashboard"></a>4.启动Kubernetes Web Dashboard</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`minikube dashboard`</span><br></pre></td></tr></table></figure>
+<p>只有一个节点显示：</p>
+<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/1.png" alt=""></p>
+<h3 id="5-将hello-world-Node-js应用程序部署到Minikube中"><a href="#5-将hello-world-Node-js应用程序部署到Minikube中" class="headerlink" title="5.将hello world Node.js应用程序部署到Minikube中"></a>5.将hello world Node.js应用程序部署到Minikube中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl run hello-minikube --image=k8s.gcr.io``/echoserver``:1.4 --port=8080`</span><br></pre></td></tr></table></figure>
+<p>显示在仪表板的“部署”中：</p>
+<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/2.png" alt=""></p>
+<p>或者在CLI中显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ kubectl get deployments``NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE``hello-minikube   1         1         1            1           15m`</span><br></pre></td></tr></table></figure>
+<h3 id="6-将部署公开为服务"><a href="#6-将部署公开为服务" class="headerlink" title="6.将部署公开为服务"></a>6.将部署公开为服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl expose deployment hello-minikube --``type``=NodePort`</span><br></pre></td></tr></table></figure>
+<p>在仪表板中显示服务信息：</p>
+<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/3.png" alt=""></p>
+<p>或者在CLI中显示服务信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ kubectl get services hello-minikube``NAME             TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE``hello-minikube   NodePort   xxx.xxx.xxx.xxx &lt;none&gt;        8080:31978``/TCP`   `3m`</span><br></pre></td></tr></table></figure>
+<h3 id="7-等待pod启动并运行"><a href="#7-等待pod启动并运行" class="headerlink" title="7.等待pod启动并运行"></a>7.等待pod启动并运行</h3><p>继续在命令下运行，直到pod的状态正在运行并准备就绪。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$  kubectl get pods``NAME                             READY   STATUS    RESTARTS   AGE``hello-minikube-6c47c66d8-gv7n2   1``/1`     `Running   0          31m`</span><br></pre></td></tr></table></figure>
+<h3 id="8-访问服务"><a href="#8-访问服务" class="headerlink" title="8.访问服务"></a>8.访问服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`curl $(minikube service hello-minikube --url)`</span><br></pre></td></tr></table></figure>
+<p>或直接转到浏览器中的网址：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`$ minikube service hello-minikube --url``http:``//192``.168.99.100:31978`</span><br></pre></td></tr></table></figure>
+<p><img src="/Kubernetes/How-to-get-started-with-Minikube-on-Mac-OS/4.png" alt=""></p>
+<h3 id="9-关闭群集"><a href="#9-关闭群集" class="headerlink" title="9.关闭群集"></a>9.关闭群集</h3><p>删除服务（服务在此之后消失）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl delete service hello-minikube`</span><br></pre></td></tr></table></figure>
+<p>删除部署（之后部署和pod都消失了）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`kubectl delete deployment hello-minikube`</span><br></pre></td></tr></table></figure>
+<p>停止minikube集群：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`minikube stop`</span><br></pre></td></tr></table></figure>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Azure/通过Powershell-登陆Azure（Azure-MoonCake为例）一般常见的有两种方式/" class="pre-post btn btn-default" title="通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">通过Powershell 登陆Azure（Azure MoonCake为例）一般常见的有两种方式</span>
+        </a>
+    
+    
+        <a href="/Cloud-Service/深入探讨AKS和AAD/" class="next-post btn btn-default" title="深入探讨AKS和AAD">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">深入探讨AKS和AAD</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标："><span class="toc-text">目标：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作环境："><span class="toc-text">操作环境：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案："><span class="toc-text">解决方案：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先决条件"><span class="toc-text">1.先决条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装Minikube"><span class="toc-text">2.安装Minikube</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在VM中启动单个节点Kubernetes群集"><span class="toc-text">3.在VM中启动单个节点Kubernetes群集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-启动Kubernetes-Web-Dashboard"><span class="toc-text">4.启动Kubernetes Web Dashboard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-将hello-world-Node-js应用程序部署到Minikube中"><span class="toc-text">5.将hello world Node.js应用程序部署到Minikube中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-将部署公开为服务"><span class="toc-text">6.将部署公开为服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-等待pod启动并运行"><span class="toc-text">7.等待pod启动并运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-访问服务"><span class="toc-text">8.访问服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-关闭群集"><span class="toc-text">9.关闭群集</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

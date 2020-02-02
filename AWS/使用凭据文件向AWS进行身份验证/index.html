@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Credential">
+
+
+    <meta name="description" content="这是在命令行上对AWS进行身份验证的综合指南的第1部分。在本系列的介绍中，我们介绍了AWS身份验证的基础知识，包括IAM用户，IAM角色和访问密钥。在这篇文章中，我们将介绍在命令行上对AWS进行...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>使用凭据文件向AWS进行身份验证 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="使用凭据文件向AWS进行身份验证">
+            
+	            使用凭据文件向AWS进行身份验证
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/AWS/">AWS</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Credential/">Credential</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/29</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>310</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>这是<a href="https://blog.gruntwork.io/a-comprehensive-guide-to-authenticating-to-aws-on-the-command-line-63656a686799" target="_blank" rel="noopener">在命令行上对AWS进行身份验证</a>的<a href="https://blog.gruntwork.io/a-comprehensive-guide-to-authenticating-to-aws-on-the-command-line-63656a686799" target="_blank" rel="noopener">综合指南的</a>第1部分。在本<a href="https://blog.gruntwork.io/a-comprehensive-guide-to-authenticating-to-aws-on-the-command-line-63656a686799" target="_blank" rel="noopener">系列</a>的<a href="https://blog.gruntwork.io/a-comprehensive-guide-to-authenticating-to-aws-on-the-command-line-63656a686799" target="_blank" rel="noopener">介绍中</a>，我们介绍了AWS身份验证的基础知识，包括IAM用户，IAM角色和访问密钥。在这篇文章中，我们将介绍在命令行上对AWS进行身份验证的第一个选项：凭据文件。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>您可以将AWS Access密钥存储在（或在Windows上）的<em>凭据文件</em>中。通常，您创建此文件的方式是<a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html" target="_blank" rel="noopener">安装AWS CLI</a>并运行命令：<code>~/.aws/credentials`</code>%UserProfile%.aws\credentials<code></code>aws configure`</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ aws configure </span><br><span class="line">AWS Access密钥ID：AKIAIOSFODNN7EXAMPLE </span><br><span class="line">AWS秘密访问密钥：wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY </span><br><span class="line">默认区域名称[无]：us-west-2 </span><br><span class="line">默认输出格式[无]：json</span><br></pre></td></tr></table></figure>
+<p>AWS会提示您输入您的访问密钥ID和秘密访问密钥，并将其存储在<code>~/.aws/credentials</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[默认] </span><br><span class="line">aws_access_key_id = AKIAIOSFODNN7EXAMPLE </span><br><span class="line">aws_secret_access_key = wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY</span><br></pre></td></tr></table></figure>
+<p>它还存储您输入的其他设置<code>~/.aws/config</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[default] </span><br><span class="line">region = us-west-2 </span><br><span class="line">output = json</span><br></pre></td></tr></table></figure>
+<p>存在这些文件后，您可以运行与AWS通信的任何CLI或SDK工具，它将自动查找并使用此凭据文件和设置。</p>
+<h3 id="使用多组访问密钥"><a href="#使用多组访问密钥" class="headerlink" title="使用多组访问密钥"></a>使用多组访问密钥</h3><p>如果您有多组访问密钥（例如，对于不同AWS账户中的多个IAM用户），您可以在凭证文件中为每个用户创建单独的<em>命名配置</em> 文件<code>~/.aws/credentials</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[默认] </span><br><span class="line">aws_access_key_id = AKIAIOSFODNN7EXAMPLE </span><br><span class="line">aws_secret_access_key = wJalrXUtnFEMI / K7MDENG / bPxRfiCYEXAMPLEKEY</span><br><span class="line">[user2] </span><br><span class="line">aws_access_key_id = AKIAI44QH8DHBEXAMPLE </span><br><span class="line">aws_secret_access_key = je7MtGbClwBF / 2Zp9Utk / h3yCo8nvbEXAMPLEKEY</span><br></pre></td></tr></table></figure>
+<p>同样，您可以在配置文件中拥有多个命名配置文件<code>~/.aws/config</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[default] </span><br><span class="line">region = us-west-2 </span><br><span class="line">output = json</span><br><span class="line">[profile user2] </span><br><span class="line">region = us-east-1 </span><br><span class="line">output = text</span><br></pre></td></tr></table></figure>
+<p>请注意，<code>default</code>默认情况下，您可能会使用所调用的命名配置文件。要告诉CLI工具使用除<code>default</code>配置文件之外的其他内容，您必须执行以下操作之一：</p>
+<ol>
+<li>设置<code>AWS_PROFILE</code>环境变量。例如，在Linux中，你会运行<code>export AWS_PROFILE=user2</code>。之后，您可以运行任何AWS CLI工具（例如<code>terraform apply</code>），它应该使用您的命名配置文件。</li>
+<li>某些工具允许您将配置文件指定为命令行参数或代码中的参数。例如，<code>aws</code>CLI允许您指定<code>--profile</code>：<code>aws ec2 describe-instances --profile user2</code>。在Terraform中，您可以<code>profile</code>在<code>provider</code>块中设置参数：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">提供者“aws”&#123; </span><br><span class="line">  profile =“user2” </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用IAM角色"><a href="#使用IAM角色" class="headerlink" title="使用IAM角色"></a>使用IAM角色</h3><p>如果您想假设IAM角色 - 例如，您在<code>security</code>帐户中有一个IAM用户并想在您的<code>dev</code>帐户中承担IAM角色- 您有两个选择。第一个选项取决于您正在使用的CLI工具。某些CLI工具允许您通过命令行参数或代码指定要承担的IAM角色。例如，使用Terraform，您可以<code>assume_role</code>在<code>provider</code>配置中指定设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">provider“aws”&#123; </span><br><span class="line">  assume_role &#123; </span><br><span class="line">    role_arn =“arn：aws：iam :: 123456789012：role / dev-full-access” </span><br><span class="line">  &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二个选项是<code>role_arn</code>在Config File中指定参数<code>~/.aws/config</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[profile dev-full-access] </span><br><span class="line">role_arn = arn：aws：iam :: 123456789012：role / dev-full-access</span><br></pre></td></tr></table></figure>
+<p>使用任一选项，您指定的值<code>role_arn</code>是开发帐户中IAM角色的<a href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html" target="_blank" rel="noopener">Amazon资源名称（ARN）</a>，其格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARN：AWS：IAM :: &lt;ACCOUNT_ID&gt;：角色/ &lt;ROLE_NAME&gt;</span><br></pre></td></tr></table></figure>
+<p>下次运行使用<code>dev-full-access</code>命名配置文件的任何CLI命令时，AWS SDK将自动采用指定的IAM角色<code>role_arn</code>。</p>
+<h3 id="与MFA合作"><a href="#与MFA合作" class="headerlink" title="与MFA合作"></a>与MFA合作</h3><p>如果您正在使用<code>aws</code>CLI，则使用带有凭据配置文件的MFA非常简单。您只需将其添加<code>mfa_serial</code>到您的配置文件中<code>~/.aws/config</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[profile with-mfa] </span><br><span class="line">mfa_serial = arn：aws：iam :: 123456789012：mfa / jon-doe</span><br></pre></td></tr></table></figure>
+<p>该<code>mfa_serial</code>参数应设置为MFA设备的ARN，您可以从AWS Web Console 的<a href="https://console.aws.amazon.com/iam/home?#/users" target="_blank" rel="noopener">IAM用户页面</a>获取该ARN 。它应该是这样的格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ARN：AWS：IAM :: &lt;ACCOUNT_ID&gt;：MFA / &lt;USERNAME&gt;</span><br></pre></td></tr></table></figure>
+<p>添加<code>mfa_serial</code>参数后，下次<code>aws</code>使用该命名配置文件运行CLI时，它将提示您输入MFA令牌：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ aws s3 ls --profile with-mfa</span><br><span class="line">输入MFA代码：</span><br></pre></td></tr></table></figure>
+<p>但是如果你运行的东西不是<code>aws</code>，比如<code>terraform</code>或者<code>packer</code>怎么办？在这种情况下，事情变得有点毛茸茸，因为大多数其他工具<em>不会</em>自动提示您输入MFA令牌。相反，您必须在该工具之外执行MFA身份验证过程，这是一个<a href="https://aws.amazon.com/premiumsupport/knowledge-center/authenticate-mfa-cli/" target="_blank" rel="noopener">单调乏味的过程</a>。</p>
+<p>首先，使用普通（永久）AWS Access Keys配置凭证文件（例如，通过运行<code>aws configure</code>）。接下来，您运行该<code>aws sts get-session-token</code>命令，将其传递给您的MFA设备的ARN以及来自Google身份验证器应用程序或您的密钥卡的MFA令牌：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aws sts get-session-token \ </span><br><span class="line">  --serial-number arn：aws：iam :: 123456789012：mfa / jon-doe \ </span><br><span class="line">  --token-code 123456 \ </span><br><span class="line">  --duration-seconds 43200</span><br></pre></td></tr></table></figure>
+<p>这将返回一个包含<em>临时访问密钥</em>的JSON blob （请注意<code>--duration-seconds</code>前面命令中的参数，该参数指定这些临时访问密钥何时到期）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  “Credentials”：&#123; </span><br><span class="line">    “SecretAccessKey”：“secret-access-key”，</span><br><span class="line">    “SessionToken”：“temporary-session-token”，</span><br><span class="line">    “Expiration”：“expiration-date-time”，</span><br><span class="line">    “AccessKeyId”：“access-key -id“ </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>您需要获取这些临时访问密钥并将其复制到凭证文件中的命名配置文件中<code>~/.aws/credentials</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[with-mfa] </span><br><span class="line">aws_access_key_id = &lt;Access-key-as-in-returned-output&gt; </span><br><span class="line">aws_secret_access_key = &lt;Secret-access-key-as-in-returned-output&gt; </span><br><span class="line">aws_session_token = &lt;Session-Token-as-in-returned-输出&gt;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是临时接入键，可以设置不仅<code>aws_access_key_id</code>和<code>aws_secret_access_key</code>你的证书文件，同时也<code>aws_session_token</code>。</p>
+<p>现在，您可以使用此命名配置文件运行其他CLI工具：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">导出AWS_PROFILE = with-mfa </span><br><span class="line">terraform apply</span><br></pre></td></tr></table></figure>
+<p>请注意，临时访问密钥在一段时间（通常为12小时）后过期，因此您必须反复执行此操作。不好玩。</p>
+<h3 id="优点和缺点"><a href="#优点和缺点" class="headerlink" title="优点和缺点"></a>优点和缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>基本身份验证很容易。</li>
+<li>使用IAM角色很容易。</li>
+<li>命名配置文件可以轻松管理多组凭据和设置。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>您的访问密钥以明文形式存储在磁盘上。<strong>这不安全。</strong></li>
+<li>您始终使用永久访问密钥进行身份验证，而不是使用已轮换的临时访问密钥。</li>
+<li>使用MFA很复杂且容易出错。</li>
+<li>您的凭据永远位于磁盘上，如果您忘记指定其他命令，则默认的命名配置文件将用于所有命令，这很容易出错。</li>
+<li>在您的代码中指定命名配置文件（例如，在您的Terraform代码中）很有诱惑力，以确保使用正确的凭据，但这需要您的所有团队成员为您的命名配置文件使用相同的名称，这可能很难强制执行。</li>
+</ul>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>尽管许多AWS教程都使用凭证文件，但我们通常建议不要使用凭证文件，因为以明文形式将永久AWS凭证存储在磁盘上并不安全。更糟糕的是，使用凭据文件时，MFA的使用非常复杂，大多数用户都不会为此烦恼。</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Jenkins/使用Jenkins-Pipeline进行持续集成/" class="pre-post btn btn-default" title="使用Jenkins Pipeline进行持续集成">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">使用Jenkins Pipeline进行持续集成</span>
+        </a>
+    
+    
+        <a href="/Jenkins/精通Jenkins-Pipeline-PartI/" class="next-post btn btn-default" title="【DevOps进阶之路Day1】精通Jenkins Pipeline PartI">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">【DevOps进阶之路Day1】精通Jenkins Pipeline PartI</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用多组访问密钥"><span class="toc-text">使用多组访问密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用IAM角色"><span class="toc-text">使用IAM角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与MFA合作"><span class="toc-text">与MFA合作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点和缺点"><span class="toc-text">优点和缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

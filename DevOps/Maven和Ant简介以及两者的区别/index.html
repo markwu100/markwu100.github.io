@@ -1,0 +1,393 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Maven">
+
+
+    <meta name="description" content="一．Maven简介Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。目前，绝大多数开发人员都把 Ant 当作 Java 编程项目的标准...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Maven和Ant简介以及两者的区别 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Maven和Ant简介以及两者的区别">
+            
+	            Maven和Ant简介以及两者的区别
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/DevOps/">DevOps</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Maven/">Maven</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/21</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>318</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>一．Maven简介<br>Maven是基于项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。<br>目前，绝大多数开发人员都把 Ant 当作 Java 编程项目的标准构建工具。遗憾的是，Ant 的项目管理工具（作为 make的替代工具）不能满足绝大多数开发人员的需要。通过检查 Ant 构建文件，很难发现项目的相关性信息和其它信息（如开发人员/拥有者、版本或站点主页）。<br>Maven 除了以程序构建能力为特色之外，还提供 Ant 所缺少的高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目，而使用 Ant 则需要十几行。事实上，由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目现在使用 Maven，而且公司项目采用 Maven 的比例在持续增长。<br>Maven这个单词来自于意第绪语，意为知识的积累，最早在Jakata Turbine项目中它开始被用来试图简化构建过程。当时有很多项目，它们的Ant build文件仅有细微的差别，而JAR文件都由CVS来维护。于是Maven创始者开始了Maven这个项目，该项目的清晰定义包括，一种很方便的发布项目信息的方式，以及一种在多个项目中共享JAR的方式.<br>二．Maven常用命令<br>mvn archetype：create 创建Maven项目<br>mvn compile 编译源代码<br>mvn deploy 发布项目<br>mvn test-compile 编译测试源代码<br>mvn test 运行应用程序中的单元测试<br>mvn site 生成项目相关信息的网站<br>mvn clean 清除项目目录中的生成结果<br>mvn package 根据项目生成的jar<br>mvn install 在本地Repository中安装jar<br>mvn eclipse:eclipse 生成eclipse项目文件<br>mvnjetty:run 启动jetty服务<br>mvntomcat:run 启动tomcat服务</p>
+<pre><code>Ant
+</code></pre><p>Ant简介<br>Ant是一种基于Java的build工具。理论上来说，它有些类似于（Unix）C中的make ，但没有make的缺陷。目前的最新版本为：Ant 1.9.1<br>既然我们已经有了make, gnumake, nmake, jam以及其他的build工具为什么还要要一种新的build工具呢？因为Ant的原作者在多种(硬件)平台上开发软件时，无法忍受这些工具的限制和不便。类似于make的工具本质上是基于shell（语言）的：他们计算依赖关系，然后执行命令（这些命令与你在命令行敲的命令没太大区别）。这就意味着你可以很容易地通过使用OS特有的或编写新的（命令）程序扩展该工具；然而，这也意味着你将自己限制在了特定的OS，或特定的OS类型上，如Unix。<br>Ant就不同了。与基于shell命令的扩展模式不同，Ant用Java的类来扩展。（用户）不必编写shell命令，配置文件是基于XML的，通过调用target树，就可执行各种task。每个task由实现了一个特定Task接口的对象来运行。<br>当一个代码项目大了以后，每次重新编译，打包，测试等都会变得非常复杂而且重复，因此c语言中有make脚本来帮助这些工作的批量完成。在Java 中应用是平台无关性的，当然不会用平台相关的make脚本来完成这些批处理任务了，ANT本身就是这样一个流程脚本引擎，用于自动化调用程序完成项目的编译，打包，测试等。除了基于JAVA是平台无关的外，脚本的格式是基于XML的，比make脚本来说还要好维护一些。<br>每个ant脚本（缺省叫build.xml）中设置了一系列任务(target)：比如对于一个一般的项目可能需要有以下任务。</p>
+<ul>
+<li>任务1：usage 打印本脚本的帮助信息（缺省）</li>
+<li>任务2：clean &lt;– init 清空初始化环境</li>
+<li>任务3：javadoc &lt;– build &lt;– init 生成JAVADOC</li>
+<li>任务4：jar &lt;– build &lt;– init 生成JAR</li>
+<li>任务5：all &lt;– jar + javadoc &lt;– build &lt;– init 完成以上所有任务：jar javadoc<br>注：我看到很多项目的ant脚本中的命名基本上都是一致的，比如：编译一般叫build或者compile；打包一般叫jar或war；生成文档一般命名为 javadoc或javadocs；执行全部任务all。在每个任务的中，ANT会根据配置调用一些外部应用并配以相应参数执行。虽然ANT可调用的外部应用种类非常丰富，但其实最常用的就2，3个：比如javac javadoc jar等。<br>二．Ant的优点<br>Ant是Apache软件基金会JAKARTA目录中的一个子项目，它有以下的优点。<br>跨平台性。Ant是纯Java语言编写的，因此具有很好的跨平台性。<br>操作简单。Ant是由一个内置任务和可选任务组成的。Ant运行时需要一个XML文件(构建文件)。<br>Ant通过调用target树，就可以执行各种task。每个task实现了特定接口对象。由于Ant构建文件时XML格式的文件，所以很容易维护和书写，而且结构很清晰。<br>Ant可以集成到开发环境中。由于Ant的跨平台性和操作简单的特点，它很容易集成到一些开发环境中去。<br>三．Ant 开发<br>Ant的构建文件<br>当开始一个新的项目时，首先应该编写Ant构建文件。构建文件定义了构建过程，并被团队开发中每个人使用。Ant构建文件默认命名为build.xml，也可以取其他的名字。只不过在运行的时候把这个命名当作参数传给Ant。构建文件可以放在任何的位置。一般做法是放在项目顶层目录中，这样可以保持项目的简洁和清晰。下面是一个典型的项目层次结构。<br>(1) src存放文件。<br>(2) class存放编译后的文件。<br>(3) lib存放第三方JAR包。<br>(4) dist存放打包，发布以后的代码。<br>Ant构建文件是XML文件。每个构建文件定义一个唯一的项目(Project元素)。每个项目下可以定义很多目标(target元素)，这些目标之间可以有依赖关系。当执行这类目标时，需要执行他们所依赖的目标。<br>每个目标中可以定义多个任务，目标中还定义了所要执行的任务序列。Ant在构建目标时必须调用所定义的任务。任务定义了Ant实际执行的命令。Ant中的任务可以为3类。<br>（1） 核心任务。核心任务是Ant自带的任务。<br>（2） 可选任务。可选任务实来自第三方的任务，因此需要一个附加的JAR文件。<br>（3） 用户自定义的任务。用户自定义的任务是用户自己开发的任务。<br>1.<project>标签<br>每个构建文件对应一个项目。<project>标签时构建文件的根标签。它可以有多个内在属性，就如代码中所示，其各个属性的含义分别如下。<br>(1) default表示默认的运行目标，这个属性是必须的。<br>(2) basedir表示项目的基准目录。<br>(3) name表示项目名。<br>(4) description表示项目的描述。<br>每个构建文件都对应于一个项目，但是大型项目经常包含大量的子项目，每一个子项目都可以有自己的构建文件。<br>2.<target>标签<br>一个项目标签下可以有一个或多个target标签。一个target标签可以依赖其他的target标签。<br>例如，有一个target用于编译程序，另一个target用于生成可执行文件。在生成可执行文件之前必须先编译该文件，因此可执行文件的target依赖于编译程序的target。Target的所有属性如下。<br>(1).name表示标明，这个属性是必须的。<br>(2).depends表示依赖的目标。<br>(3)if表示仅当属性设置时才执行。<br>(4)unless表示当属性没有设置时才执行。<br>(5)description表示项目的描述。<br>Ant的depends属性指定了target的执行顺序。Ant会依照depends属性中target出现顺序依次执行每个target。在执行之前，首先需要执行它所依赖的target。程序中的名为run的target的depends属性compile，而名为compile的target的depends属性是prepare，所以这几个target执行的顺序是prepare-&gt;compile-&gt;run。<br>一个target只能被执行一次，即使有多个target依赖于它。如果没有if或unless属性，target总会被执行。<br>3.<mkdir>标签<br>该标签用于创建一个目录，它有一个属性dir用来指定所创建的目录名，其代码如下：<br><mkdir dir="”${class.root}”/"><br>通过以上代码就创建了一个目录，这个目录已经被前面的property标签所指定。<br>4<jar>标签<br>该标签用来生成一个JAR文件，其属性如下。<br>(1) destfile表示JAR文件名。<br>(2) basedir表示被归档的文件名。<br>(3) includes表示被归档的文件模式。<br>(4) exchudes表示被排除的文件模式。<br>5．&lt;javac标签&gt;<br>该标签用于编译一个或一组java文件，其属性如下。<br>(1).srcdir表示源程序的目录。<br>(2).destdir表示class文件的输出目录。<br>(3).include表示被编译的文件的模式。<br>(4).excludes表示被排除的文件的模式。<br>(5).classpath表示所使用的类路径。<br>(6).debug表示包含的调试信息。<br>(7).optimize表示是否使用优化。<br>(8).verbose 表示提供详细的输出信息。<br>(9).fileonerror表示当碰到错误就自动停止。<br>6．<java>标签<br>该标签用来执行编译生成的.class文件，其属性如下。<br>(1).classname 表示将执行的类名。<br>(2).jar表示包含该类的JAR文件名。<br>(3).classpath所表示用到的类路径。<br>(4).fork表示在一个新的虚拟机中运行该类。<br>(5).failonerror表示当出现错误时自动停止。<br>(6).output 表示输出文件。<br>(7).append表示追加或者覆盖默认文件。<br>7.<delete>标签<br>该标签用于删除一个文件或一组文件，其属性如下。<br>(1)/file表示要删除的文件。<br>(2).dir表示要删除的目录。<br>(3).includeEmptyDirs 表示指定是否要删除空目录，默认值是删除。<br>(4).failonerror 表示指定当碰到错误是否停止，默认值是自动停止。<br>(5).verbose表示指定是否列出所删除的文件，默认值为不列出。<br>8.<copy>标签<br>该标签用于文件或文件集的拷贝，其属性如下。<br>(1).file 表示源文件。<br>(2).tofile 表示目标文件。<br>(3).todir 表示目标目录。<br>(4).overwrite 表示指定是否覆盖目标文件，默认值是不覆盖。<br>(5).includeEmptyDirs 表示制定是否拷贝空目录，默认值为拷贝。<br>(6).failonerror 表示指定如目标没有发现是否自动停止，默认值是停止。<br>(7).verbose 表示制定是否显示详细信息，默认值不显示。<br>四．Ant的数据类型<br>在构建文件中为了标识文件或文件组，经常需要使用数据类型。数据类型包含在org.apache.tool.ant.types包中。下面镜简单介绍构建文件中一些常用的数据类型。</copy></delete></java></jar></mkdir></mkdir></target></project></project></li>
+</ul>
+<ol>
+<li><p>argument 类型<br>由Ant构建文件调用的程序，可以通过<arg>元素向其传递命令行参数，如apply,exec和java任<br>务均可接受嵌套<arg>元素，可以为各自的过程调用指定参数。以下是<arg>的所有属性。<br>(1).values 是一个命令参数。如果参数中有空格，但又想将它作为单独一个值，则使用此属性。<br>(2).file表示一个参数的文件名。在构建文件中，此文件名相对于当前的工作目录。<br>(3).line表示用空格分隔的多个参数列表。<br>(4).path表示路径。<br>2.ervironment 类型<br>由Ant构建文件调用的外部命令或程序，<env>元素制定了哪些环境变量要传递给正在执行的系统命令，<env>元素可以接受以下属性。<br>(1).file表示环境变量值的文件名。此文件名要被转换位一个绝对路径。<br>(2).path表示环境变量的路径。Ant会将它转换为一个本地约定。<br>(3).value 表示环境变量的一个直接变量。<br>(4).key 表示环境变量名。<br>注意 file path 或 value只能取一个。<br>3.filelist类型<br>Filelist 是一个支持命名的文件列表的数据类型，包含在一个filelist类型中的文件不一定是存在的文件。以下是其所有的属性。<br>(1).dir是用于计算绝对文件名的目录。<br>(2).files 是用逗号分隔的文件名列表。<br>(3).refid 是对某处定义的一个<filelist>的引用。<br>注意 dir 和 files 都是必要的，除非指定了refid(这种情况下，dir和files都不允许使用)。<br>4.fileset类型<br>Fileset 数据类型定义了一组文件，并通常表示为<fileset>元素。不过，许多ant任务构建成了隐式的fileset,这说明他们支持所有的fileset属性和嵌套元素。以下为fileset 的属性列表。<br>(1).dir表示fileset 的基目录。<br>(2).casesensitive的值如果为false，那么匹配文件名时，fileset不是区分大小写的，其默认值为true.<br>(3).defaultexcludes 用来确定是否使用默认的排除模式，默认为true。<br>(4).excludes 是用逗号分隔的需要派出的文件模式列表。<br>(5).excludesfile 表示每行包含一个排除模式的文件的文件名。<br>(6).includes 是用逗号分隔的，需要包含的文件模式列表。<br>(7).includesfile 表示每行包括一个包含模式的文件名。<br>5.patternset 类型<br>Fileset 是对文件的分组，而patternset是对模式的分组，他们是紧密相关的概念。<patternset>支持4个属性：includes excludex includexfile 和 excludesfile,与fileset相同。Patternset 还允许以下嵌套元素：include,exclude,includefile 和 excludesfile.<br>6.filterset 类型<br>Filterset定义了一组过滤器，这些过滤器将在文件移动或复制时完成文件的文本替换。<br>主要属性如下：<br>(1).begintoken 表示嵌套过滤器所搜索的记号，这是标识其开始的字符串。<br>(2).endtoken表示嵌套过滤器所搜索的记号这是标识其结束的字符串。<br>(3).id是过滤器的唯一标志符。<br>(4).refid是对构建文件中某处定义一个过滤器的引用。<br>7.Path类型<br>Path元素用来表示一个类路径，不过它还可以用于表示其他的路径。在用作几个属性时，路经中的各项用分号或冒号隔开。在构建的时候，此分隔符将代替当前平台中所有的路径分隔符，其拥有的属性如下。<br>(1).location 表示一个文件或目录。Ant在内部将此扩展为一个绝对路径。<br>(2).refid 是对当前构建文件中某处定义的一个path的引用。<br>(3).path表示一个文件或路径名列表。<br>8.mapper类型<br>Mapper类型定义了一组输入文件和一组输出文件间的关系，其属性如下。<br>(1).classname 表示实现mapper类的类名。当内置mapper不满足要求时，用于创建定制mapper.<br>(2).classpath表示查找一个定制mapper时所用的类型路径。<br>(3).classpathref是对某处定义的一个类路径的引用。<br>(4).from属性的含义取决于所用的mapper.<br>(5).to属性的含义取决于所用的mapper.<br>(6).type属性的取值为identity，flatten glob merge regexp 其中之一，它定义了要是用的内置mapper的类型。<br>五．Ant的安装<br>解包后在系统可执行路径中加入指向ant的bin的路径就可以了，比如可以在GNU/Linux上把以下配置加入/etc/profile中：<br>export ANT_HOME=/home/ant<br>export JAVA_HOME=/usr/java/j2sdk1.4.1<br>export PATH=$PATH:$JAVA_HOME/bin:$ANT_HOME/bin<br>Windows 下的安装：<br>下载后解压到某个目录我这里以D:\apache-ant-1.7.1为例子：<br>添加path全局环境变量:D:\apache-ant-1.7.1\bin<br>这样在command line就可以运行ant命令了<br>测试：运行-&gt;cmd/command-&gt;ant 如果没有安装成功则回报找不到这个命令，安装成功会有相关的提示信息显示。<br>这样执行ant 后，如果不指定配置文件ant会缺省找build.xml这个配置文件，并根据配置文件执行任务，缺省的任务设置可以指向最常用的任务，比如： build，或指向打印帮助信息：usage，告诉用户有那些脚本选项可以使用。<br>六．Ant的运行<br>安装好Ant并且配置好路径之后，在命令行中切换到构建文件的目录，输入Ant命令就可以运行Ant.若没有指定任何参数，Ant会在当前目录下查询build.xml文件。如果找到了就用该文件作为构建文件。如果使用了 –find 选项，Ant 就会在上级目录中找构建文件，直至到达文件系统的根目录。如果构建文件的名字不是build.xml ，则Ant运行的时候就可以使用 –buildfile file,这里file 指定了要使用的构建文件的名称，示例如下：<br>Ant如下说明了表示当前目录的构建文件为build.xml 运行 ant 执行默认的目标。<br>Ant –buildfile test.xml<br>使用当前目录下的test.xml 文件运行Ant ,执行默认的目标</patternset></fileset></filelist></env></env></arg></arg></arg></p>
+<pre><code>Moven与Ant的区别
+</code></pre><p>Maven 和 Ant 针对构建问题的两个不同方面。Ant 为 Java 技术开发项目提供跨平台构建任务。Maven 本身描述项目的高级方面，它从 Ant 借用了绝大多数构建任务。因此，由于 Maven 和 Ant 代表两个差异很大的工具，所以接下来只说明这两个工具的等同组件之间的区别。</p>
+</li>
+</ol>
+<p>Maven Ant<br>标准构建文件 project.xml 和 maven.xml build.xml<br>特性处理顺序 ${maven.home}/bin/driver.properties<br>${project.home}/project.properties<br>${project.home}/build.properties<br>${user.home}/build.properties<br>通过 -D 命令行选项定义的系统特性<br>最后一个定义起决定作用。 通过 -D 命令行选项定义的系统特性<br>由 <property> 任务装入的特性<br>第一个定义最先被处理。<br>构建规则 构建规则更为动态（类似于编程语言）；它们是基于 Jelly 的可执行 XML。 构建规则或多或少是静态的，除非使用 <script> 任务。（请参阅 参考资料以获得相关教程。）<br>扩展语言 插件是用 Jelly（XML）编写的。 插件是用 Java 语言编写的。<br>构建规则可扩展性 通过定义 <preGoal> 和 <postGoal> 使构建 goal 可扩展。 构建规则不易扩展；可通过使用 <script> 任务模拟 <preGoal> 和 <postGoal> 所起的作用。<br>Maven是一个项目管理工具，它包含了一个项目对象模型 (Project Object Model)，一组标准集合，一个项目生命周期(Project Lifecycle)，一个依赖管理系统(Dependency Management System)，和用来运行定义在生命周期阶段(phase)中插件(plugin)目标(goal)的逻辑。当你使用Maven的时候，你用一个明确定义的项目对象模型来描述你的项目，然后Maven可以应用横切的逻辑，这些逻辑来自一组共享的（或者自定义的）插件。</p>
+</script></property></p>
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Kubernetes/Istio-Kubernetes和云原生系统的服务网格/" class="pre-post btn btn-default" title="Istio - Kubernetes和云原生系统的服务网格">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Istio - Kubernetes和云原生系统的服务网格</span>
+        </a>
+    
+    
+        <a href="/AWS/CloudFormation经验贴汇总/" class="next-post btn btn-default" title="CloudFormation经验贴汇总">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">CloudFormation经验贴汇总</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

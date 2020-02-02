@@ -1,0 +1,451 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="AWS">
+
+
+    <meta name="description" content="AWS的全名是Amazon Web Services，也就是亚马逊旗下的子公司，专门做云计算，业务遍及全球近200个国家，也是云计算行业的领头羊（有兴趣可以看看这个链接）。依照AWS Senio...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>AWS面试经验分享 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="AWS面试经验分享">
+            
+	            AWS面试经验分享
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/求职/">求职</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/AWS/">AWS</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/02/12</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>354</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>AWS的全名是Amazon Web Services，也就是亚马逊旗下的子公司，专门做云计算，业务遍及全球近200个国家，也是云计算行业的领头羊（有兴趣可以看看这个链接）。依照AWS Senior VP Andy Jassy的话来讲是：“We are building the fastest growing technology business on earth.”我于2014年6月拿到此公司offer，在香港和台湾从事对客户或潜伏客户的培训工作，隶属于亚太区的培训与认证部门（APAC Training &amp; Certification）。这篇文章回顾了我面试及头半年的工作，和一些个人的感想。基于公司政策要求，其中不触及面试具体细节、工作具体内容（包括人名），产品介绍及评论。</p>
+<p><img src="/求职/AWS面试经验分享/20150102123134905.jpg" alt=""></p>
+<p>“云计算”是个有趣的名词，由于现在这个环境下，普通大众想听不到它都难，但多数却完全不知道究竟是甚么。其实狭义且不严格地理解云计算，就是把计算资源像我们生活中水、电、气这类基础设施1样，按需供应计费，提供相对统1的标准或接口给其他厂商（生态圈）或终究客户使用。如果不明白计算资源怎样能像水电1样供应，可以联想1下平时使用的电脑，你在意的其实不是它的CPU内存硬盘网络等计算资源（简单统称方便理解），你在意的是输入的内容能得到你所需要的输出，不论这个输出是字符、图片、视频、音频、游戏画面、其他交互内容等等。那末“云计算”这里说的其实就是将你不在意的那些东西（CPU内存硬盘网络）和你在意的输入输出（比如键盘鼠标、显示器）分离，用户只具有基本的输入输出和网络连接服务，其他的全部放到远端。用户需要就启动使用并付费，不需要就像水电1样关掉。这是其中1个重点：资源分离。分离才方便做其他事情，具体好处这里就不说了。另外还需提及的是，对平时使用的电脑，不论你用还是不用，只要你买回来那末你已为其计算资源付费终了了，这样是否是很划算呢？你1年用1天和用360天，为计算资源付一样的费用，这其实其实不公道。个人使用还行，但企业就很不划算了，这就是按需分配计算资源的必要性，为了公道的利用及分配资源。</p>
+<p>这篇文章不是教学文章，所以只是帮助不懂的朋友粗浅了解1下甚么是“云计算”。其实云计算还分好几类，上面提到的只是说基础设施层面的服务。其他层面的举个例子：想一想你手机上的App，它们也是云计算的1部份。由于他们也是你根据你的需求下载得手机上为你提供服务。所以云计算可以认为是Web Service，即通过网络为客户提供服务，这些服务源自于硬件与软件的组合或结合。我的工作就是介绍亚马逊的云计算服务给客户，让他们理解并学会使用亚马逊的云计算产品。我只负责香港和台湾，大陆培训业务与我无关，所以香港台湾的朋友如果要参加AWS的培训，多半会看到我（Michael Chen）。目前我所负责的区域就我1个人在做培训，也是香港台湾地区的第1个培训师。目前培训过的客户大小公司（世界500强到初创企业）都有，具体就不说了。</p>
+<p><strong>面试经历</strong></p>
+<p>面试</p>
+<p>是1个有趣（折腾且漫长）的进程。由于我并没有主动申请这个职位，也不知道有这个职位在招聘，也没有猎头来找我（Amazon不通过猎头觅人）。当时（2013年）我还在联科团体工作，对AWS的职位只是偷偷想过，但种种缘由未有任何行动。直到：</p>
+<ul>
+<li>2013年5月28日，AWS的Z在LinkedIn上和我联系，问我是不是有兴趣做“Ecosystem Solutions Architect”（以后简称SA）。我其实不认识Z，但看到这个消息确切很惊讶，1是没想到会有AWS的人通过LinkedIn和我联系，2是觉得自己的资格还不够，有这个机会却极可能抓不住。我坦诚告知Z说，我看了职位介绍，觉得自己不合适，但还是很愿意与他交换，问他是不是还希望继续。Z答应了，我却很忐忑。</li>
+</ul>
+<ul>
+<li>2013年6月24日，与Z终究见面，才发现他只说英语（我进AWS后发现他也能说广东话，不过基本不说）。他觉得我还行，然后需要再与其他同事评估，给了简历。我当时我觉得不合适SA，但培训比较合适，但从他和公司的角度，最需要的还是SA，我接受了他的建议。</li>
+</ul>
+<ul>
+<li>2013年7月15日，如我所料，内部评估结果觉得我不适合做SA。Z说可以推荐我去做培训这个职位。</li>
+</ul>
+<ul>
+<li>2013年8月6日，向Z推荐L做SA，不过Z觉得不适合，问A（AWS亚太区培训认证主管）是不是和我联系，我回复还未联系。这位L后来进了Facebook，题外话就不多说了。</li>
+</ul>
+<ul>
+<li>2013年8月22日，与Z分享Gartner IaaS魔力象限报告。Gartner是全球知名的IT咨询机构，它的这个报告系列在IT界有很好的公信力。报告说AWS全球领先，计算资源超过其他14位竞争对手总和的5倍。英文原文是：It is the overwhelming market share leader, with more than five times the cloud IaaS compute capacity in use than the aggregate total of the other 14 providers in this Magic Quadrant.（全文链接：Magic Quadrant for Cloud Infrastructure as a Service）</li>
+</ul>
+<ul>
+<li>2013年10月2日，发邮件给Z国庆祝愿。</li>
+</ul>
+<ul>
+<li>2013年11月18日，我在联科团体获升职，与Z分享。Z恭喜后又问我是不是还有兴趣加入AWS，他会再次帮我争取拿到培训的<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>机会。大约过了34天，HR给我电话，顺利过关。</li>
+</ul>
+<ul>
+<li>2013年12月6日，经过若干次与A约<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>时间，终究与其电话<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>，英语吞吞吐吐地过关，还需要看看粤语及技术方面。</li>
+</ul>
+<ul>
+<li>2013年12月17日，技术兼粤语<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>，粤语没问题，但好几个技术问题不会，以为应聘就此结束。回到家，内心非常难受。还是写了邮件与Z报告了情况。过了1段时间，得到继续<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>的消息，我没想到居然还有机会。其间下班后在家狂看Glassdoor，学习AWS。</li>
+</ul>
+<ul>
+<li>2014年1月30日，经过若干次来回讨论<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>时间，从1月中旬最后定到了1月30日（除夕）。非常辛苦的1对1<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>，1共5个小时不中断，有香港台湾的主管、亚太区培训认证主管、高级培训师、销售等好几个人车轮战，软技能和硬技能（AWS相干技术）、培训表达（英文与粤语）等都有触及，问得非常得仔细。<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>犯了1些小错，整体顺利。</li>
+</ul>
+<ul>
+<li>2014年2月3日，Bar Raiser（简单理解就是提高<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>门坎的人）<a href="http://www.wfuyu.com/cxyms/" target="_blank" rel="noopener">面试</a>。其中有几个NoSQL的技术问题，都没有回答得很好。其他问题应当回答正确。当时感觉非常挫败，觉得最后1轮失败，很是惋惜。</li>
+</ul>
+<ul>
+<li>2014年2月11日，讨论后结果是positive！我被录取了。</li>
+</ul>
+<ul>
+<li>2014年2月14日，情人节签约。</li>
+</ul>
+<ul>
+<li>2014年6月11日，经过非常麻烦的签证办理手续，终究开始上班。</li>
+</ul>
+<p>从2013年5月28日到2014年6月11日，全部进程几近是1整年。从上面的描写中你或许能感遭到我当时经历如此漫长的煎熬与纠结吧，他人都在开心过年的时候，我在纠结</p>
+<p>面试</p>
+<p>及结果，好在终究成功了。另外，这全部进程中还有1些其他的事情：</p>
+<ul>
+<li>2014年5月5日至2014年6月9日，陪老婆生孩子坐月子等各种生育相干事情。</li>
+</ul>
+<ul>
+<li>2014年3月23日，推荐M应聘Business Development职位，2014年4月17日，M顺利闯关成功。</li>
+</ul>
+<p>工作经历</p>
+<p>工作经历用1句话就说完了：6月入职飞新加坡，7月飞曼谷，8月飞台北和西雅图，9月飞悉尼，10月再次飞台北，11月飞拉斯维加斯为AWS re:Invent大会帮忙，12月回武汉办理大陆户口注销事宜，这也是为了以后能更方便地去台湾商务旅行。看着飞很多，其实多半时间都在香港，出差1般是1周左右。具体内容就不说了，有几点值得提1下：</p>
+<ul>
+<li>第1次培训是在台北，也是试讲，要被评估，若不合格还要重新再试讲评估。第1次用全英语讲课长达4天，这4天说的英语比我310多年说的都多，而且这几天平均每天睡4个钟头。好在最后1切顺利。但努力空间很大，需要认真学习和练习。在我提交完培训报告后，同事和老板都回邮件，说实话，挺给我信心的：“Great start Michael, the first one I am sure will always be the hardest to get through. But you are learning from the master in D too. Well done and good report.”“AWESOME report full of a lot of great information about our customers, their needs and provides AWS with the information required to help them further from a product/services and adoption perspective all the way back to training.”</li>
+</ul>
+<ul>
+<li>以后在香港用英文培训，台北用普通话培训。每次培训完后，客户都要评分，每次写报告看分数都心跳加速，真是压力山东大学。今年我的整体分数在4.44（满分5分）。这个分数不算高，但就我个人而言，我觉得是客观的分数。</li>
+</ul>
+<ul>
+<li>记得2014年3月听D在香港用英语对着4百来人做公然演讲培训时，1位AWS同事过来拍拍我肩膀，半开玩笑地说，明年此时就是你来演讲了哦！我想这么快啊！我能行吗？很难想象1年后我就可以面对几百人用英语演讲，我非常怀疑我有这个实力并且能做得如D那样好。结果入职不到半年，10月就在台北演讲，11月就在香港演讲，最后评价都还不错（台北4.5+，香港4.1+，这里不做与同事的横向比较）。回头来想一想，有些时候，你不能不需要1些压力来逼迫你提高，以做到自己都不敢想象的事情。</li>
+</ul>
+<ul>
+<li>我1直觉得很难的AWS Solution Architect认证，居然也顺利通过。对那些在企业工作很多年的人来讲，这个认证其实其实不难。但我在企业才工作3年半，之前10年的工作都在两个大学里教书做科研，这其中的难度和跨度，对我是很大的（这里只是对我个人而言，不适用于其他人）。</li>
+</ul>
+<p>百姓网的CEO王建硕曾在其博客里说过他“所看到的伟大的公司，或成功的生意人，发现他们有1种惊人的类似的地方，总结出来就是：对贡献有豪情，对回报有信心。”贡献的是为了兴趣，而不是为了回报。如果做事1定是为了某种回报，那末这件事情会很难坚持久长。这个观点丁香园的冯大辉也转载在其微信公众号的文章中：“只有对贡献有豪情，不在意回报的时候，你才能坚持做1件事情，就像伟大的公司有1个贡献的理念，才可以持久地保持豪情，在获得巨大的成功以后，接着日复1日地寻觅更大的贡献。”这类理念与豪情是对回报有信心的来源。</p>
+<p>我算不上成功，算不上勤奋，乃至算不上坚持。真正了解我的人知道这是实话，比如我老婆肯定知道上面这句话不是谦虚:) 你看这个博客的更新频率都愈来愈低，说忙是理由也是借口。在信息碎片化的今天，能坚持写博客的人貌似不多，还能坚持定阅浏览博客的人也不多，我周围几个90后同事乃至已很少用Facebook而用Instagram。我说了上面这么多乱78糟的话，是为了让自己重新再检讨1下，继续坚持下去。我已草拟了2015年每天需要完成的事情，包括这个博客和健身。固然整体安排还是以工作为主，不会把写博客放到重要的事情列表上，但保持每周1篇的更新频率是应当的，除非出差或其他不可抗因素没法更新。我欠下的游记都差不多足数了，呵呵。</p>
+<p>写博客纯属不写不舒服斯基。想一想博客能带给我甚么回报呢？金钱的回报基本没有，倒是帮很多人拿到了1些学校和公司的offer，解决了1些人在旅游和其他方面的问题。真实的咨询公司我没进去，倒做起了虚拟咨询，有趣。</p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Jobs/An-In-Depth-Guide-to-the-Differences-Between-SAN-and-NAS/" class="pre-post btn btn-default" title="An In-Depth Guide to the Differences Between SAN and NAS">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">An In-Depth Guide to the Differences Between SAN and NAS</span>
+        </a>
+    
+    
+        <a href="/uncategorized/How-to-calculate-the-property-rate-in-Australia/" class="next-post btn btn-default" title="详解澳洲房屋物业费计算方式">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">详解澳洲房屋物业费计算方式</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Istio">
+
+
+    <meta name="description" content="一、平台构建1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh
+https://github.com/rootsongj...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>Kubernetes实战应用 | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Kubernetes实战应用">
+            
+	            Kubernetes实战应用
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Kubernetes/">Kubernetes</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Istio/">Istio</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/21</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>318</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h3 id="一、平台构建"><a href="#一、平台构建" class="headerlink" title="一、平台构建"></a>一、平台构建</h3><p>1、使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh</p>
+<p><a href="https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md" target="_blank" rel="noopener">https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/blob/master/README-cn.md</a></p>
+<h3 id="二、集群部署命令"><a href="#二、集群部署命令" class="headerlink" title="二、集群部署命令"></a>二、集群部署命令</h3><ol>
+<li><p>启动kubenetes</p>
+<p>minikube start</p>
+<p>运行应用：kubectl run helloworld –image=karthequian/helloworld –port=80</p>
+</li>
+<li><p>查看部署，资源，pods</p>
+<p>kubectl get deployments</p>
+<p>kubectl get rs</p>
+<p>kuebectl get pods</p>
+</li>
+<li><p>部署应用服务</p>
+<p>kubectl expose deployment helloworld –type=NodePort</p>
+</li>
+<li><p>通过文件方式同时部署服务和Deployment</p>
+<p>kubectl create -f deploy-all.yml</p>
+</li>
+<li><p>查看服务</p>
+<p>kubectl get services</p>
+</li>
+<li><p>扩展集群服务器</p>
+<p>kubectl scale –replicas=3 deploy/helloworld</p>
+</li>
+<li><p>启动应用</p>
+<p>minikube service helloworld （可以通过Web浏览器进行查看）</p>
+</li>
+<li><p>查看所有部署服务</p>
+<p>minikube get all</p>
+</li>
+<li><p>将部署服务导出到YAML文件</p>
+<p>kubectl get deploy/helloworld -o yaml</p>
+</li>
+<li><p>查看服务器集群状态： kubectl cluster-info</p>
+</li>
+<li><p>定位故障</p>
+<p>kubectl describe deploy/depolyname</p>
+<p>kubectl describe po/podname</p>
+<p>kubectl log podname</p>
+<p>登陆到服务节点：kubectl exec -it podname /bin/bash</p>
+<p>如果单节点存在多个Container，登陆到某个服务节点：<code>kubectl exec -it -c containername podname /bin/bash</code></p>
+<p>查看所有服务进程：<code>ps -ef</code></p>
+</li>
+</ol>
+<h3 id="三、图形化管理工具"><a href="#三、图形化管理工具" class="headerlink" title="三、图形化管理工具"></a>三、图形化管理工具</h3><ol>
+<li><p>查看minikube 插件</p>
+<p><code>minikube addons list</code></p>
+<p><code>minikube addon enable heapester</code></p>
+</li>
+</ol>
+<h3 id="四、如何配置数据"><a href="#四、如何配置数据" class="headerlink" title="四、如何配置数据"></a>四、如何配置数据</h3><ol>
+<li><p>To create a configmap for this literal type <code>kubectl create configmap logger --from-literal=log_level=debug</code></p>
+</li>
+<li><p>To see all your configmaps: <code>kubectl get configmaps</code></p>
+</li>
+<li><p>To read the value in the logger configmap: <code>kubectl get configmap/logger -o yaml</code></p>
+</li>
+<li><p>To edit the value, we can run <code>kubectl edit configmap/logger</code></p>
+</li>
+</ol>
+<p>`</p>
+<h3 id="五、如何配置应用密钥"><a href="#五、如何配置应用密钥" class="headerlink" title="五、如何配置应用密钥"></a>五、如何配置应用密钥</h3><ol>
+<li><p>To create a secret: <code>kubectl create secret generic apikey --from-literal=api_key=123456789</code></p>
+</li>
+<li><p>Notice that we can’t read the value of the secret directly:<br><code>kubectl get secret apikey -o yaml</code></p>
+</li>
+<li><p>Understand how to add a secret to a deployment</p>
+<p>​         Adding a secret to a deployment is similar to what we did for configmaps. You can add a secret to the env portion, and start up the deployment with:<br><code>kubectl create -f secretreader-deployment.yaml</code></p>
+</li>
+</ol>
+<h3 id="六、如何创建任务"><a href="#六、如何创建任务" class="headerlink" title="六、如何创建任务"></a>六、如何创建任务</h3><h3 id="How-to-run-jobs"><a href="#How-to-run-jobs" class="headerlink" title="How to run jobs"></a>How to run jobs</h3><p>Jobs are a construct that run a pod once, and then stop. However, unlike pods in deployments, the output of the job is kept around until you decide to remove it.</p>
+<p>Running a job is similar to running a deployment, and we can create this by <code>kubectl create -f simplejob.yaml</code></p>
+<p>To see the output of the job: <code>kubectl get jobs</code></p>
+<p>You can find the pod that ran by doing a <code>kubectl get pods --all-pods</code>, and then get the logs from it as well.</p>
+<h3 id="How-to-run-cron-jobs"><a href="#How-to-run-cron-jobs" class="headerlink" title="How to run cron jobs"></a>How to run cron jobs</h3><p>Cron jobs are like jobs, but they run periodically.</p>
+<p>Start your cron by running <code>kubectl create -f cronjob.yaml</code></p>
+<p>We can use the cronjob api to view your cronjobs: <code>kubectl get cronjobs</code>. It adds the last schedule date</p>
+<h3 id="七、如何创建DaemonSet"><a href="#七、如何创建DaemonSet" class="headerlink" title="七、如何创建DaemonSet"></a>七、如何创建DaemonSet</h3>
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/Big-Data/Splunk入门手册/" class="pre-post btn btn-default" title="Splunk入门手册">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Splunk入门手册</span>
+        </a>
+    
+    
+        <a href="/Kubernetes/Istio-Kubernetes和云原生系统的服务网格/" class="next-post btn btn-default" title="Istio - Kubernetes和云原生系统的服务网格">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Istio - Kubernetes和云原生系统的服务网格</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、平台构建"><span class="toc-text">一、平台构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、集群部署命令"><span class="toc-text">二、集群部署命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、图形化管理工具"><span class="toc-text">三、图形化管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、如何配置数据"><span class="toc-text">四、如何配置数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、如何配置应用密钥"><span class="toc-text">五、如何配置应用密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、如何创建任务"><span class="toc-text">六、如何创建任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-run-jobs"><span class="toc-text">How to run jobs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-to-run-cron-jobs"><span class="toc-text">How to run cron jobs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、如何创建DaemonSet"><span class="toc-text">七、如何创建DaemonSet</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

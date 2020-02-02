@@ -1,0 +1,443 @@
+<!DOCTYPE HTML>
+<html lang="null">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="带你走进美丽的墨尔本">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://blog.ozairs.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="Pipeline">
+
+
+    <meta name="description" content="Jenkins Pipeline的总体介绍1.Jenkins Pipeline 的核心概念
+Pipeline，简而言之，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>玩转Jenkins Pipeline | 带你走进美丽的墨尔本</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+		    i['GoogleAnalyticsObject'] = r;
+		    i[r] = i[r] || function() {
+		        (i[r].q = i[r].q || []).push(arguments)
+		    }, i[r].l = 1 * new Date();
+		    a = s.createElement(o),
+		    m = s.getElementsByTagName(o)[0];
+		    a.async = 1;
+		    a.src = g;
+		    m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-136105852-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="Mark Wu">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://blog.ozairs.com">带你走进美丽的墨尔本</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>主页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/电影"><i class="fa "></i>电影</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/AWS"><i class="fa "></i>AWS</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Ansible"><i class="fa "></i>Ansible</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Cloud-Service"><i class="fa "></i>Cloud Service</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Security"><i class="fa "></i>Security</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/DevOps"><i class="fa "></i>DevOps</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Docker"><i class="fa "></i>Docker</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Jenkins"><i class="fa "></i>Jenkins</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Kubernetes"><i class="fa "></i>Kubernetes</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Python"><i class="fa "></i>Python</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Serverless"><i class="fa "></i>Serverless</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/Terraform"><i class="fa "></i>Terraform</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="https://156709406.gitbook.io/markwu100/"><i class="fa "></i>《奔跑吧～Terraform》中文版</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="玩转Jenkins Pipeline">
+            
+	            玩转Jenkins Pipeline
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            <a class="category-link" href="/categories/Jenkins/">Jenkins</a>
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/Pipeline/">Pipeline</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/03/18</span>
+        </span>
+        
+    
+</div>
+            
+            
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>320</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>Jenkins Pipeline的总体介绍<br>1.Jenkins Pipeline 的核心概念</p>
+<p>Pipeline，简而言之，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排与可视化。</p>
+<p>Pipeline是Jenkins2.X的最核心的特性，帮助Jenkins实现从CI到CD与DevOps的转变</p>
+<p>Pipeline是一组插件，让Jenkins可以实现持续交付管道的落地和实施。</p>
+<p>持续交付管道（CD Pipeline）是将软件从版本控制阶段到交付给用户或客户的完整过程的自动化表现。软件的每一次更改（提交到源代码管理系统）都要经过一个复杂的过程才能被发布。</p>
+<p>Pipeline提供了一组可扩展的工具，通过Pipeline Domain Specific Language（DSL）syntax可以达到Pipeline as Code（Jenkinsfile存储在项目的源代码库）的目的。</p>
+<p>Stage：阶段，一个Pipeline可以划分成若干个Stage，每个Stage代表一组操作，例如：“Build”，“Test”，“Deploy”。</p>
+<p>注意，Stage是一个逻辑分组的概念，可以跨多个Node</p>
+<p>Node：节点，一个Node就是一个Jenkins节点，或者是Master，或者是Agent，是执行Step的具体运行环境。</p>
+<p>Step：步骤，Step是最基本的操作单元，小到创建一个目录，大到构建一个Docker镜像，由各类Jenklins Plugin提供，例如：sh ‘make’</p>
+<p>Pipeline五大特性</p>
+<p>1、代码:Pipeline以代码的形式实现，通常被检入源代码控制，使团队能够编辑、审查和迭代其CD流程。<br>2、可持续性：Jenklins重启或者中断后都不会影响Pipeline Job。<br>3、停顿：Pipeline可以选择停止并等待任工输入或批准，然后再继续Pipeline运行。<br>4、多功能：Pipeline支持现实世界的复杂CD要求，包括fork/join子进程，循环和并行执行工作的能力<br>5、可扩展：Pipeline插件支持其DSL的自定义扩展以及与其他插件集成的多个选项。</p>
+<p>Pipeline和Freestyle的区别</p>
+<p>Freestyle：<br>上游/下游Job调度，如<br>BuildJob —&gt; TestJob —&gt; DeployJob<br>在DSL Job里面调度多个子Job（利用Build Flow Plugin）</p>
+<p>Pipeline：<br>单个Job中完成所有的任务编排<br>全局视图</p>
+<p>Multibranch Pipeline根据你的代码中Jenlinsfile自动创建Job</p>
+<p>Jenlins Pipeline的基础语法<br>Pipeline脚本是由Groovy语言实现（无需专门学习）</p>
+<p>支持两种语法<br>Declarative 声明式（在Pipeline plugin 2.5中引入）<br>Scripted Pipeline 脚本式</p>
+<p>如何创建最基本的PIpeline<br>直接在Jenkins Web UI 网页界面中输入脚本<br>通过创建一个jenkinsfile可以检入项目的源代码管理库</p>
+<p>通常推荐在Jenkins中直接从源代码控制（SCM）中载入Jenklinsfile Pipeline</p>
+<p>声明式Pipeline</p>
+<p>声明式Pipeline的基本语法和表达式遵循与Groovy语法相同的规则，但有以下例外：</p>
+<p>声明式pipeline必须包含在固定格式pipeline{}快内<br>每个声明语句必须独立一行，行尾无需使用分号<br>块（blocks{}）只能包含章节（Sections），指令（Directives），步骤（Steps）或赋值语句<br>属性引用语句被视为无参数方法调用。例：输入被视为 input()<br>块（blocks{}）<br>由大括号括起来的语句，如pipeline{},Section{},parameters{},script{}<br>章节（Sections）<br>通常包含一个或多个指令或步骤。如 agent 、post、stages、steps<br>指令（Directives）<br>environment、options、parameters、triggers（触发）、stage、tools、when<br>步骤（Steps）<br>Pipeline steps reference<br>执行脚本式pipeline：使用script{}</p>
+<p>agent<br>必须存在，agent必须在pipeline块内的顶层定义，但stage内是否使用使可选的<br>参数：any/none/label/node/docker/dockerfile<br>常用选项 label/cuetomWorkspace/reuseNode</p>
+<p>示例</p>
+<p>agent { label ‘my-label’ }</p>
+<p>agent {<br>    node {<br>        label ‘my-label’<br>        customWorkspace ‘/some/other/path’<br>    }<br>}</p>
+<p>agent {<br>    docker {<br>        image ‘nginx:1.12.2’<br>        label ‘my-label’<br>        args ‘-v /tmp:/tmp’<br>    }<br>}</p>
+<p>post 不是必须的，用于pipeline的最外层或者stage{}中</p>
+<p>pipeline {<br>    agent any<br>    stages {<br>        stage(‘Example’){<br>            steps {<br>            echo ‘Hello world’<br>            }<br>        }<br>    }<br>    post {<br>        always {<br>            echo ‘say goodbay’<br>        }<br>    }<br>}</p>
+<p>stages 必须，包括顺序执行的一个或多个stage命令，在pipeline内仅能使用一次，通常位于agent/options后面，例子如上</p>
+<p>steps 必须，steps位于stage指令块内部，包括一个或多个step。仅有一个step的情况下可以忽略关键字step及其{},例子如上</p>
+<p>environment 不是必须的，environment定义了一组全局的环境变量键值对，存在于pipeline{}或者stage指令内。执行特殊方法credentials()可以获取jenkins中预定义的凭证明文内容</p>
+<p>environment {CC=’clang’}<br>environment {AN_ACCESS_KEY = credentials(‘my-prefined-secret-text’)}<br>steps {sh ‘printenv’}</p>
+<p>options 不是必须的 预定义pipeline专有的配置信息，仅可定义一次</p>
+<p>pipeline {<br>    agent any<br>    options{<br>    timeout(time:1,unit: ‘HOURS’)<br>    }<br>    …<br>}</p>
+<p>parameters 不是必须的 定义参数化构建的参数可选参数 booleanParam,choice,file,text,password,run,string</p>
+<p>paramenters {<br>    choice(name:’PerformMavenRelease’,choices:’False\nTrue’,description:’desc’)<br>    password(name:’CredsToUse’,description:’Apassword to build with’,defaultValue:’’)<br>}<br>environment {<br>    BUILD_USR_CHOICE=”${params.PerformMavenRelease}”<br>    BUILD_USR_CREDS=”${params.CredsToUse}”<br>}</p>
+<p>triggers 不是必须的 定义pipeline被自动触发的方式选项 cron、pollSCM、upstream</p>
+<p>triggers {cron(‘H 4/<em> 0 0 1-5’)}<br>triggers {pollSCM(‘H 4/</em> 0 0 1-5’)}<br>triggers {upstream(upstreamProjects:’job1,job2’,threshold:hudson.model.Result.SUCCESS)}</p>
+<p>快速创建一个pipeline<br>新建 选择pipeline 填写Job 的名字 </p>
+<p>填写相应的pipeline script</p>
+<p>pipeline{<br>    agent any<br>    stages {<br>        stage(‘Build’) {<br>            steps{<br>                echo ‘This is a build step’<br>            }<br>        }<br>        stage(‘Test’) {<br>            steps{<br>                echo ‘This is a test step’<br>            }<br>        }<br>        stage(‘Deploy’) {<br>            steps{<br>                echo ‘This is a deploy step’<br>            }<br>        }<br>    }<br>}<br>1</p>
+<p>保存之后，立即构建</p>
+<p>常用的辅助工具</p>
+<p>Snipper Generator（代码片段生成器，语法检查器）<br>Replay Pipeline（重放pipeline，可以修改script，修改后的不存入config.xml）<br>DSL Reference 语法参考手册<br>全局变量引用<br>Stage View<br>BlueOcean(可视化)<br>Pipeline神器：可视化编辑器<br>命令行Pipeline调试工具<br>变量的传递</p>
+<p>自定义变量（局部）<br>def username = ‘Jenkins’<br>echo “Hello Mr.${username}”</p>
+<p>#注意一定要用双引号，单引号识别为字符串</p>
+<p>环境变量（局部）<br>withEnv([‘MYTOOL_HOME=/usr/local/mytool’]){<br>    sh ‘$MYTOOL_HOME/bin/start’<br>}<br>1<br>2<br>3<br>环境变量（全局）<br>environment {CC=’clang’}<br>echo “Compiler is ${env.CC}”</p>
+<p>参数化构建（全局）<br>parameters {string(name:’Jenkins’,defaultValue:’Hello’,description:’How should I greet the world’)}<br>ehco “${params.Greeting} World!”</p>
+<p>判断<br>when仅用于stage内部<br>when的内置条件为：</p>
+<ul>
+<li>when {branch ‘master’}</li>
+<li>when {environment name:’DEPLOY_TO’,value:’production’}<br>#当有环境变量 name 为 DEPLOY_TO 值是 production 条件成立</li>
+<li>when {expression {return params.DEBUG_BUILD}}<br>#表达式返回值为真时</li>
+<li>when {not {branch ‘master’}}</li>
+<li>when {allOf {branch ‘master’; environment name:’DEBUG_TO’,value:’production’}}<br>#allOf 所有条件都满足时</li>
+<li>when {anyOf {branch ‘master’ ; branch ‘staging’}}<br>#anyOf有一个条件满足时即可</li>
+</ul>
+<p>判断和异常处理<br>流程控制if/else条件</p>
+<p>node {<br>    stage(‘Example’){<br>        if(env.BRANCH_NAME == ‘master’){<br>            echo ‘I only execute on the master branch’<br>        }else {<br>            echo ‘Iexecute elsewhere’<br>        }<br>    }<br>}</p>
+<p>异常处理try/catch/finally</p>
+<p>node{<br>    stage(‘Example’){<br>        try{<br>            sh ‘exit 1’<br>        }<br>        catch (exc) {<br>            echo ‘something failed,I should sound the klaxons!’<br>            throw<br>        }<br>    }<br>}</p>
+<p>for循环仅存在域脚本式pipeline中，但是可以通过在声明式pipeline中调用script step来执行</p>
+<p>pipeline {<br>    agent any<br>    stages {<br>        stage(‘Example’){<br>            steps{<br>                echo ‘Hello world!’<br>                script {<br>                    def browsers = [‘chrome’,’firefox’]<br>                    for (int i = 0;i &lt; browers.size();++i){<br>                        echo “Testing the ${browsers[i]} browser”<br>                    }<br>                }<br>            }<br>        }<br>    }<br>}</p>
+<p>并发需要放在stages中，stages可以嵌套使用<br>stage下的steps和parallel不能共存，只能二选一<br>使用了并发的stage不能再有agent/tools </p>
+
+    </div>
+    
+        <div class="reward" ontouchstart="">
+    <div class="reward-wrap">赏
+        <div class="reward-box">
+            
+            
+                <span class="reward-type">
+                    <img class="wechat" src="/img/wechatpay.jpg"><b>微信打赏</b>
+                </span>
+            
+        </div>
+    </div>
+    <p class="reward-tip">坚持原创分享，您的支持将鼓励我继续创作！</p>
+</div>
+
+
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Mark</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/AWS/使用Cloud-Formation为AWS上的私有实例设置绝对可靠的Bastion节点/" class="pre-post btn btn-default" title="使用Cloud Formation为AWS上的私有实例设置绝对可靠的Bastion节点">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">使用Cloud Formation为AWS上的私有实例设置绝对可靠的Bastion节点</span>
+        </a>
+    
+    
+        <a href="/Jenkins/使用jenkins-ant-构建非maven项目/" class="next-post btn btn-default" title="使用jenkins+ant 构建非maven项目">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">使用jenkins+ant 构建非maven项目</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'undefined',
+            appKey: 'undefined',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'null'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <p>暂无目录</p>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
