@@ -16,10 +16,12 @@
     <link rel="dns-prefetch" href="http://blog.ozairs.com">
     <!--SEO-->
 
-    <meta name="keywords" content="Storage">
+    <meta name="keywords" content="Security">
 
 
-    <meta name="description" content="Storage area networks (SANs) and network attached storage (NAS) both provide networked storage so...">
+    <meta name="description" content="原文链接：https://mark-41.gitbook.io/aws-1/
+【概述】
+正确调整实例大小是使实例类型和大小与您的工作负载性能和容量要求相匹配的过程，并且成本要尽可能低。 这也是查...">
 
 
 
@@ -31,7 +33,7 @@
     <!--Title-->
 
 
-<title>An In-Depth Guide to the Differences Between SAN and NAS | 带你走进美丽的墨尔本</title>
+<title>如何选择合适的实例 | 带你走进美丽的墨尔本</title>
 
 
     <link rel="alternate" href="/atom.xml" title="带你走进美丽的墨尔本" type="application/atom+xml">
@@ -188,16 +190,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="An In-Depth Guide to the Differences Between SAN and NAS">
+        <h1 id="如何选择合适的实例">
             
-	            An In-Depth Guide to the Differences Between SAN and NAS
+	            如何选择合适的实例
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            <a class="category-link" href="/categories/Jobs/">Jobs</a>
+            <a class="category-link" href="/categories/Security/">Security</a>
         </span>
     
 
@@ -206,7 +208,7 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Storage/">Storage</a>
+                    <a class="tag-link" href="/tags/Security/">Security</a>
                 
             </span>
         </span>
@@ -216,35 +218,20 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/02/13</span>
+            <span class="date-meta">2020/02/02</span>
         </span>
         
     
 </div>
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>353</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p><a href="https://www.lifewire.com/definition-of-san-818007" target="_blank" rel="noopener">Storage area networks (SANs)</a> and <a href="https://www.lifewire.com/best-nas-network-attached-storage-4140167" target="_blank" rel="noopener">network attached storage (NAS)</a> both provide networked storage solutions. A NAS is a single storage device that operates on data files, while a SAN is a local network of multiple devices.</p>
-<p><img src="/Jobs/An-In-Depth-Guide-to-the-Differences-Between-SAN-and-NAS/san-vs-nas.png" alt=""></p>
-<p>A NAS unit includes a dedicated hardware device that connects to a <a href="https://www.lifewire.com/local-area-network-816382" target="_blank" rel="noopener">local area network</a>, usually through an <a href="https://www.lifewire.com/what-is-ethernet-3426740" target="_blank" rel="noopener">Ethernet</a> connection. This NAS server authenticates clients and manages file operations in much the same manner as traditional file servers, through well-established network protocols.</p>
-<p>To reduce the costs that occur with traditional file servers, NAS devices generally run an embedded <a href="https://www.lifewire.com/operating-systems-2625912" target="_blank" rel="noopener">operating system</a> on simplified hardware and lack <a href="https://www.lifewire.com/peripheral-device-2625951" target="_blank" rel="noopener">peripherals</a> like a <a href="https://www.lifewire.com/what-is-a-monitor-2618155" target="_blank" rel="noopener">monitor</a>or <a href="https://www.lifewire.com/what-is-a-keyboard-2618153" target="_blank" rel="noopener">keyboard</a> and are instead managed through a browser tool.</p>
-<p>A SAN commonly utilizes <a href="https://www.lifewire.com/definition-of-fibre-channel-816326" target="_blank" rel="noopener">Fibre Channel</a> interconnects and connects a set of storage devices that are able to share data with one another.</p>
-<h3 id="Important-NAS-and-SAN-Benefits"><a href="#Important-NAS-and-SAN-Benefits" class="headerlink" title="Important NAS and SAN Benefits"></a>Important NAS and SAN Benefits</h3><p>The administrator of a <a href="https://www.lifewire.com/soho-routers-and-networks-explained-3971344" target="_blank" rel="noopener">home or small business network</a> can connect one NAS device to a local area network. The device itself is a <a href="https://www.lifewire.com/what-is-a-node-4155598" target="_blank" rel="noopener">network node</a>, much like computers and other <a href="https://www.lifewire.com/transmission-control-protocol-and-internet-protocol-816255" target="_blank" rel="noopener">TCP/IP</a> devices, all of which maintain their own <a href="https://www.lifewire.com/what-is-an-ip-address-2625920" target="_blank" rel="noopener">IP address</a> and can effectively communicate with other networked devices.</p>
-<p>Given that the network attached storage device is attached <em>to the network</em>, all the other devices on that same network have easy access to it (given that proper permissions are set up). Because of their centralized nature, NAS devices offer an easy way for multiple users to access the same data, which is important in situations where users are collaborating on projects or utilizing the same company standards.</p>
-<p>Using a software program provided with the NAS hardware, a network administrator can set up automatic or manual backups and file copies between the NAS and all the other connected devices. Therefore, a NAS device is also useful for the opposite reason: to offload local data to the network storage device’s much larger storage container.</p>
-<p>This is useful not only to ensure that users do not lose data, since the NAS can be backed up on a regular schedule regardless of the end-user’s ability to back up, but also to give other network devices a place to keep large files, especially large files that are often shared among other network users.</p>
-<p>Without a NAS, users have to find another (often slower) means to send data to other devices on the network, like over email or physically with <a href="https://www.lifewire.com/what-is-a-flash-drive-2625794" target="_blank" rel="noopener">flash drives</a>. The NAS holds many gigabytes or <a href="https://www.lifewire.com/terabytes-gigabytes-amp-petabytes-how-big-are-they-4125169" target="_blank" rel="noopener">terabytes</a> of data, and administrators can add additional storage capacity to their network by installing additional NAS devices, although each NAS operates independently. </p>
-<p>Administrators of large enterprise networks may require many terabytes of centralized file storage or extremely high-speed file transfer operations. While installing an army of many NAS devices is not a practical option, administrators can instead install a SAN containing a high-performance disk array to provide the needed scalability and performance.</p>
-<p>However, SANs are not always physical. You can also create virtual SANs (VSANs) that are defined by a software program. Virtual SANs are easier to manage and offer better scalability since they’re hardware independent and controlled entirely by easy-to-change software.</p>
-<h3 id="SAN-NAS-Convergence"><a href="#SAN-NAS-Convergence" class="headerlink" title="SAN/NAS Convergence"></a>SAN/NAS Convergence</h3><p>As internet technologies like TCP/IP and Ethernet proliferate worldwide, some SAN products are making the transition from Fibre Channel to the same IP-based approach NAS uses. Also, with the rapid improvements in disk storage technology, today’s NAS devices now offer capacities and performance that once were only possible with SAN.</p>
-<p>These two industry factors have led to a partial convergence of NAS and SAN approaches to network storage, effectively creating high-speed, high-capacity, centrally located network devices. </p>
-<p>When SAN and NAS are joined together into one device in this way, it’s sometimes referred to as “unified SAN,” and it’s often the case that the device is a NAS device that simply utilizes the same technology behind SAN.</p>
+        <p>原文链接：<a href="https://mark-41.gitbook.io/aws-1/" target="_blank" rel="noopener"><a href="https://mark-41.gitbook.io/aws-1/" target="_blank" rel="noopener">https://mark-41.gitbook.io/aws-1/</a></a></p>
+<p>【概述】</p>
+<p>正确调整实例大小是使实例类型和大小与您的工作负载性能和容量要求相匹配的过程，并且成本要尽可能低。 这也是查看已部署实例并确定在不损害容量或其他要求的情况下消除或缩减规模的机会的过程，从而降低了成本。</p>
+<p>正确调整大小是优化AWS成本的关键机制，但组织在首次迁移到AWS云时通常会忽略它。 他们举起并改变了他们的环境，并期望稍后再调整大小。 速度和性能通常要优先于成本，这会导致实例过大并浪费大量未使用的资源。</p>
 
     </div>
     
@@ -278,15 +265,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/Jobs/关于Raid0-Raid1-Raid5-Raid10的总结/" class="pre-post btn btn-default" title="关于Raid0,Raid1,Raid5,Raid10的总结">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">关于Raid0,Raid1,Raid5,Raid10的总结</span>
-        </a>
     
-    
-        <a href="/求职/AWS面试经验分享/" class="next-post btn btn-default" title="AWS面试经验分享">
+        <a href="/Security/AWS云安全介绍/" class="next-post btn btn-default" title="AWS云安全介绍">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">AWS面试经验分享</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">AWS云安全介绍</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -329,7 +311,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Important-NAS-and-SAN-Benefits"><span class="toc-text">Important NAS and SAN Benefits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SAN-NAS-Convergence"><span class="toc-text">SAN/NAS Convergence</span></a></li></ol>
+            <p>暂无目录</p>
         
     </div>
 </aside>
