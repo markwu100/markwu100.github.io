@@ -16,14 +16,12 @@
     <link rel="dns-prefetch" href="http://blog.ozairs.com">
     <!--SEO-->
 
-    <meta name="keywords" content="Property">
+    <meta name="keywords" content="AWS, Security">
 
 
-    <meta name="description" content="每年，墨尔本市政府会计算您房屋的费率，以资助当地社区的建设，维护和服务。
-关于房屋的费率的计算方式如下：
-
-将房屋的财产价值乘以市政府为社区项目和服务提供资金所需的“美元汇率”
-增加收到的任何废...">
+    <meta name="description" content="本文翻译了AWS Security白皮书《DDoS弹性防护技术最佳实践》，原文链接：https://mark-41.gitbook.io/aws-ddos/。
+以下是原文节选：
+拒绝服务（DoS...">
 
 
 
@@ -35,7 +33,7 @@
     <!--Title-->
 
 
-<title>详解澳洲房屋物业费计算方式 | Cloud Service一站通</title>
+<title>DDoS简介 | Cloud Service一站通</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Cloud Service一站通" type="application/atom+xml">
@@ -188,16 +186,16 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="详解澳洲房屋物业费计算方式">
+        <h1 id="DDoS简介">
             
-	            详解澳洲房屋物业费计算方式
+	            DDoS简介
             
         </h1>
         <div class="post-meta">
     
         <span class="categories-meta fa-wrap">
             <i class="fa fa-folder-open-o"></i>
-            
+            <a class="category-link" href="/categories/Security/">Security</a>
         </span>
     
 
@@ -206,7 +204,7 @@
             <i class="fa fa-tags"></i>
             <span class="tags-meta">
                 
-                    <a class="tag-link" href="/tags/Property/">Property</a>
+                    <a class="tag-link" href="/tags/AWS-Security/">AWS, Security</a>
                 
             </span>
         </span>
@@ -216,55 +214,21 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2019/02/07</span>
+            <span class="date-meta">2020/02/08</span>
         </span>
         
     
 </div>
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>366</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>每年，墨尔本市政府会计算您房屋的费率，以资助当地社区的建设，维护和服务。</p>
-<p>关于房屋的费率的计算方式如下：</p>
-<ol>
-<li>将房屋的财产价值乘以市政府为社区项目和服务提供资金所需的“美元汇率”</li>
-<li>增加收到的任何废物服务的成本</li>
-<li>加征防火税</li>
-<li>减去您有资格获得的任何优惠</li>
-</ol>
-<h2 id="房屋物业费计算举例"><a href="#房屋物业费计算举例" class="headerlink" title="房屋物业费计算举例"></a>房屋物业费计算举例</h2><ul>
-<li>确定您房屋的资本改善价值（CIV）<strong>为400,000美元。</strong></li>
-<li>确定’美元汇率’为<strong>0.00244201。</strong></li>
-<li>将400,000乘以0.00244201，基本利率<strong>为976.80美元。</strong></li>
-<li>增加您收到的任何废物服务和消防税的成本。</li>
-<li>减去您有资格获得的任何让步。</li>
-</ul>
-<h2 id="如何进行房屋评估"><a href="#如何进行房屋评估" class="headerlink" title="如何进行房屋评估"></a>如何进行房屋评估</h2><p>市政府每年都会按照维多利亚州政府法律，对当地的房产进行评估。实际操作过程中，会使用合格的估价师根据以下因素评估您的房产：</p>
-<ul>
-<li>最近在该地区的销售</li>
-<li>它的位置</li>
-<li>土地的质量和位置</li>
-<li>建筑物的大小，年龄和状况</li>
-</ul>
-<h3 id="如果您对不同意房屋估价"><a href="#如果您对不同意房屋估价" class="headerlink" title="如果您对不同意房屋估价"></a>如果您对不同意房屋估价</h3><p>如果您不同意您的房产估价，可以和当地市政府联系：</p>
-<p>市政府评估团队成员可以：</p>
-<ul>
-<li>更详细地解释我们如何评估您的财产</li>
-<li>听取并理解您的反对意见</li>
-<li>建议您可以采取哪些进一步措施</li>
-</ul>
-<h2 id="如何计算美元汇率"><a href="#如何计算美元汇率" class="headerlink" title="如何计算美元汇率"></a>如何计算美元汇率</h2><p>通过以下方式计算出美元汇率：</p>
-<ul>
-<li>计算提供所有计划和服务所需的费率收入总额</li>
-<li>将此金额除以当地房产总价值</li>
-</ul>
-<p>这个数字是通过市政府每年的预算流程和每年的变化来确定的。</p>
+        <p>本文翻译了AWS Security白皮书《DDoS弹性防护技术最佳实践》，原文链接：<a href="https://mark-41.gitbook.io/aws-ddos/。" target="_blank" rel="noopener">https://mark-41.gitbook.io/aws-ddos/。</a></p>
+<p>以下是原文节选：</p>
+<p>拒绝服务（DoS）攻击是故意使用户无法使用您的网站或应用程序的尝试，例如通过向网络流量泛洪来进行。 为此，攻击者使用了各种技术，这些技术消耗大量网络带宽或占用其他系统资源，从而破坏了合法用户的访问权限。 以最简单的形式，单一的攻击者使用单个源对目标执行DoS攻击。</p>
+<p>在分布式拒绝服务（DDoS）攻击中，攻击者使用多个源（例如，受恶意软件感染的计算机，路由器，IoT设备和其他终结点的分布式组）来组织针对目标的攻击。 受到攻击的主机网络会参与攻击，从而产生大量的数据包或请求使目标不堪重负。</p>
+<p>DDoS攻击最常见于OSI模型的第3、4、6和7层。第3层和第4层攻击对应于OSI模型的网络和传输层。 我们将这些统称为基础架构层攻击。 第6层和第7层攻击对应于OSI模型的Presentation和Application层。 我们将它们作为应用程序层攻击一起解决。 以下各节讨论了这些攻击类型的示例。</p>
 
     </div>
     
@@ -298,15 +262,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/求职/AWS面试经验分享/" class="pre-post btn btn-default" title="AWS面试经验分享">
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">AWS面试经验分享</span>
-        </a>
     
-    
-        <a href="/Web开发/Git从入门到熟练使用/" class="next-post btn btn-default" title="Git从入门到熟练使用">
+        <a href="/Security/如何选择合适的EC2实例/" class="next-post btn btn-default" title="如何选择合适的EC2实例">
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">Git从入门到熟练使用</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">如何选择合适的EC2实例</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
@@ -349,7 +308,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#房屋物业费计算举例"><span class="toc-text">房屋物业费计算举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何进行房屋评估"><span class="toc-text">如何进行房屋评估</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如果您对不同意房屋估价"><span class="toc-text">如果您对不同意房屋估价</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何计算美元汇率"><span class="toc-text">如何计算美元汇率</span></a></li></ol>
+            <p>暂无目录</p>
         
     </div>
 </aside>
