@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2020-02-12T04:35:27.068Z</updated>
+  <updated>2020-02-12T04:35:39.737Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.ozairs.com/Security/SLI-SLO%E5%92%8CSLA%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <id>http://blog.ozairs.com/Security/SLI-SLO和SLA之间的区别/</id>
     <published>2020-02-12T04:30:36.000Z</published>
-    <updated>2020-02-12T04:35:27.068Z</updated>
+    <updated>2020-02-12T04:35:39.737Z</updated>
     
     <content type="html"><![CDATA[<p>尽管SLA，SLO和SLI是不同的概念，但它们之间确有很多相关性。</p><p>SLA： Service Lever Agreement是一份由服务提供商向客户承诺的服务可用性，性能等方面的合同。<br>    SLO：Service Level Objective是服务提供商想要达到的更好的性能目标。<br>    SLI： Service Level Indicator，服务提供商用于测量服务目标的一种指标。<br>    服务提供商需要基于SLI收集指标，基于SLO定义指标阈值，并监视指标阈值，以免破坏SLA。在实践中，SLI是监视系统中的指标。 SLO是警报规则，SLA是应用于SLO的监视指标的数量。</p><p>通常，SLO和SLA是相似的，而SLO比SLA更紧密。 SLO通常仅用于内部，而SLA仅用于外部。如果服务可用性违反了SLO，则运营人员需要迅速做出反应以避免违反SLA，否则，公司可能需要向客户退款。</p><p>SLA，SLO和SLI基于这样的假设，即无法确保该服务100％可用，而是，我们保证该系统将可用性大于某一百分比，例如99.5％。</p>]]></content>
     
