@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.ozairs.com/"/>
-  <updated>2020-02-08T13:01:57.054Z</updated>
+  <updated>2020-02-12T04:35:27.068Z</updated>
   <id>http://blog.ozairs.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SLI,SLO和SLA之间的区别</title>
+    <link href="http://blog.ozairs.com/Security/SLI-SLO%E5%92%8CSLA%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://blog.ozairs.com/Security/SLI-SLO和SLA之间的区别/</id>
+    <published>2020-02-12T04:30:36.000Z</published>
+    <updated>2020-02-12T04:35:27.068Z</updated>
+    
+    <content type="html"><![CDATA[<p>尽管SLA，SLO和SLI是不同的概念，但它们之间确有很多相关性。</p><p>SLA： Service Lever Agreement是一份由服务提供商向客户承诺的服务可用性，性能等方面的合同。<br>    SLO：Service Level Objective是服务提供商想要达到的更好的性能目标。<br>    SLI： Service Level Indicator，服务提供商用于测量服务目标的一种指标。<br>    服务提供商需要基于SLI收集指标，基于SLO定义指标阈值，并监视指标阈值，以免破坏SLA。在实践中，SLI是监视系统中的指标。 SLO是警报规则，SLA是应用于SLO的监视指标的数量。</p><p>通常，SLO和SLA是相似的，而SLO比SLA更紧密。 SLO通常仅用于内部，而SLA仅用于外部。如果服务可用性违反了SLO，则运营人员需要迅速做出反应以避免违反SLA，否则，公司可能需要向客户退款。</p><p>SLA，SLO和SLI基于这样的假设，即无法确保该服务100％可用，而是，我们保证该系统将可用性大于某一百分比，例如99.5％。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;尽管SLA，SLO和SLI是不同的概念，但它们之间确有很多相关性。&lt;/p&gt;
+&lt;p&gt;SLA： Service Lever Agreement是一份由服务提供商向客户承诺的服务可用性，性能等方面的合同。&lt;br&gt;    SLO：Service Level Objective是服务
+      
+    
+    </summary>
+    
+      <category term="Security" scheme="http://blog.ozairs.com/categories/Security/"/>
+    
+    
+      <category term="SlA" scheme="http://blog.ozairs.com/tags/SlA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>DDoS简介</title>
     <link href="http://blog.ozairs.com/Security/DDoS%E7%AE%80%E4%BB%8B/"/>
     <id>http://blog.ozairs.com/Security/DDoS简介/</id>
     <published>2020-02-08T12:58:49.000Z</published>
-    <updated>2020-02-08T13:01:57.054Z</updated>
+    <updated>2020-02-08T13:02:10.211Z</updated>
     
     <content type="html"><![CDATA[<p>本文翻译了AWS Security白皮书《DDoS弹性防护技术最佳实践》，原文链接：<a href="https://mark-41.gitbook.io/aws-ddos/。" target="_blank" rel="noopener">https://mark-41.gitbook.io/aws-ddos/。</a></p><p>以下是原文节选：</p><p>拒绝服务（DoS）攻击是故意使用户无法使用您的网站或应用程序的尝试，例如通过向网络流量泛洪来进行。 为此，攻击者使用了各种技术，这些技术消耗大量网络带宽或占用其他系统资源，从而破坏了合法用户的访问权限。 以最简单的形式，单一的攻击者使用单个源对目标执行DoS攻击。</p><p>在分布式拒绝服务（DDoS）攻击中，攻击者使用多个源（例如，受恶意软件感染的计算机，路由器，IoT设备和其他终结点的分布式组）来组织针对目标的攻击。 受到攻击的主机网络会参与攻击，从而产生大量的数据包或请求使目标不堪重负。</p><p>DDoS攻击最常见于OSI模型的第3、4、6和7层。第3层和第4层攻击对应于OSI模型的网络和传输层。 我们将这些统称为基础架构层攻击。 第6层和第7层攻击对应于OSI模型的Presentation和Application层。 我们将它们作为应用程序层攻击一起解决。 以下各节讨论了这些攻击类型的示例。</p>]]></content>
     
@@ -485,24 +511,6 @@
         &lt;h2 id=&quot;Azure服务&quot;&gt;&lt;a href=&quot;#Azure服务&quot; class=&quot;headerlink&quot; title=&quot;Azure服务&quot;&gt;&lt;/a&gt;Azure服务&lt;/h2&gt;&lt;p&gt;以下是Azure中可用服务和功能的全景图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/Cloud-Serv
       
-    
-    </summary>
-    
-      <category term="Cloud Service" scheme="http://blog.ozairs.com/categories/Cloud-Service/"/>
-    
-    
-      <category term="Azure" scheme="http://blog.ozairs.com/tags/Azure/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Azure实战应用</title>
-    <link href="http://blog.ozairs.com/Cloud-Service/Azure%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8/"/>
-    <id>http://blog.ozairs.com/Cloud-Service/Azure实战应用/</id>
-    <published>2019-04-22T06:21:53.000Z</published>
-    <updated>2019-04-22T10:11:10.478Z</updated>
-    
-    <summary type="html">
     
     </summary>
     
