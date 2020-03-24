@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.ozairs.com/uncategorized/Another-Test-Blog/</loc>
+    
+    <lastmod>2020-03-24T03:15:03.247Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.ozairs.com/Security/How-to-pass-AWS-Certified-Security-Speciality/</loc>
     
     <lastmod>2020-02-12T09:54:15.593Z</lastmod>
